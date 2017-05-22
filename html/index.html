@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
     <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 	<script src="../js/error_handling.js"></script>
+	<script src="../js/auftragsverwaltung.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
@@ -100,9 +101,21 @@
      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Auftragsübersicht</h1>
           
-          <h3 class="sub-header" id="in_process">in Bearbeitung</h3>
-          <h3 class="sub-header" id="in_queue">in der Warteschlange</h3>
-          <h3 class="sub-header" id="in_done">beendet</h3>
+          <h3 class="sub-header">in Bearbeitung</h3>
+          <div>
+          	<div class='table-responsive'> <table class='table table-striped'> 
+          		<thead>
+                   	<tr> <th>Produkt</th> <th>Regal</th> </tr>
+                </thead>
+                <tbody id="in_process">
+                </tbody>
+                </table>
+          </div>
+          </div>
+          <h3 class="sub-header">in der Warteschlange</h3>
+          <div id="in_queue"></div>
+          <h3 class="sub-header">beendet</h3>
+          <div id="in_done"></div>
           </div>
         </div>
 	 </div>
