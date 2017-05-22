@@ -104,3 +104,8 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.carousel .item img {
+  max-height: 30px;
+  min-width: auto;
+}
