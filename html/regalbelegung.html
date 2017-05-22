@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Maske für Auftragsverwaltung">
+    <meta name="author" content="Daniel Wenz">
+
+    <title>Regalbelegung</title>
+    
+     <!-- Laden der notwendigen Libraries -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://raw.githubusercontent.com/davidjbradshaw/imagemap-resizer/master/js/imageMapResizer.min.js"></script>
+	<script src="../js/mapResize.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="../css/regalbelegung.css" rel="stylesheet">
+  </head>
+  
+  <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+      	 <div class="navbar-header">
+          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#show_all_products">Produktübersicht</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../php/index.php"> Dashboard</a></li>
+            <li><a data-toggle="modal" data-target="#match_bins" href="#"><b>Produkt einlagern</b></a></li>
+            <li><a href="#">Profil</a></li>
+          </ul>
+            <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hier beginnt der Container für den eigentlichen Inhalt unterhalb der Navigationsleite-->
+    <!-- Definition der Navigationsleiste links -->
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="../php/index.php"> <span class="glyphicon glyphicon-home"></span> Dashboard <span class="sr-only">(current)</span></a></li>
+            <li><a href="../html/formular_auftrag.html"><span class="glyphicon glyphicon-plus"></span> Produkte</a></li>
+            <li><a href="../html/produktoverview.html"> <span class="glyphicon glyphicon-list"></span> Produktübersicht</a></li>
+            <li class="active"><a href="#"> <span class="glyphicon glyphicon-stats"></span> Regalbelegung</a></li>
+          </ul>
+        </div>
+      
+      <!-- Dashboard -->
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Regalübersicht</h1>
+
+
+      <!-- definition of all single components belonging to the formular -->
+      <div class="col-xs-12 col-sm-9 placeholder">
+      	<div class="row placeholders">		  
+      	<img src="../img/regal_named.png" class="img-thumbnail" width="250" usemap="#regal">
+      	<map id="regal" name="regal">
+      		<area shape="rect" alt="" title="" coords="10,17,176,71" href="#A" target="" />
+      		<area shape="rect" alt="" title="" coords="9,88,61,137" href="#B" target="" />
+      		<area shape="rect" alt="" title="" coords="71,86,178,138" href="#C" target="" />
+      		<area shape="rect" alt="" title="" coords="130,151,247,204" href="#D" target="" />
+      		<area shape="rect" alt="" title="" coords="9,221,123,284" href="#E" target="" />
+      		<area shape="rect" alt="" title="" coords="190,218,244,344" href="#F" target="" />
+      	</map>
+      	</div>
+      	<div id="script_content">
+      	</div>
+      				 
+      </div>
+      </div>
+      </div>
+      <!-- modal for showing order details and the state -->
+     <div id="product_info_regal" class="modal fade" role="dialog">
+      <div class="modal-dialog">		
+        <!-- modal content is set by .js -->
+            <div class="modal-content">
+    		    <div class="modal-header">
+    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    			  <h4 class="modal-title">Produktinformation</span></h4>
+    			</div>
+    		<div class="modal-body" id="product_info_regal_content">
+    		    <!-- content is set dynamically when the trigger is fired -->
+    		</div>
+    		<div class="modal-footer">
+    		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    		</div>
+    		</div>
+    		</div>
+    	</div>
+      <script src="../js/regal_content.js"></script>
+  </body>
+  </html>  
+  

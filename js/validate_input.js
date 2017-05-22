@@ -1,0 +1,142 @@
+/**
+ * @author Daniel
+ * This .js is for validating the formula input - once any input is given, the user received real-time feedback by changing
+ * the input colour of the field and adding an "ok" glyphicon.
+ * 
+ */
+
+    
+$(document).ready(function(){
+	
+	var span  = document.createElement('span');
+    var help = document.getElementById("helper");
+    var form = document.getElementById("pn");
+    
+    $(".form-control").change(function(){
+    	
+    	if($(this).attr('id') == 'pn'){
+    		//dont do anything
+    	}
+    	else{
+    		$(this).parent().parent().attr('class','form-group has-success has-feedback');
+        	var text = '<span class="glyphicon glyphicon-ok form-control-feedback"></span>';
+        	$(this).parent().append(text);
+    	}  
+        
+    });
+    
+    // If the input of the productname changes, we wanna check if the product is already in the database
+    $("#pn").change(function() {
+    
+    var queryString = "?name=" + $(this).val();
+    
+    if (window.XMLHttpRequest) {
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	 xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        	var myObj = JSON.parse(this.responseText);
+        	
+			switch(myObj){
+				case 0:	notInDatabase(0);
+						break;
+						
+				case 1: noMatchingBin(1,1);
+				        break;
+				        
+				case 2: orderReady(2);
+						break;
+			}
+		}
+    };
+       
+    xhttp.open("GET", "../php/validating.php" + queryString, true);
+    xhttp.send();
+    });
+    
+    
+    $("#confirm1").click(function(){
+    	$("#myModal").modal();
+    });
+    
+    $("#yes").click(function() {
+        noMatchingBin(0,1);
+        $("#myModal").modal('hide');
+        });
+        
+    $("#no").click(function() {
+        $("#send_content").attr('action', '../php/db_transfer.php?s=0');
+        $("#send_content").submit();
+        });
+    
+    $('[data-toggle="tooltip"]').tooltip();     
+
+    function notInDatabase(status){
+    	
+      	 	span.setAttribute('class','glyphicon glyphicon-warning-sign form-control-feedback');    	 	 	
+    	 	form.parentElement.parentElement.setAttribute('class','form-group has-warning has-feedback');
+			form.parentElement.append(span);
+			help.innerHTML = 'Produkt nicht in der Datenbank. Bitte geben Sie alle folgenden Informationen ein. Anschließend bestätigen über "Auftrag anlegen". ';
+				
+			$(".hidden").removeClass('hidden');
+			$(".form-control").attr('required',"");
+			$("#sel_r").removeAttr('required');
+			$("#sel_v").removeAttr('required');
+			
+			$("#regal").addClass('hidden');
+			$("#verpackung").addClass('hidden');
+			$("#change_bin").removeClass('hidden');
+			
+			$("#smbutton").addClass('hidden');
+			$("#confirm").removeClass('hidden');
+			
+    }
+    function noMatchingBin(status,decider){
+
+    	 	span.setAttribute('class','glyphicon glyphicon-warning-sign form-control-feedback');
+    	 	form.parentElement.parentElement.setAttribute('class','form-group has-warning has-feedback');
+			form.parentElement.append(span);
+			help.innerHTML = 'Produkt in der Datenbank. Bitte buchen Sie das Produkt in ein Regal und wählen Sie die Box aus, in der das Produkt gelagert werden soll';
+  			
+  			$(".form-group").addClass('hidden');
+  			$(".form-control").removeAttr('required');
+	
+  			$("#pname").removeClass('hidden');
+  			$("#regal").removeClass('hidden');
+  			
+  			$("#confirm").addClass('hidden');
+  			    
+  			$("#smbutton").removeClass('hidden');  
+  			$("#sm_button").removeAttr('disabled');
+
+  			$("#send_content").attr('action', '../php/db_transfer.php?s=' + status + '&d=' + decider);
+  			
+  			}
+  			
+  	function orderReady(status){
+  		
+  			var decider;
+  			span.setAttribute('class','glyphicon glyphicon-ok form-control-feedback');
+  			form.parentElement.parentElement.setAttribute('class','form-group has-success has-feedback');
+  			form.parentElement.append(span);
+  			help.innerHTML = "Das Produkt wurde gefunden und kann in einen Auftrag eingebunden werden";
+  			
+  			$(".form-group").addClass('hidden');
+  			$("#pname").removeClass('hidden');
+  			
+  			$("#change_bin").removeClass('hidden');
+  			$("#change_bin").click(function(){
+  				$("#change_bin").addClass('hidden');
+  				$("#regal").removeClass('hidden');
+  				
+  				$("#smbutton").removeClass('hidden');  
+  			    $("#sm_button").removeAttr('disabled');
+  			    
+  			    $("#send_content").attr('action', '../php/db_transfer.php?s=1&d=2');
+  			});
+  			
+  	}
+});

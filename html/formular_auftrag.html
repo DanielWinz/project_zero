@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Maske für Auftragsverwaltung">
+    <meta name="author" content="Daniel Wenz">
+
+    <title>Auftrag anlegen</title>
+    
+     <!-- Laden der notwendigen Libraries -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../js/validate_input.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../css/dashboard.css" rel="stylesheet">
+  </head>
+  
+  
+  
+  <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+      	 <div class="navbar-header">
+          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#show_all_products">Produktübersicht</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../php/index.php"> Dashboard</a></li>
+            <li><a data-toggle="modal" data-target="#match_bins" href="#"><b>Produkt einlagern</b></a></li>
+            <li><a href="#">Profil</a></li>
+          </ul>
+            <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hier beginnt der Container für den eigentlichen Inhalt unterhalb der Navigationsleite-->
+    <!-- Definition der Navigationsleiste links -->
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="../php/index.php"> <span class="glyphicon glyphicon-home"></span> Dashboard <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="../html/formular_auftrag.html"><span class="glyphicon glyphicon-plus"></span> Produkte</a></li>
+            <li><a href="../html/produktoverview.html"> <span class="glyphicon glyphicon-list"></span> Produktübersicht</a></li>
+            <li><a href="../html/regalbelegung.html"> <span class="glyphicon glyphicon-stats"></span> Regalbelegung</a></li>
+          </ul>
+        </div>
+      
+      <!-- Dashboard -->
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Produktverwaltung</h1>
+
+
+      <!-- definition of all single components belonging to the formular -->
+      <div class="col-xs-12 col-sm-9 placeholder">
+      <form class="form-horizontal" method="post" onsubmit="" id="send_content">
+     	 		
+  	 	<!-- productname -->
+  	 	<div class="form-group" id="pname">
+    	<label class="control-label col-sm-3" for="pbz">Produktname:</label>
+    		<div class="col-sm-9" id="fg_pbz">
+      		<input type="text" class="form-control" id="pn" name="pn" placeholder="Huawei P8" required>
+      		<span class="help-block" id="helper">Bitte geben Sie zunächst den Produktnamen ein. Weitere Eingabefelder werden geladen.</span>
+    		</div>
+  	 	</div>
+  	 
+  	 	<div class="form-group hidden" id="regal">
+  		<label class="control-label col-sm-3" for="regal">Regalfach wählen:</label>
+  			<div class="col-sm-9">
+  			<select class="form-control" id="sel_r" name="sel_r">
+    		<option>A</option>
+    		<option>B</option>
+    		<option>C</option>
+    		<option>D</option>
+    		<option>E</option>
+    		<option>F</option>
+  			</select>
+  			</div>
+		</div>
+  	 	
+  	    <!-- employee -->
+  	 	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="ma">Mitarbeiter:</label>
+    		<div class="col-sm-9">
+      		<input type="text" class="form-control" id="ma" name="ma" placeholder="Mustermann,Max">
+    		</div>
+  	 	</div>
+  	 	
+  	 	<!-- weight -->
+  	 	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="weight">Gewicht (in g):</label>
+    		<div class="col-sm-9"> 
+      		<input type="number" class="form-control" id="weight" name="weight" placeholder="500">
+    		</div>
+  		</div>
+  		
+  		<!-- height -->
+  		<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="height">Höhe (in cm):</label>
+    		<div class="col-sm-9"> 
+      		<input type="number" class="form-control" id="height" name="height" placeholder="50">
+    		</div>
+  		</div> 
+	  	
+	  	<!-- width -->
+	  	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="width">Breite (in cm):</label>
+    		<div class="col-sm-9"> 
+      		<input type="number" class="form-control" id="width" name="width" placeholder="50">
+    		</div>
+  		</div>
+  		
+  		<!-- length -->
+	  	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="length">Länge (in cm):</label>
+    		<div class="col-sm-9"> 
+      		<input type="number" class="form-control" id="length" name="length" placeholder="50" >
+    		</div>
+  		</div>
+
+  		<!-- length -->
+	  	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="length">Beschreibung:</label>
+    		<div class="col-sm-9"> 
+      		<textarea class="form-control" id="description" name="description" placeholder="Produktbeschreibung hier eingeben" > </textarea>
+    		</div>
+  		</div>
+  	 
+  	  <!-- Submitting the formular values fires db_transfer.php to store data in the MongoDB -->
+  	  
+  	  <div class="form-group" id="smbutton"> 
+      <div class="col-sm-offset-6 col-sm-10">
+      			<input type="submit" class="btn btn-default" value="Auftrag anlegen" disabled="" id="sm_button">
+      </div>
+  	  </div>
+  	  
+  	  <div class="form-group hidden" id="confirm"> 
+      <div class="col-sm-offset-6 col-sm-10">
+      			<button type="button" class="btn btn-default" id="confirm1">Produkt anlegen</button>
+      </div>
+  	  </div>
+
+	  <div class="form-group hidden" id="change_bin"> 
+      <div class="col-sm-offset-6 col-sm-10">
+      			<button type="button" class="btn btn-default" id="change_bin_pos">Regal ändern
+      			<span class="glyphicon glyphicon-edit"></span>
+      			</button>
+      </div>
+  	  </div>
+  	  
+  	  
+  	  </form>
+  	  </div>
+            </div>
+          </div>
+         </div>
+         
+    <!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>Produkt erfolgreich angelegt</strong></h4>
+      </div>
+      <div class="modal-body">
+        <p>Soll dem Produkt zusätzlich ein Regal zugewiesen werden?</p>
+		<button type="button" class="btn btn-success btn-block" id="yes">Ja</button>
+        <button type="button" class="btn btn-default btn-block" id="no" data-toogle="tooltip" title="Das Regal kann auch noch später zugewiesen werden" data-placement="bottom">Nein</button>      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  	</div>
+	</div>
+	
+	 <!-- Modal -->
+	<div id="show_all_products" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>Produktübersicht</strong></h4>
+      </div>
+      <div class="modal-body" id="content_all_products">
+        <script src="../js/show_all_products.js"></script>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </div>
+    </div>
+    
+    <!-- modal for showing products which dont match to a bin -->
+    <div id="match_bins" class="modal fade" role="dialog">
+      <div class="modal-dialog">		
+        <!-- modal content is set by .js -->
+            <div class="modal-content">
+    		    <div class="modal-header">
+    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    			  <h4 class="modal-title">Produkte einbuchen</h4>
+    			</div>
+    		<div class="modal-body" id="content_empty_products">
+    		    <script src="../js/content_empty_products.js"></script>
+    		</div>
+    		<div class="modal-footer">
+    			<button type="button" class="btn btn-success" id="submit_product">Produkte einbuchen</button>
+    		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    		</div>
+    		</div>
+    		</div>
+    	</div>
+         
+  </body>
+  </html>  
