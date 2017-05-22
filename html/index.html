@@ -20,6 +20,7 @@
 	<script src="../js/error_handling.js"></script>
 	<script src="../js/auftragsverwaltung.js"></script>
 	<script src="../js/carousel_preview.js"></script>
+	<script src="../js/product_detail_info.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
@@ -102,25 +103,33 @@
      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Auftragsübersicht</h1>
           
+          <div class="progress">
+		  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+		  aria-valuemin="0" aria-valuemax="100" style="width:100%">
+		    Verbindung zu UR5 hergestellt
+		  </div>
+		</div>
+          
+          
           <h3 class="sub-header">in Bearbeitung</h3>
           <div class="row">
-          <div class='col-sm-offset-1'></div>
-          <div class='col-sm-3'>
+          
+          <div class='col-sm-2'>
           	<div id="carousel_preview" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators"></ol>
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner"></div>
 			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+			  <a class="left carousel-control" href="#carousel_preview" data-slide="prev">
 			    <span class="glyphicon glyphicon-chevron-left"></span>
 			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+			  <a class="right carousel-control" href="#carousel_preview" data-slide="next">
 			    <span class="glyphicon glyphicon-chevron-right"></span>
 			  </a>
 			</div>
           </div>
-          <div class='col-sm-offset-2'></div>
+          
           <div class='col-sm-6'>
           	<div class='table-responsive'> <table class='table table-striped'> 
           		<thead>
@@ -235,6 +244,26 @@
     		<div class="modal-footer">
     			<button type="button" class="btn btn-success">Manuell kommissioniert</button>
     		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    		</div>
+    		</div>
+    		</div>
+    	</div>
+     
+     <!-- modal for showing order details and the state -->
+    <div id="product_info" class="modal fade" role="dialog">
+      <div class="modal-dialog">		
+        <!-- modal content is set by .js -->
+            <div class="modal-content">
+    		    <div class="modal-header">
+    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    			  <h4 class="modal-title">Produktinformation</span></h4>
+    			</div>
+    		<div class="modal-body" id="content_product_info">
+    		    <!-- content is set dynamically when the trigger is fired -->
+    		</div>
+    		<div class="modal-footer">
+    			<button type="button" class="btn btn-danger" id="del_button">Produkt löschen</button>
+    		    <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button">Schließen</button>
     		</div>
     		</div>
     		</div>

@@ -34,7 +34,8 @@ if (window.XMLHttpRequest) {
 		for(var a = 0; a < myObj[1].regal.length; a++){
 			
 		text_in_process +=  "<tr>" +
-                    		"<td>" + myObj[1].contents[a] + "</td>" + 
+                    		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[1].contents[a] + "'" + 
+                    		"data-target='#product_info' class='product_info_content'>" + myObj[1].contents[a] + "</td>" + 
                     		"<td>" + myObj[1].regal[a] + "</td>" +  
                 			"</tr>";
 		}
@@ -47,7 +48,7 @@ if (window.XMLHttpRequest) {
         	
        	text_in_queue += 
         			"<tr>" +
-                    "<td>" + myObj[0].contents[a] + "</td>" + 
+                    "<td>" + myObj[0].contents[a]+ "</td>" + 
                     "<td>" + myObj[0].regal[a] + "</td>" +  
                 	"</tr>";
         }
