@@ -71,8 +71,39 @@ if (window.XMLHttpRequest) {
         text_in_queue += "</tbody> </table> </div>";
         
         }
+        
+        text_in_done +=  "<div class='table-responsive'> <table class='table table-striped'> <thead>"
+                   		+  "<tr> <th>Auftragsnummer</th> <th>Produkte</th> <th>Ablagefach</th> </tr> </thead>"
+                   		+  "<tbody>";
+        
+        for(var a = 0; a < 10; a++){
+        
+        text_in_done +=
+        		"<tr>" +
+        		"<td>" + myObj[2].auftragsnummer[a] + "</td>" +
+        		"<td>";
+        		
+        		for(var key in myObj[2].contents[a]){
+        			
+        				if(key == ((myObj[2].contents[a].length)-1))
+        				text_in_done += "<a href='#product_info' data-toggle='modal' data-id='"
+        								+ myObj[2].contents[a][key] + "'data-target='#product_info' class='product_info_content'>"
+        								+ myObj[2].contents[a][key];
+        				
+        				else
+        				text_in_done += "<a href='#product_info' data-toggle='modal' data-id='"
+        								+ myObj[2].contents[a][key] + "'data-target='#product_info' class='product_info_content'>"
+        								+ myObj[2].contents[a][key] + ", ";
+        		}
+        		
+        text_in_done += "</td> <td>" + myObj[2].size_id[a] + "</td>";
+        }
+        
+        
+        text_in_done += "</tr></thead></tbody>";
          	
         
         $("#in_process").html(text_in_process);
 		$("#in_queue").append(text_in_queue);
+		$("#in_done").append(text_in_done);
 	}

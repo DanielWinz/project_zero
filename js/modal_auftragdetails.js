@@ -14,7 +14,7 @@ $(document).on("click", ".order_details", function () {
 	        	
 	        	var myObj = JSON.parse(this.responseText);
 	            document.getElementById("content_order_details").innerHTML =
-	            create_modal_content(myObj);          
+	            create_order_content(myObj);          
 	       }
 	    };
 	    xhttp.open("GET", "../php/fetch_order_content.php" + queryString, true);
@@ -47,7 +47,7 @@ $(document).on("click", ".order_details", function () {
 	});
 	});
 
-	function create_modal_content(myObj){
+	function create_order_content(myObj){
 		
 		text_order = "";
 		

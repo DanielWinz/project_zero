@@ -36,9 +36,9 @@
    }
    
    foreach($in_done as $doc){
-   	   $data[2]['auftragsnummer'] = $doc['auftragsnummer'];
-	   $data[2]['size_id'] = $doc['size_id'];
-	   $data[2]['contents'] = $doc['contents'];
+   	   $data[2]['auftragsnummer'][] = $doc['auftragsnummer'];
+	   $data[2]['size_id'][] = $doc['size_id'];
+	   $data[2]['contents'][] = $doc['contents'];
 	    
    }
    
