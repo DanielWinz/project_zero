@@ -42,20 +42,34 @@ if (window.XMLHttpRequest) {
 		
 		$("#ablage").html("Der Auftrag befindet sich in Bearbeitung. Die Produkte werden in Ablagefach <strong>" + myObj[1].size_id   + "</strong> abgelegt.");
 		
-		text_in_queue =	   "<div class='table-responsive'> <table class='table table-striped'> <thead>"
-                   			+  "<tr> <th>Produkt</th> <th>Regal</th> </tr> </thead>"
-                   			+  "<tbody>";
+		for(var a = 0; a < 4; a++){
+        text_in_queue += "<div class='col-xs-6 col-sm-3 placeholder'> " +
+			   "<img src='../img/ur5.jpg' " +
+			   "width='150' height='150' class='img-responsive'alt='Generic placeholder thumbnail'> " +
+               "<h4> Auftrag Nr. 12</h4>" +
+               "<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details' data-id='1'><span class='text-muted'>Details</span></a></div>";
+        }
+		
         
-        for(var a = 0; a < myObj[0].auftragsnummer.length; a++){
-        	
-       	text_in_queue += 
+        for(var a = 0; a < 4; a++){
+        
+        text_in_queue +=	   "<div class='table-responsive col-sm-3 col-xs-6'> <table class='table table-striped'> <thead>"
+                   			+  "<tr> <th>Produkte</th> </tr> </thead>"
+                   			+  "<tbody>";
+                   			
+        	for(var key in myObj[0].contents[a]){
+			text_in_queue += 
         			"<tr>" +
-                    "<td>" + myObj[0].contents[a]+ "</td>" + 
-                    "<td>" + myObj[0].regal[a] + "</td>" +  
-                	"</tr>";
+                    "<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[0].contents[a][key] + "'" + 
+                    "data-target='#product_info' class='product_info_content'>" + myObj[0].contents[a][key]+ "</td>" +  
+                	"</tr>";        		
+        	}
+       
+                	
+        text_in_queue += "</tbody> </table> </div>";
+        
         }
          	
-        text_in_queue += "</tbody> </table> </div>";
         
         $("#in_process").html(text_in_process);
 		$("#in_queue").append(text_in_queue);
