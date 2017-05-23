@@ -40,6 +40,8 @@ if (window.XMLHttpRequest) {
                 			"</tr>";
 		}
 		
+		$("#ablage").html("Der Auftrag befindet sich in Bearbeitung. Die Produkte werden in Ablagefach <strong>" + myObj[1].size_id   + "</strong> abgelegt.");
+		
 		text_in_queue =	   "<div class='table-responsive'> <table class='table table-striped'> <thead>"
                    			+  "<tr> <th>Produkt</th> <th>Regal</th> </tr> </thead>"
                    			+  "<tbody>";
