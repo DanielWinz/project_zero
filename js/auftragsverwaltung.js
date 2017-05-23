@@ -42,18 +42,20 @@ if (window.XMLHttpRequest) {
 		
 		$("#ablage").html("Der Auftrag befindet sich in Bearbeitung. Die Produkte werden in Ablagefach <strong>" + myObj[1].size_id   + "</strong> abgelegt.");
 		
-		for(var a = 0; a < 4; a++){
+		for(var a = 0; a < 3; a++){
+			
         text_in_queue += "<div class='col-xs-6 col-sm-3 placeholder'> " +
 			   "<img src='../img/ur5.jpg' " +
-			   "width='150' height='150' class='img-responsive'alt='Generic placeholder thumbnail'> " +
-               "<h4> Auftrag Nr. 12</h4>" +
-               "<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details' data-id='1'><span class='text-muted'>Details</span></a></div>";
+			   "width='150' height='150' class='img-responsive' alt='Generic placeholder thumbnail'> " +
+               "<h4> Auftrag Nr. " + myObj[0].auftragsnummer[a] + "</h4>" +
+               "<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details' data-id='" +
+               myObj[0].auftragsnummer[a] + "'><span class='text-muted'>Details</span></a></div>";
         }
 		
         
-        for(var a = 0; a < 4; a++){
+        for(var a = 0; a < 3; a++){
         
-        text_in_queue +=	   "<div class='table-responsive col-sm-3 col-xs-6'> <table class='table table-striped'> <thead>"
+        text_in_queue +=	   "<div class='table-responsive col-sm-3 col-xs-3'> <table class='table table-striped'> <thead>"
                    			+  "<tr> <th>Produkte</th> </tr> </thead>"
                    			+  "<tbody>";
                    			

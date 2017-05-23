@@ -95,6 +95,11 @@ body {
 }
 .placeholders h4 {
   margin-bottom: 0;
+  margin-left:20px;
+}
+
+.placeholder span{
+	text-align: center;
 }
 .placeholder {
   margin-top: 20px;
