@@ -95,7 +95,6 @@ body {
 }
 .placeholders h4 {
   margin-bottom: 0;
-  margin-left:20px;
 }
 
 .placeholder span{
@@ -104,11 +103,14 @@ body {
 .placeholder {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 20px;
 }
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+.label-info{
+	cursor:pointer;
 }
 
 .outer {

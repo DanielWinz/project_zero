@@ -75,7 +75,7 @@
 					</li>
 				</ul>
 	        </li>
-            <li><a href="#">Profil</a></li>
+            <li><a href="#warteschlange">Warteschlange</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -115,7 +115,7 @@
           <h3 class="sub-header">in Bearbeitung</h3>
           <div class="row">
           
-          <div class='col-sm-2'>
+          <div class='col-sm-4 align-self-center'>
           	<div id="carousel_preview" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators"></ol>
@@ -130,24 +130,30 @@
 			  </a>
 			</div>
           </div>
-          <div class='row col-sm-10'>
-          	<div class='table-responsive'> <table class='table table-striped'> 
-          		<thead>
-                   	<tr> <th>Produkt</th> <th>Regal</th> </tr>
-                </thead>
-                <tbody id="in_process">
-                </tbody>
-                </table>
-          </div>
-          </div>
-          <div class='row col-sm-10'>
-          	<div class='alert alert-info' id='ablage'> </div>
+          <div class='col-sm-8'>
+          	<div class='row'>
+          		<div class='table-responsive'> <table class='table table-striped'> 
+	          		<thead>
+	                   	<tr> <th>Produkt</th> <th>Regal</th> </tr>
+	                </thead>
+	                <tbody id="in_process">
+	                </tbody>
+	                </table>
+          		</div>
+           </div>
+           <div class='row'>
+          		<div>
+          			<div class='alert alert-info placeholder' id='ablage'> </div>
+          		</div>
+         	</div>
           </div>
          </div>
-          <h3 class="sub-header">in der Warteschlange</h3>
-          <div class='row' id="in_queue"></div>
+          <h3 class="sub-header" id='warteschlange'>in der Warteschlange</h3>
+          <h5> <span class="label label-info" id='mehr_in_queue'>Mehr anzeigen</span></h5>
+          <div class='row placeholders' id="in_queue"></div>
           <h3 class="sub-header">beendet</h3>
           <div id="in_done"></div>
+          <h5> <span class="label label-info" id='mehr_in_done'>Mehr anzeigen</span></h5>
           </div>
         </div>
 	 </div>
