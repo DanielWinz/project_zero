@@ -40,9 +40,30 @@ var text_in_done = "";
 				 auftragsnummer_id: myObj[0].auftragsnummer[a]
 				 });
 			}
-			text_in_queue += rendered;
+			text_in_queue = rendered;
+			$("#in_queue").prepend(text_in_queue);
+			
 		}
 		);
+		
+		for(var a = 0; a < 3; a++){
+        
+        text_in_queue +=	   "<div class='table-responsive col-sm-4 col-xs-3'> <table class='table table-striped'> <thead>"
+                   			+  "<tr> <th>Produkte</th> </tr> </thead>"
+                   			+  "<tbody>";
+                   			
+        	for(var key in myObj[0].contents[a]){
+			text_in_queue += 
+        			"<tr>" +
+                    "<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[0].contents[a][key] + "'" + 
+                    "data-target='#product_info' class='product_info_content'>" + myObj[0].contents[a][key]+ "</td>" +  
+                	"</tr>";        		
+        	}
+       
+                	
+        text_in_queue += "</tbody> </table> </div>";
+        
+        }
 		
 				
         
@@ -77,7 +98,7 @@ var text_in_done = "";
         
         text_in_done += "</tr></thead></tbody>";
          	
-        
+        $("#in_queue").append(text_in_queue);
         $("#in_process").html(text_in_process);
 		$("#in_done").append(text_in_done);
 	
@@ -113,18 +134,6 @@ var text_in_done = "";
 		       $("#in_queue").append("<div class='row' id='in_queue" + counter_in_queue + "'></div>");
 		       
 		       for(var a = counter_in_queue ; a < max; a++){
-		       
-		       console.log("vor AJAX");
-		       $.ajax({
-		       	url:"../txt/preview_dashboard.txt",
-		       	dataType: "text",
-		       	success: function(data){
-		       		console.log("im Ajax");
-		       		var str = data;
-		       		var t = str.replace("[auftragsnummer_header]","test");
-		       		str.replace("[auftragsnummer_id]",myObj[0].auftragsnummer[a]);
-		       		console.log(t);
-		       	}});
 		       	
 		       text_in_queue += "<div class='col-xs-6 col-sm-4 placeholder'> " +
 			   "<img src='../img/ur5.jpg' " +
@@ -132,7 +141,7 @@ var text_in_done = "";
                "<h4> Auftrag Nr. " + myObj[0].auftragsnummer[a] + "</h4>" +
                "<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details' data-id='" +
                myObj[0].auftragsnummer[a] + "'><span class='text-muted'>Details</span></a></div>";
-		       		}
+		       	}
 		      
 		      for(var a = counter_in_queue; a < max; a++){
         
@@ -198,17 +207,12 @@ var text_in_done = "";
 				}
 				
 				text_in_done += "</tr>";
-				console.log(text_in_done);
 				$('#beendet > tbody:last-child').append(text_in_done);
-				$.ajax({
-					url:"../txt/preview_dashboard.txt", 
-					success: function(data){
-						data = data.replace("hallo","test");
-						$('#beendet > tbody:last-child').append(data);
-				}});
+
 
 			}});
 		
 		});
 		
 	});
+
