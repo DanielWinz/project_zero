@@ -39,13 +39,12 @@ var text_in_done = "";
 				 auftragsnummer_header: myObj[0].auftragsnummer[a],
 				 auftragsnummer_id: myObj[0].auftragsnummer[a]
 				 });
-				
 			}
 			text_in_queue += rendered;
-			console.log(text_in_queue);
-			$("#in_queue").append(text_in_queue);
 		}
-		);	
+		);
+		
+				
         
         
         text_in_done +=  "<div class='table-responsive'> <table class='table table-striped' id='beendet'> <thead>"
