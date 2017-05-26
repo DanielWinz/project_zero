@@ -8,30 +8,15 @@ var text_in_process = "";
 var text_in_queue = "";
 var text_in_done = "";
 
-if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    }
-    
-    else {    
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	console.log("in der Callback-Funktion");
-        	var myObj = JSON.parse(this.responseText);
-        	console.log("Darstellung des Objekts in drei Komponenten:" + myObj[0].auftragsnummer[0]);
-            console.log("Darstellung des Objekts in drei Komponenten:" + myObj[1]);
-            console.log("Darstellung des Objekts in drei Komponenten:" + myObj[2]);
-            
-            create_content(myObj);
-       }
-    };
-    xhttp.open("GET", "../php/auftragsuebersicht.php", true);
-    xhttp.send();
+	$.ajax({
+		url: "../php/auftragsuebersicht.php",
+		success: function(Obj){
+			create_content(JSON.parse(Obj));
+		}
+	});
 
-
-	function create_content(myObj){
-		
+	function create_content(Obj){
+		var myObj = Obj;
 		for(var a = 0; a < myObj[1].regal.length; a++){
 			
 		text_in_process +=  "<tr>" +
@@ -43,35 +28,25 @@ if (window.XMLHttpRequest) {
 		
 		$("#ablage").html("Der Auftrag befindet sich in Bearbeitung. Die Produkte werden in Ablagefach <strong>" + myObj[1].size_id   + "</strong> abgelegt.");
 		
-		for(var a = 0; a < 3; a++){
-			
-        text_in_queue += "<div class='col-xs-6 col-sm-4 placeholder'> " +
-			   "<img src='../img/ur5.jpg' " +
-			   "width='150' height='150' class='img-responsive' alt='Generic placeholder thumbnail'> " +
-               "<h4> Auftrag Nr. " + myObj[0].auftragsnummer[a] + "</h4>" +
-               "<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details' data-id='" +
-               myObj[0].auftragsnummer[a] + "'><span class='text-muted'>Details</span></a></div>";
-        }
+
+		$.get("../txt/preview_dashboard.txt", function(template){
 		
+		var rendered= "";
+		for (var a = 0; a < 3; a++){
+
+			rendered += Mustache.render(template,
+				{
+				 auftragsnummer_header: myObj[0].auftragsnummer[a],
+				 auftragsnummer_id: myObj[0].auftragsnummer[a]
+				 });
+				
+			}
+			text_in_queue += rendered;
+			console.log(text_in_queue);
+			$("#in_queue").append(text_in_queue);
+		}
+		);	
         
-        for(var a = 0; a < 3; a++){
-        
-        text_in_queue +=	   "<div class='table-responsive col-sm-4 col-xs-3'> <table class='table table-striped'> <thead>"
-                   			+  "<tr> <th>Produkte</th> </tr> </thead>"
-                   			+  "<tbody>";
-                   			
-        	for(var key in myObj[0].contents[a]){
-			text_in_queue += 
-        			"<tr>" +
-                    "<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[0].contents[a][key] + "'" + 
-                    "data-target='#product_info' class='product_info_content'>" + myObj[0].contents[a][key]+ "</td>" +  
-                	"</tr>";        		
-        	}
-       
-                	
-        text_in_queue += "</tbody> </table> </div>";
-        
-        }
         
         text_in_done +=  "<div class='table-responsive'> <table class='table table-striped' id='beendet'> <thead>"
                    		+  "<tr> <th>Auftragsnummer</th> <th>Produkte</th> <th>Ablagefach</th> </tr> </thead>"
@@ -105,10 +80,9 @@ if (window.XMLHttpRequest) {
          	
         
         $("#in_process").html(text_in_process);
-		$("#in_queue").append(text_in_queue);
 		$("#in_done").append(text_in_done);
-	}
 	
+}	
 	/**
 	 * Erweiterung der Ansicht, sobald das Label "Mehr Anzeigen" gedrückt wurde.
 	 */

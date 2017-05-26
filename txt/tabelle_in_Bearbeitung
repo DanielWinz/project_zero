@@ -1,0 +1,17 @@
+<div class='table-responsive col-sm-4 col-xs-3'>
+<table class='table table-striped'>
+	<thead>
+	<tr> 
+		<th>Produkte</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>
+		<a href='#product_info' data-toggle='modal' data-id='{{produkt_tabelle}}' 
+    	data-target='#product_info' class='product_info_content'>{{produkt_tabelle}}
+    	</td>  
+	</tr>
+	</tbody>
+</table>
+</div>
