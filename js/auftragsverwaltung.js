@@ -140,6 +140,18 @@ if (window.XMLHttpRequest) {
 		       $("#in_queue").append("<div class='row' id='in_queue" + counter_in_queue + "'></div>");
 		       
 		       for(var a = counter_in_queue ; a < max; a++){
+		       
+		       console.log("vor AJAX");
+		       $.ajax({
+		       	url:"../txt/preview_dashboard.txt",
+		       	dataType: "text",
+		       	success: function(data){
+		       		console.log("im Ajax");
+		       		var str = data;
+		       		var t = str.replace("[auftragsnummer_header]","test");
+		       		str.replace("[auftragsnummer_id]",myObj[0].auftragsnummer[a]);
+		       		console.log(t);
+		       	}});
 		       	
 		       text_in_queue += "<div class='col-xs-6 col-sm-4 placeholder'> " +
 			   "<img src='../img/ur5.jpg' " +
@@ -215,6 +227,12 @@ if (window.XMLHttpRequest) {
 				text_in_done += "</tr>";
 				console.log(text_in_done);
 				$('#beendet > tbody:last-child').append(text_in_done);
+				$.ajax({
+					url:"../txt/preview_dashboard.txt", 
+					success: function(data){
+						data = data.replace("hallo","test");
+						$('#beendet > tbody:last-child').append(data);
+				}});
 
 			}});
 		
