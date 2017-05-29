@@ -50,7 +50,7 @@
           <ul class="nav navbar-nav navbar-right">
           	
           	<!-- Dashboard, Login, Produkt einbuchen und Profil -->
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="index.html">Dashboard</a></li>
             <li class="dropdown" id="login">
             	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
 				<ul id="login-dp" class="dropdown-menu">
@@ -183,19 +183,19 @@
     	
     	
     <!-- modal for showing errors occuring and triggered by the robot -->
-    <div id="error_handling" class="modal fade" role"dialog">
+    <div id="error_handling" class="modal-fade" role="dialog">
       <div class="modal-dialog">		
         <!-- modal content is set by .js -->
             <div class="modal-content">
     		    <div class="modal-header">
     			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Fehlermeldung</h4>
+    			  <h4 class="modal-title" id="title_error_handling">[Fehlermeldung]</h4>
     			</div>
-    		<div class="modal-body" id="content_empty_products">
+    		<div class="modal-body" id="body_error_handling">
     		    Ein Fehler wurde erkannt.
     		</div>
     		<div class="modal-footer">
-    			<button type="button" class="btn btn-success" id="submit_product">Produkte einbuchen</button>
+    			<button type="button" id="button_error_handling">[Button]</button>
     		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
     		</div>
     		</div>
@@ -221,44 +221,7 @@
     		</div>
     		</div>
     	</div>
-    	
-    <!-- modal for showing order details and the state -->
-    <div id="error_obstacle" class="modal fade" role="dialog">
-      <div class="modal-dialog">		
-        <!-- modal content is set by .js -->
-            <div class="modal-content">
-    		    <div class="modal-header">
-    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Objekt im Weg<span class="glyphicon glyphicon-road"></span></h4>
-    			</div>
-    		<div class="modal-body" id="content_error_obstacle">
-    		    <!-- content is set dynamically when the trigger is fired -->
-    		</div>
-    		<div class="modal-footer">
-    		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-    		</div>
-    		</div>
-    		</div>
-    	</div>
-    	   	   	   	   	
-    <!-- modal for showing order details and the state -->
-    <div id="error_grasp_seen" class="modal fade" role="dialog">
-      <div class="modal-dialog">		
-        <!-- modal content is set by .js -->
-            <div class="modal-content">
-    		    <div class="modal-header" id="error_header">
-    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			</div>
-    		<div class="modal-body" id="content_error_gs">
-    		    <!-- content is set dynamically when the trigger is fired -->
-    		</div>
-    		<div class="modal-footer">
-    			<button type="button" class="btn btn-success">Manuell kommissioniert</button>
-    		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-    		</div>
-    		</div>
-    		</div>
-    	</div>
+     	   	   	   	   
      
      <!-- modal for showing order details and the state -->
     <div id="product_info" class="modal fade" role="dialog">

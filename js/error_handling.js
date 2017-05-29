@@ -4,6 +4,10 @@
  * Depending on the message, error_msg are displayed and can be handled.
  */
 
+var title = $("#title_error_handling");
+var body = $("#body_error_handling");
+var button = $("#button_error_handling");
+
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
@@ -28,22 +32,64 @@ $(document).ready(function(){
 
   var listener = new ROSLIB.Topic({
     ros : ros,
-    name : '/depthsense/camera_info',
-    messageType : 'sensor_msgs/CameraInfo'
+    name : '/listener',
+    messageType : 'std_msgs'
      });
 
   listener.subscribe(function(message) {
-  	
-  	$("#error_obstacle").modal();
-    console.log('Received message on ' + listener.name + ': ' + message.valueOf);
-    console.log('Received message on ' + listener.name + ': ' + message.height);
-    console.log('Received message on ' + listener.name + ': ' + message.roi.height);
-    listener.unsubscribe();
-    
-  });
+  	console.log(message);
+  	switch(message.status){
+  		
+  		case 0: set_content_obstacle(message);
+  		case 1: set_content_detection_error(message);
+  		case 2: set_content_grasp_error(message);
+   		}
+    });
 });
 
 
-function create_error_content(message){
+function set_content_obstacle(msg){
 	
+	//Anpassen des Titels im Header
+	title.html("Hindernis im Weg");
+	$("</span>",{
+		class: "glyphicon glyphicon-road"
+	}).appendTo(title);
+	
+	//Anpassen des Contents im Body
+	
+	$("</alert>,{
+		class: "alert alert-info",
+		text: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach " + msg.ablagefach + " gefunden. <br>"
+			  + "Bitte entfernen Sie das Hindernis."
+	}).appendTo(body);
+	
+	
+	//Anpassen der Buttons im Footer
+	button.attr("class","btn btn-success"),
+	button.text("Hindernis entfernt");
+
+}
+
+function set_content_detection_error(msg){
+	
+	//Anpassen des Titels im Header
+	title.html("Hindernis im Weg");
+	$("</span>",{
+		class: "glyphicon glyphicon-road"
+	}).appendTo(title);
+	
+	//Anpassen des Contents im Body
+	
+	$("</alert>,{
+		class: "alert alert-info",
+		text: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach " + msg.ablagefach + " gefunden. <br>"
+			  + "Bitte entfernen Sie das Hindernis."
+	}).appendTo(body);
+	
+	
+	//Anpassen der Buttons im Footer
+	button.attr("class","btn btn-success"),
+	button.text("Hindernis entfernt");
+
 }
