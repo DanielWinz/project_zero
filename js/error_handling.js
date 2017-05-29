@@ -4,10 +4,6 @@
  * Depending on the message, error_msg are displayed and can be handled.
  */
 
-var title = $("#title_error_handling");
-var body = $("#body_error_handling");
-var button = $("#button_error_handling");
-
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
@@ -33,63 +29,86 @@ $(document).ready(function(){
   var listener = new ROSLIB.Topic({
     ros : ros,
     name : '/listener',
-    messageType : 'std_msgs'
+    messageType : 'std_msgs/String'
      });
 
   listener.subscribe(function(message) {
   	console.log(message);
   	switch(message.status){
-  		
-  		case 0: set_content_obstacle(message);
-  		case 1: set_content_detection_error(message);
-  		case 2: set_content_grasp_error(message);
+  		case 0: set_content_obstacle(message); break;
+  		case 1: set_content_detection_error(message); break;
+  		case 2: set_content_grasp_error(message); break;
    		}
     });
 });
 
 
 function set_content_obstacle(msg){
-	
 	//Anpassen des Titels im Header
-	title.html("Hindernis im Weg");
-	$("</span>",{
+	$("#title_error_handling").html("Hindernis im Weg ");
+	$("<span/>",{
 		class: "glyphicon glyphicon-road"
-	}).appendTo(title);
+	}).appendTo("#title_error_handling");
 	
 	//Anpassen des Contents im Body
 	
-	$("</alert>,{
+	$("<div/>",{
 		class: "alert alert-info",
-		text: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach " + msg.ablagefach + " gefunden. <br>"
+		html: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach gefunden. <br>"
 			  + "Bitte entfernen Sie das Hindernis."
-	}).appendTo(body);
+	}).prependTo("#body_error_handling");
 	
 	
 	//Anpassen der Buttons im Footer
-	button.attr("class","btn btn-success"),
-	button.text("Hindernis entfernt");
+	$("#button_error_handling").attr("class","btn btn-success"),
+	$("#button_error_handling").text("Hindernis entfernt");
+	
+	$("#error_handling").modal();
 
 }
 
 function set_content_detection_error(msg){
 	
 	//Anpassen des Titels im Header
-	title.html("Hindernis im Weg");
+	$("#title_error_handling").html("Produkt nicht erkannt");
 	$("</span>",{
-		class: "glyphicon glyphicon-road"
-	}).appendTo(title);
+		class: "glyphicon glyphicon-camera"
+	}).appendTo("#title_error_handling");
 	
 	//Anpassen des Contents im Body
 	
-	$("</alert>,{
+	$("<div/>",{
 		class: "alert alert-info",
-		text: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach " + msg.ablagefach + " gefunden. <br>"
-			  + "Bitte entfernen Sie das Hindernis."
-	}).appendTo(body);
+		html: "Das Produkt x konnte leider nicht erkannt werden gefunden. <br>"
+			  + "Bitte aus Regalfach y entnehmen und manuell zum Ablagefach z bringen."
+	}).appendTo("#body_error_handling");
 	
 	
 	//Anpassen der Buttons im Footer
-	button.attr("class","btn btn-success"),
-	button.text("Hindernis entfernt");
+	$("#button_error_handling").attr("class","btn btn-success"),
+	$("#button_error_handling").text("Produkt kommissioniert");
+
+}
+
+function set_content_grasp_error(msg){
+	
+	//Anpassen des Titels im Header
+	$("#title_error_handling").html("Produkt nicht gegriffen");
+	$("</span>",{
+		class: "glyphicon glyphicon-camera"
+	}).appendTo("#title_error_handling");
+	
+	//Anpassen des Contents im Body
+	
+	$("<div/>",{
+		class: "alert alert-info",
+		html: "Das Produkt x konnte leider nicht gegriffen werden gefunden. <br>"
+			  + "Bitte aus Regalfach y entnehmen und manuell zum Ablagefach z bringen."
+	}).appendTo("#body_error_handling");
+	
+	
+	//Anpassen der Buttons im Footer
+	$("#button_error_handling").attr("class","btn btn-success"),
+	$("#button_error_handling").text("Produkt kommissioniert");
 
 }
