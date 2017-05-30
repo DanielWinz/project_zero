@@ -14,7 +14,32 @@ var text_in_done = "";
 			create_content(JSON.parse(Obj));
 		}
 	});
-
+	
+	$.ajax({
+		url: "../php/login/authentification.php",
+		success: function(Obj){
+			if(Obj == 1){				
+				change_login_content();
+				$("#add_produkt").attr('style', '');
+			}
+		}
+	});
+	
+	function change_login_content(){
+		$("#content_login").empty();
+		$("#content_login").append('<p>Sie sind bereits als Admin angemeldet</p>');
+		$("<button/>",{
+					class: "btn btn-primary btn-block",
+					html: "Ausloggen",
+					on: { 
+						"click": function(){
+							window.location = "../php/login/logout.php";
+						}
+					}
+		}).appendTo('#content_login');
+		$("<br/>").appendTo('#content_login');
+	}
+	
 	function create_content(Obj){
 		var myObj = Obj;
 		for(var a = 0; a < myObj[1].regal.length; a++){
