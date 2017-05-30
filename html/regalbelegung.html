@@ -20,6 +20,7 @@
     
     <!-- Custom styles for this template -->
     <link href="../css/regalbelegung.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
   </head>
   
   <body>
@@ -38,7 +39,7 @@
 					<div class="row">
 					<div class="col-md-12" id="content_login">
 					<p>Als Admin bitte anmelden:</p>
-					<form class="form" role="form" method="post" action="../php/login/login.php" accept-charset="UTF-8" id="login-nav">
+					<form class="form" method="post" action="../php/login/login.php" accept-charset="UTF-8" id="login-nav">
 					<div class="form-group">
 					<label class="sr-only" for="exampleInputEmail2">Email address</label>
 					<input type="email" class="form-control" name="name" id="name" placeholder="Benutzername" required>
@@ -103,14 +104,15 @@
       </div>
       </div>
       </div>
+     </div>
       <!-- modal for showing order details and the state -->
-     <div id="product_info_regal" class="modal fade" role="dialog">
+     <div id="product_info_regal" class="modal fade">
       <div class="modal-dialog">		
         <!-- modal content is set by .js -->
             <div class="modal-content">
     		    <div class="modal-header">
     			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Produktinformation</span></h4>
+    			  <h4 class="modal-title">Produktinformation</h4>
     			</div>
     		<div class="modal-body" id="product_info_regal_content">
     		    <!-- content is set dynamically when the trigger is fired -->
