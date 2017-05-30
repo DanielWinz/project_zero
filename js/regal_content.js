@@ -5,23 +5,17 @@
 	
 	var text = "";
 	var text_order ="";
-	var xhttp;
 	
-	if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    } else {
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	var myObj = JSON.parse(this.responseText);
+	$.ajax({
+		url: "../php/fetch_regal_content.php",
+		type: 'GET',
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
             create_preview(myObj);
-       }
-    };
-    xhttp.open("GET", "../php/fetch_regal_content.php", true);
-    xhttp.send();
-    
+		}
+	});
+
     $.ajax({
 		url: "../php/login/authentification.php",
 		success: function(Obj){
@@ -84,26 +78,21 @@
      var auftragsid= $(this).data('id');
      console.log(auftragsid);
      var queryString = "?name=" + auftragsid;
-		
-		 if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	    } else {
-	    // code for IE6, IE5
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+	$.ajax({
+		url: "../php/fetch_one_product.php" + queryString,
+		type: 'GET',
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
+	        console.log(myObj);
+	        document.getElementById("product_info_regal_content").innerHTML =
+	        create_modal_content(myObj);
 		}
-		 xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4 && this.status == 200) {
-	        	
-	        	var myObj = JSON.parse(this.responseText);
-	        	console.log(myObj);
-	            document.getElementById("product_info_regal_content").innerHTML =
-	            create_modal_content(myObj);
-	       }
-	    };
-	    xhttp.open("GET", "../php/fetch_one_product.php" + queryString, true);
-	    xhttp.send();
+		});
 	});
 	
+	//MUSTACHE 
 	function create_modal_content(myObj){
 		console.log("in Funktion" + myObj);
 		text_order = "";
@@ -133,26 +122,20 @@
         return text_order;
 	}
 
-		$("#del_button_regal").click(function() {
+	$("#del_button_regal").click(function() {
 		var del = $(this).data('id');
 		console.log("Namen aus Button" + del);
 		var queryString = "?name=" + del;
 		
-			 if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	    } else {
-	    // code for IE6, IE5
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		 xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4 && this.status == 200) {
-	        	$("#row_placeholder").append("<div class='alert alert-success'> <strong>Produkt erfolgreich gelöscht </strong><span class='glyphicon glyphicon-ok'></span> </div>");
-	        	$("#close_button_regal").on('click',function(){
+		$.ajax({
+		url: "../php/delete_one_product.php" + queryString,
+		type: 'GET',
+		success: function(Obj){
+			
+			$("#row_placeholder").append("<div class='alert alert-success'> <strong>Produkt erfolgreich gelöscht </strong><span class='glyphicon glyphicon-ok'></span> </div>");
+	        $("#close_button_regal").on('click',function(){
 	        		location.reload();
 	        	});
-	        	
-	       }
-	    };
-	    xhttp.open("GET", "../php/delete_one_product.php" + queryString, true);
-	    xhttp.send();
+			}
+		});
 	});

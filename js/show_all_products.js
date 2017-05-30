@@ -4,24 +4,20 @@
 
 	
 	var text = "";
-	var xhttp;
 	
-	if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    } else {
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	var myObj = JSON.parse(this.responseText);
+	$.ajax({
+		url: "../php/show_all_products.php",
+		type: 'GET',
+		success: function(Obj){
+		
+			var myObj = JSON.parse(Obj);
             document.getElementById("content_all_products").innerHTML =
             show_all_products(myObj);
-       }
-    };
-    xhttp.open("GET", "../php/show_all_products.php", true);
-    xhttp.send();
-    
+		
+		}
+	});	
+	
+
 
 	function show_all_products(myObj){
 				

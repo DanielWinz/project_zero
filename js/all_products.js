@@ -96,7 +96,7 @@
 		});
 	});
 
-	
+	// mit MUSTACHE
 	function create_modal_content(myObj){
         console.log(myObj);
         $("#del_button").attr('data-id', myObj.produktname);

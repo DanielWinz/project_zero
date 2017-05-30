@@ -28,33 +28,27 @@ $(document).ready(function(){
     // If the input of the productname changes, we wanna check if the product is already in the database
     $("#pn").change(function() {
     
-    var queryString = "?name=" + $(this).val();
-    
-    if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    } else {
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	var myObj = JSON.parse(this.responseText);
-        	
-			switch(myObj){
-				case 0:	notInDatabase(0);
-						break;
-						
-				case 1: noMatchingBin(1,1);
-				        break;
-				        
-				case 2: orderReady(2);
-						break;
+	    var queryString = "?name=" + $(this).val();
+	    
+		$.ajax({
+			url: "../php/validating.php" + queryString,
+			type: 'GET',
+			success: function(Obj){
+			
+				var myObj = JSON.parse(Obj);
+	        	
+				switch(myObj){
+					case 0:	notInDatabase(0);
+							break;
+							
+					case 1: noMatchingBin(1,1);
+					        break;
+					        
+					case 2: orderReady(2);
+							break;
+				}
 			}
-		}
-    };
-       
-    xhttp.open("GET", "../php/validating.php" + queryString, true);
-    xhttp.send();
+		});	    
     });
     
     

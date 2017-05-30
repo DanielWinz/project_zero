@@ -6,28 +6,16 @@
  */
 
 	var speicher = "";
-	var xhttp;
 	
-	if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    } 
-    else{
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	
-        	var myObj = JSON.parse(this.responseText);
+	$.ajax({
+		url: "../php/mdb_fetch_stored_products.php",
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
             document.getElementById("content_order_commissioning").innerHTML =
             create_stored_products(myObj);
-            
-       }
-    };
-    
-    xhttp.open("GET", "../php/mdb_fetch_stored_products.php", true);
-    xhttp.send();
+		}
+	});	
 
 /**
  * This function creates the HTML Output by combining HTML with the results from the AJAX-Request
@@ -60,11 +48,14 @@
     
 	
 	$(document).ready(function(){
-	$("#submit_corder").click(function(){
-    		
-    $("#create_corder").attr('action', '../php/create_order.php');
-    $("#create_corder").submit();
-    });		
+		
+		$("#submit_corder").click(function()
+		
+		{	 		
+	    	$("#create_corder").attr('action', '../php/create_order.php');
+	    	$("#create_corder").submit();	
+    	});
+    			
 	});
    
     	

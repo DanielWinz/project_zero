@@ -5,25 +5,17 @@
  * The user can select them and choose the bin in which the products should be found.
  */
 	var leer = "";
-	var xhttp;
 	
-	if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    }
-    
-    else {    
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	console.log("arrived in state");
-        	var myObj = JSON.parse(this.responseText);
-        	console.log(myObj);
-            document.getElementById("content_empty_products").innerHTML = create_empty_products(myObj);
-       }
-    };
-    xhttp.open("GET", "../php/mdb_fetch_empty_products.php", true);
-    xhttp.send();
+	$.ajax({
+		url: "../php/mdb_fetch_empty_products.php",
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
+			document.getElementById("content_empty_products").innerHTML = 
+			create_empty_products(myObj);
+		}
+	});
+
 
 /**
  * This function creates the HTML Output by combining HTML with the results from the AJAX-Request

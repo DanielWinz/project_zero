@@ -1,6 +1,6 @@
 $(document).on("click", ".order_details", function () {
     	
-         auftragsid= $(this).data('id');
+        auftragsid= $(this).data('id');
      	var queryString = "?nr=" + auftragsid;
      
 	    if (window.XMLHttpRequest) {

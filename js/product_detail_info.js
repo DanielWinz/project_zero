@@ -3,22 +3,15 @@ $(document).on('click', ".product_info_content", function() {
 		var produktname = $(this).data('id');
 		var queryString = "?name=" + produktname;
 		
-		 if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	    } else {
-	    // code for IE6, IE5
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	$.ajax({
+		url: "../php/fetch_one_product.php" + queryString,
+		type: 'GET',
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
+	        document.getElementById("content_product_info").innerHTML =
+	        create_modal_content(myObj);
 		}
-		 xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4 && this.status == 200) {
-	        	
-	        	var myObj = JSON.parse(this.responseText);
-	            document.getElementById("content_product_info").innerHTML =
-	            create_modal_content(myObj);
-	       }
-	    };
-	    xhttp.open("GET", "../php/fetch_one_product.php" + queryString, true);
-	    xhttp.send();
 	});
 	
 	function create_modal_content(myObj){
