@@ -96,8 +96,12 @@ body {
 .placeholders h4 {
   margin-bottom: 0;
 }
+
+.placeholder span{
+	text-align: center;
+}
 .placeholder {
- margin-top:20px
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
