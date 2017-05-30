@@ -19,7 +19,6 @@
 		});
 	});
 
-	// mit MUSTACHE
 	function create_modal_content(myObj){
 		
         $("#del_button").attr('data-id', myObj.produktname);
