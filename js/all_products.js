@@ -1,12 +1,12 @@
 /**
  * @author Daniel
- * This .js uses an AJAX-Request for fetching all products sorted alphabetically.
- * They are displayed in a table whereas the table columns are defined in the produktoverview.html
+ * In dieser .js werden alle Produkte mittels eines AJAX-Request geladen.
+ * Die Darstellung erfolgt durch die Funktion create_table.
+ * Die dafür zuständige .php-Datei ist fetch_all_products.php
+ * Alle Produkte werden in der Datei produktoverview.html angezeigt.
  */
 		
 	var text1 = "";
-	var xhttp;
-	
 	
 	$.ajax({
 		url: "../php/fetch_all_products.php",
@@ -17,12 +17,7 @@
 		
 		}
 	});
-  
-    
-/**
- * This functions creates the HTML Output displayed in the produktoverview.html by using the result of the AJAX request.
- * @param {Object} obj: containing the ten most recent products, values are matched to the keywords.
- */
+ 
     function create_table(obj){
     	
     	var counter = 0; 
@@ -73,7 +68,10 @@
         tr.appendChild(td_length);
         tr.appendChild(td_regal);
         $("#content_table").append(tr);
-    }
+        
+    	}
+    		
         text1 += "Wobei " + counter + " Produkte noch keinem Regal <a href='#match_bins' data-toggle='modal' data-target='#match_bins'> zugewiesen </a> worden sind.";
         $("#jumbo_content").append(text1);
    }
+   
