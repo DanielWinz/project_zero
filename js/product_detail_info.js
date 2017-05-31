@@ -1,6 +1,9 @@
 /**
- * JS-Funktion, die in allen HTML inkludiert wird, in denen Produktinformationen angezeigt werden sollen.
- */	
+ * @author Daniel
+ * In dieser .js wird der Inhalt für das Modal zu den Produktinformationen geladen.
+ * Die Darstellung erfolgt in allen referenzierten Produkten und ist in allen Kategorien zugänglich.
+ * Die dafür zuständigen .php-Dateien sind fetch_one_product und delete_one_product.
+ */
 	
 	$(document).on('click', ".product_info_content", function() {
 		

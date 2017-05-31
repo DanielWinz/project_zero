@@ -1,5 +1,8 @@
 /**
  * @author Daniel
+ * In dieser .js wird der Inhalt für das Carousel auf der Hauptseite index.html geladen.
+ * Die Darstellung erfolgt in der Kategorie: in Bearbeitung
+ * Die dafür zuständige .php-Datei ist carousel_image_path.php
  */
 
 	var myObj;

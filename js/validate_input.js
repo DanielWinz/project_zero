@@ -1,8 +1,8 @@
 /**
  * @author Daniel
- * This .js is for validating the formula input - once any input is given, the user received real-time feedback by changing
- * the input colour of the field and adding an "ok" glyphicon.
- * 
+ * In dieser .js wird der Inhalt der Hauptseite formular_auftrag.html validiert.
+ * Abhängig von den Eingaben können neue Produkte hinzugefügt oder umgebucht werden.
+ * Die dafür zuständige .php-Datei ist auftragsuebersicht.php
  */
 
     

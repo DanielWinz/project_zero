@@ -1,8 +1,8 @@
- /**
+/**
  * @author Daniel
- * This .js uses an AJAX-Request for fetching all products which are already matched to a certain bin.
- * They are displayed as checkbox values in a modal. 
- * The user can select them and choose the box in which the products should be stored.
+ * In dieser .js wird das Modal zur Erstellung eines Kommissionierauftrags geladen.
+ * Berücksichtigt werden lediglich Produkte, denen bereits ein festes Regal zugeordnet wurde.
+ * Die dafür zuständigen .php-Dateien sind mdb_fetch_stored_products und create_order.php
  */
 
 	var speicher = "";

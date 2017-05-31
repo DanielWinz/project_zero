@@ -1,5 +1,7 @@
- /**
- * Testscript, um Inhalt dynamisch zu generieren 
+/**
+ * @author Daniel
+ * In dieser .js wird der Inhalt für das Modal Produktübersicht in der Kategorie Produkt hinzufügen definiert.
+ * Die dafür zuständige .php-Datei ist show_all_products.php
  */
 
 	

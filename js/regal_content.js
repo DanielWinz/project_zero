@@ -1,7 +1,9 @@
- /**
- * Testscript, um Inhalt dynamisch zu generieren 
+/**
+ * @author Daniel
+ * In dieser .js wird der Inhalt für die Hauptseite regalbelegung.html geladen.
+ * Die Darstellung erfolgt über eine Regalübersicht und eine Itemlist.
+ * Die dafür zuständige .php-Datei ist fetch_regal_content.php
  */
-
 	
 	var text = "";
 	var text_order ="";

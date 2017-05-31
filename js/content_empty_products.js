@@ -1,8 +1,8 @@
 /**
  * @author Daniel
- * This .js uses an AJAX-Request for fetching all products which are not matched to a certain bin.
- * They are displayed as checkbox values. 
- * The user can select them and choose the bin in which the products should be found.
+ * In dieser .js wird der Inhalt für das Modal "Produkte einbuchen" in der Kategorie "Produkt hinzufügen" definiert.
+ * Die Darstellung erfolgt als Modal.
+ * Die dafür zuständigen .php-Dateien sind mdb_fetch_empty_products.php und commit_to_bin.php
  */
 	var leer = "";
 	

@@ -1,7 +1,9 @@
 /**
  * @author Daniel
- * This .js uses ROSbridge for connecting to the ROSsystem. A connection to the message streams is established.
- * Depending on the message, error_msg are displayed and can be handled.
+ * In dieser .js wird die HRI Schnittstelle definiert.
+ * Die Fehlerdarstellung erfolgt in den Kategorien: Objekt im Weg, Objekt nicht erkannt, Objekt nicht gegriffen.
+ * Zusätzlich wird abhängig vom Verbindungsstatus die Progressbar erstellt.
+ * Als Basis hierfür dient die ROSBridge mit der ROSlibJS
  */
 
 $(document).ready(function(){
