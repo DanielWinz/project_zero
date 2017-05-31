@@ -1,50 +1,48 @@
-$(document).on("click", ".order_details", function () {
+/**
+ * @author Daniel
+ * In dieser .js wird der Inhalt für das Modal Auftragsdetails geladen.
+ * Die Darstellung erfolgt als Tabelle mit Informationen über Produkt, Regal und Ablagefach.
+ * Die dafür zuständigen .php Dateien sind fetch_order_content.php und delete_order.php
+ */
+
+
+	$(document).on("click", ".order_details", function () {
     	
         auftragsid= $(this).data('id');
      	var queryString = "?nr=" + auftragsid;
-     
-	    if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	    } else {
-	    // code for IE6, IE5
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		 xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4 && this.status == 200) {
-	        	
-	        	var myObj = JSON.parse(this.responseText);
-	            document.getElementById("content_order_details").innerHTML =
-	            create_order_content(myObj);          
-	       }
-	    };
-	    xhttp.open("GET", "../php/fetch_order_content.php" + queryString, true);
-	    xhttp.send();
-  	
-});
+     	
+     	$.ajax({
+		url: "../php/fetch_order_content.php" + queryString,
+		type: "GET",
+		success: function(Obj){
+			
+			 var myObj = JSON.parse(Obj);
+			 document.getElementById("content_order_details").innerHTML =
+	         create_order_content(myObj);
+			
+				}
+		});
+	});
 
 	$(document).ready(function(){
+		
 		$("#del_order_button").click(function(){
 		queryString = "?orderid=" + auftragsid;
 		
-		if (window.XMLHttpRequest) {
-	    xhttp = new XMLHttpRequest();
-	    } else {
-	    // code for IE6, IE5
-	    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		 xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4 && this.status == 200) {
-	        	$("#change_content").attr('class','alert alert-success');
-	        	$("#change_content").html("<strong>Der Auftrag wurde erfolgreich gelöscht</strong>");
-	            
-		            $("#close_order_button").click(function(){
+		$.ajax({
+		url: "../php/fetch_order_content.php" + queryString,
+		type: "GET",
+		success: function(Obj){
+			
+			$("#change_content").attr('class','alert alert-success');
+	        $("#change_content").html("<strong>Der Auftrag wurde erfolgreich gelöscht</strong>");
+	        
+	        $("#close_order_button").click(function(){
 		            	location.reload();
-		            });	            	
-	       }
-	    };
-	    xhttp.open("GET", "../php/delete_order.php" + queryString, true);
-	    xhttp.send();
-	});
+			      });	
+				}
+			});
+		});
 	});
 
 	function create_order_content(myObj){
@@ -61,9 +59,10 @@ $(document).on("click", ".order_details", function () {
        	text_order += 
         			"<tr>" +
                     "<td>" + myObj.contents[a] + "</td>" + 
-                    "<td>" + myObj.regal[a] + "</td>" +  
+                    "<td><a href='../html/regalbelegung.html'>" + myObj.regal[a] + "</a></td>" +  
                 	"</tr>";
-        } 	
+        }
+         	
         text_order += "</tbody> </table> </div>";
 		
 		switch (myObj.status){
@@ -88,8 +87,6 @@ $(document).on("click", ".order_details", function () {
 						 + "</div></div>";
 						 break;
 		
-		}	
-        
-          
+		}	                  
 		return text_order;
 	}

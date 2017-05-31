@@ -130,3 +130,8 @@ body {
     margin-right: auto; 
     width: /*whatever width you want*/;
 }
+
+.well{
+	max-height: 200px;
+	overflow: auto;
+}

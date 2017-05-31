@@ -8,11 +8,11 @@
         <strong> Produkt: </strong> {{produktname}} <br><br>
         <strong> Dimension: </strong> {{length}}  x  {{width}}  x  {{height}} <br><br>
         <strong> Gewicht: </strong> {{weight}} <br><br>
-        <strong> lagert in: </strong> {{regal}} <br>
+        <strong> lagert in: </strong><a href='regalbelegung.html'> {{regal}} </a><br>
         </div>
     </div> 
     <div class='row placeholder'> </div>
-    <div class='well'> 
+    <div class='well' height='100' overflow='auto'> 
     <strong> Beschreibung: </strong> {{description}} 
     </div>
 </div>
