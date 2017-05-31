@@ -5,25 +5,16 @@
  */
 		
 	var text1 = "";
-	var xhttp;
-	
-	if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-    } else {
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	 xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
 
-        	var myObj = JSON.parse(this.responseText);
+	$.ajax({
+		url: "../php/mdb_fetch_table.php",
+		success: function(Obj){
+			
+			var myObj = JSON.parse(Obj);
             document.getElementById("content_table").innerHTML =
             create_table(myObj);
-       }
-    };
-    xhttp.open("GET", "../php/mdb_fetch_table.php", true);
-    xhttp.send();
-    
+		}
+	});	
     
 /**
  * This functions creates the HTML Output displayed in the index.php by using the result of the AJAX request.

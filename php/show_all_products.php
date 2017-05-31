@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * This File is for fetching data from the database and filling a pre-defined template
+	 * Zeigt alle Produkte in der Kategorie "Produkt hinzufügen" an. Ungeordnet und mit wenigen Informationen.
 	 */
 	 
 	include ("../includes/mdb_lib.inc.php");
