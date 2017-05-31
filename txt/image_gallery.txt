@@ -1,0 +1,11 @@
+<div class="col-md-2">
+  <div class="thumbnail">
+    <a href='#product_info' data-toggle='modal' data-id='{{name}}' 
+     data-target='#product_info' class='product_info_content'>
+        <img src="{{bildpfad}}" style="width:100%">
+        <div class="caption">
+          <p>{{name}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
