@@ -105,4 +105,8 @@ body {
   margin-bottom: 20px;
 }
 
+.glyphicon-edit{
+	cursor:pointer;
+}
+
 

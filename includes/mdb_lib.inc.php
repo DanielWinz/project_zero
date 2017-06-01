@@ -70,6 +70,23 @@
 		}
 		
 	}
+
+	function delete_from_one_bin($name,$bin_id){
+		
+		global $bins;
+		
+		$del = $bins->findOne(
+		array('contents' => $name,
+			 'bin_id' => $bin_id)
+		);
+		
+		$bins->updateOne(
+			array('bin_id' => $bin_id),
+			array('$pull' => array('contents' => $name)),
+			array('multiple' => true));	
+		
+		
+	}
    
     function create_order($size_id,$status,$contents){
       	

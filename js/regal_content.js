@@ -7,6 +7,8 @@
 	
 	var text = "";
 	var text_order ="";
+	var counter;
+	var keys = [];
 	
 	$.ajax({
 		url: "../php/fetch_regal_content.php",
@@ -21,27 +23,44 @@
     
   	function create_preview(myObj){
   		
-  		for(var key in myObj){
+  		counter = 0;
   		
-  		var text = '<ul>';
+  		for(var key in myObj){
+  			
+  			keys[counter] = key;
+  		
+  			var text = '<ul>';
   	
   			jQuery('<h3/>', {
   				class: 'sub-header',
 		    	id: key,
-		    	text: 'Regalfach ' + key,
+		    	text: 'Regalfach ' + key + ' ',
 			}).appendTo('#script_content');
 			
 			jQuery('<div/>', {
   				class: 'row',
 		    	id: 'lg' + key,
 			}).appendTo('#script_content');
-		console.log(key);
-		var inside = myObj[key];
-		var counter = 0;
-		console.log(inside);
-		console.log(inside.produkt);
+		
+			counter++;	
 			
   		}
+  		
+  		counter = 0;
+  		
+   		$("h3").each(function(index) {
+			
+			jQuery('<span/>',{
+				class: 'glyphicon glyphicon-edit',
+				'data-id': keys[counter],
+				style: "color:green; float:right",
+				'data-target': '#produkt_umbuchen',
+				'data-toggle': 'modal'
+			}).appendTo($(this));
+			
+			counter++;
+		  });
+
   	}
   	
   	function append_images(myObj){
