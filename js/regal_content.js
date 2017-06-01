@@ -15,33 +15,9 @@
 			
 			var myObj = JSON.parse(Obj);
             create_preview(myObj);
+            append_images(myObj);
 		}
 	});
-    
-    $.ajax({
-		url: "../php/login/authentification.php",
-		success: function(Obj){
-			if(Obj == 1){				
-				change_login_content();
-				$("#add_produkt").attr('style', '');
-			}
-		}
-	});
-	
-	function change_login_content(){
-		$("#content_login").empty();
-		$("#content_login").append('<p>Sie sind bereits als Admin angemeldet</p>');
-		$("<button/>",{
-					class: "btn btn-primary btn-block",
-					html: "Ausloggen",
-					on: { 
-						"click": function(){
-							window.location = "../php/login/logout.php";
-						}
-					}
-		}).appendTo('#content_login');
-		$("<br/>").appendTo('#content_login');
-	} 
     
   	function create_preview(myObj){
   		
@@ -55,22 +31,42 @@
 		    	text: 'Regalfach ' + key,
 			}).appendTo('#script_content');
 			
-			jQuery('<ul/>', {
-  				class: 'list-group',
+			jQuery('<div/>', {
+  				class: 'row',
 		    	id: 'lg' + key,
 			}).appendTo('#script_content');
-			
+		console.log(key);
 		var inside = myObj[key];
 		var counter = 0;
-		
-			for(var con in inside){	
-				text += "<li class='list-group-item'><a class='product_info_content' href='#product_info_regal' data-toggle='modal' data-target='#product_info_regal'"
-						+ "data-id='" + inside[counter] + "'</a>" + inside[counter] + "</li>";
-				counter++;
-			}
-		text += '</ul>';
-		$('#lg' + key).append(text);
+		console.log(inside);
+		console.log(inside.produkt);
 			
   		}
-  		
+  	}
+  	
+  	function append_images(myObj){
+  		$.get("../txt/image_gallery.txt", function(template){
+		
+			var rendered= "";
+			for (var key in myObj){
+				var inside = myObj[key];
+					for(var a = 0; a < inside.produkt.length; a++){
+							
+							if(inside.bildpfad[a] == null)
+								inside.bildpfad[a] = "../img/no_img.png";
+								
+						rendered = Mustache.render(template,
+							{
+							 bildpfad: inside.bildpfad[a],
+							 name: inside.produkt[a]
+							 });
+							 
+					    console.log(rendered);
+						console.log(key);
+						$('#lg' + key).append(rendered);
+						
+						}	
+				}
+						
+		});	
   	}
