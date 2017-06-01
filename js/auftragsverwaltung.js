@@ -28,7 +28,7 @@ var text_in_done = "";
 		text_in_process +=  "<tr>" +
                     		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[1].contents[a] + "'" + 
                     		"data-target='#product_info' class='product_info_content'>" + myObj[1].contents[a] + "</td>" + 
-                    		"<td><a href='../html/regalbelegung.html'" + myObj[1].regal[a] + "</a></td>" +  
+                    		"<td><a href='../html/regalbelegung.html'>" + myObj[1].regal[a] + "</td>" +  
                 			"</tr>";
 		}
 		
