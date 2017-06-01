@@ -108,8 +108,9 @@
       </div>
       </div>
      </div>
+     
       <!-- modal for showing order details and the state -->
-     <div id="product_info_regal" class="modal fade">
+    <div id="product_info" class="modal fade">
       <div class="modal-dialog">		
         <!-- modal content is set by .js -->
             <div class="modal-content">
@@ -121,11 +122,12 @@
     		    <!-- content is set dynamically when the trigger is fired -->
     		</div>
     		<div class="modal-footer">
-    		    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    			<button type="button" class="btn btn-danger" id="del_button">Produkt löschen</button>
+    		    <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button">Schließen</button>
     		</div>
     		</div>
     		</div>
-      </div>
+    	</div> 
       
       <!-- modal for showing products which dont match to a bin -->
     <div id="match_bins" class="modal fade" role="dialog">

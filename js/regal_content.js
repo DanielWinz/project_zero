@@ -51,15 +51,20 @@
 			for (var key in myObj){
 				var inside = myObj[key];
 					for(var a = 0; a < inside.produkt.length; a++){
-
+							
+							if(inside.bildpfad[a] == null)
+								inside.bildpfad[a] = "../img/no_img.png";
+								
 						rendered = Mustache.render(template,
 							{
 							 bildpfad: inside.bildpfad[a],
 							 name: inside.produkt[a]
 							 });
+							 
 					    console.log(rendered);
 						console.log(key);
 						$('#lg' + key).append(rendered);
+						
 						}	
 				}
 						
