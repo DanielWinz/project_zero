@@ -17,8 +17,19 @@
 	$data = array();
 
 	foreach ($cursor as $document){
-		$data[$document['bin_id']] = $document['contents'];
+		
+		$data[$document['bin_id']]['produkt'] = $document['contents'];
+		
+		foreach($document['contents'] as $name){
+				
+			$res = $picture->findOne(
+			array('name' =>  new \MongoDB\BSON\Regex($name,'i')));
+			$data[$document['bin_id']]['bildpfad'][] = $res["pictures"][0];
+		
+		}
+		
 	}
+	
 	
 	$output = json_encode($data);
 	echo $output;
