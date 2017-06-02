@@ -22,7 +22,8 @@ var text_in_done = "";
 	});
 	
 	function create_in_process(myObj){
-		
+
+	  if(typeof(myObj[1]) !== 'undefined' && typeof(myObj[1].regal != 'undefined')){	
 		for(var a = 0; a < myObj[1].regal.length; a++){
 			
 		text_in_process +=  "<tr>" +
@@ -34,6 +35,12 @@ var text_in_done = "";
 		
 		$("#ablage").html("Der Auftrag befindet sich in Bearbeitung. Die Produkte werden in Ablagefach <strong>" + myObj[1].size_id   + "</strong> abgelegt.");		
 		$("#in_process").html(text_in_process);
+	  }
+	  
+	  else{
+	  	$("#row_in_progress").html("<div class='alert alert-info'> Aktuell befindet sich kein Auftrag in Bearbeitung."
+	  							  +" Aufträge können über den Button <strong>Auftrag anlegen</strong> erstellt werden. </div>");
+	  }
 	}
 	
 	function create_in_queue(myObj){

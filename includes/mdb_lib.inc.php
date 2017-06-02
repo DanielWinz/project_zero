@@ -54,6 +54,15 @@
 		)));
     }
 	
+	function update_status($order_id){
+		global $orders;
+		
+		$orders->updateOne(
+		array("auftragsnummer" => $order_id),
+		array('$set' => array('status' => 2)
+		));
+	}
+	
 	function delete_from_bin($name){
 		
 		global $bins;

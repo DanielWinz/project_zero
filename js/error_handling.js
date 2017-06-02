@@ -1,4 +1,4 @@
-/**
+ /**
  * @author Daniel
  * In dieser .js wird die HRI Schnittstelle definiert.
  * Die Fehlerdarstellung erfolgt in den Kategorien: Objekt im Weg, Objekt nicht erkannt, Objekt nicht gegriffen.
@@ -43,6 +43,8 @@ $(document).ready(function(){
   		case 0: set_content_obstacle(message); break;
   		case 1: set_content_detection_error(message); break;
   		case 2: set_content_grasp_error(message); break;
+  		case 3: listener.unsubscribe();
+  				set_content_order_finished(message); break;
    		}
     });
 });
@@ -56,7 +58,7 @@ function set_content_obstacle(msg){
 	}).appendTo("#title_error_handling");
 	
 	//Anpassen des Contents im Body
-	
+	$("#body_error_handling").html("");
 	$("<div/>",{
 		class: "alert alert-info",
 		html: "Ein Hindernis wurde auf dem Kommissionierweg zum Ablagefach " + msg.ablage + "gefunden. <br>"
@@ -81,7 +83,7 @@ function set_content_detection_error(msg){
 	}).appendTo("#title_error_handling");
 	
 	//Anpassen des Contents im Body
-	
+	$("#body_error_handling").html("");
 	$("<div/>",{
 		class: "alert alert-info",
 		html: "Das Produkt <a href='#product_info' data-target='#product_info' data-toggle='modal' data-id='" 
@@ -107,7 +109,7 @@ function set_content_grasp_error(msg){
 	}).appendTo("#title_error_handling");
 	
 	//Anpassen des Contents im Body
-	
+	$("#body_error_handling").html("");
 	$("<div/>",{
 		class: "alert alert-info",
 		html: "Das Produkt <a href='#product_info' data-target='#product_info' data-toggle='modal' data-id='" 

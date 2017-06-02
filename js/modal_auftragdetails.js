@@ -30,7 +30,7 @@
 		queryString = "?orderid=" + auftragsid;
 		
 		$.ajax({
-		url: "../php/fetch_order_content.php" + queryString,
+		url: "../php/delete_order.php" + queryString,
 		type: "GET",
 		success: function(Obj){
 			

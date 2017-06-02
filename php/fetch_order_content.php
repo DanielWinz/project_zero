@@ -11,6 +11,10 @@
 	
 	$nr = intval($_GET['nr']);
 	
+	if(isset($_GET['del'])){
+		update_status($nr);	
+	}
+	
 	$auftrag = $orders->findOne(
 	array("auftragsnummer" => $nr)
 	);
@@ -30,8 +34,12 @@
 			);
 			
 		$data["regal"][] = 	$res["bin_id"];
-	
-	}		
+		
+			if(isset($_GET['del'])){
+				delete_from_one_bin($auftrag["contents"][intval($a)],$res["bin_id"]);
+			}
+		
+	}	
 
 	$output = json_encode($data);
 	echo $output;
