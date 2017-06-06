@@ -16,9 +16,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="../js/validate_input.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="../js/login.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
+     <link href="../css/login.css" rel="stylesheet">
   </head>
   
   
@@ -32,6 +35,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../html/index.html"> Dashboard</a></li>
+            <li class="dropdown" id="login"></li>
             <li><a data-toggle="modal" data-target="#match_bins" href="#"><b>Produkt einlagern</b></a></li>
           </ul>
 

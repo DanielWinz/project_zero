@@ -4,12 +4,27 @@
  * Davon abhängig werden bestimmte Elemente angezeigt/nicht angezeigt.
  */
 
+	$.get("../txt/login.txt", function(template){
+		
+			var rendered = Mustache.render(template);			 
+			$("#login").html(rendered);
+			
+			}
+	);
+	
     $.ajax({
 		url: "../php/login/authentification.php",
 		success: function(Obj){
-			if(Obj == 1){				
+			if(Obj == 1){
+				console.log("in erster IF");				
 				change_login_content();
 				$("#add_produkt").attr('style', '');
+			}
+			
+			if(Obj == 2){
+				console.log("in zweiter IF");
+				change_login_content();
+				window.location = "../robot_view/html/auftragsuebersicht_short.html";
 			}
 		}
 	});
