@@ -15,14 +15,12 @@
     $.ajax({
 		url: "../php/login/authentification.php",
 		success: function(Obj){
-			if(Obj == 1){
-				console.log("in erster IF");				
+			if(Obj == 'computer'){			
 				change_login_content();
 				$("#add_produkt").attr('style', '');
 			}
 			
-			if(Obj == 2){
-				console.log("in zweiter IF");
+			if(Obj == 'roboter'){
 				change_login_content();
 				window.location = "../robot_view/html/auftragsuebersicht_short.html";
 			}

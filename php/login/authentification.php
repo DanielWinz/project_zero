@@ -2,13 +2,12 @@
     session_start();
 
 	if( ($_SESSION['username'] === 'admin') && ($_SESSION['modus'] === 'roboter') ){
-		error_log("in zweiter",0);
-		echo 2;
+		echo "roboter";
 	}
 	
 	else if( ($_SESSION['username'] === 'admin')){
 		error_log("in erster",0);
-		echo 1;
+		echo "computer";
 	}
 	
 	else {
