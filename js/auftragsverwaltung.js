@@ -40,6 +40,7 @@ var text_in_done = "";
 	  else{
 	  	$("#row_in_progress").html("<div class='alert alert-info'> Aktuell befindet sich kein Auftrag in Bearbeitung."
 	  							  +" Aufträge können über den Button <strong>Auftrag anlegen</strong> erstellt werden. </div>");
+		$("#row_in_progress").attr('style','padding-left:15px');	  
 	  }
 	}
 	

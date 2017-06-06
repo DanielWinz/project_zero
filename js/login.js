@@ -3,7 +3,6 @@
  * Die Login JS Funktion, in der validiert wird, ob ein Benutzer eingeloggt ist.
  * Davon abhängig werden bestimmte Elemente angezeigt/nicht angezeigt.
  */
-
 	$.get("../txt/login.txt", function(template){
 		
 			var rendered = Mustache.render(template);			 
@@ -15,14 +14,16 @@
     $.ajax({
 		url: "../php/login/authentification.php",
 		success: function(Obj){
-			if(Obj == 'computer'){			
+			if(Obj == 'computer'){	
 				change_login_content();
 				$("#add_produkt").attr('style', '');
 			}
 			
 			if(Obj == 'roboter'){
 				change_login_content();
-				window.location = "../robot_view/html/auftragsuebersicht_short.html";
+				
+				if($(location).attr('pathname') != '/project_zero/html/auftragsuebersicht_short.html')
+					window.location = "../html/auftragsuebersicht_short.html";
 			}
 		}
 	});
