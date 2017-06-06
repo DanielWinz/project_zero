@@ -1,6 +1,6 @@
 <?php
 
-   include("../includes/mdb_lib.inc.php");
+   include("../../includes/mdb_lib.inc.php");
    
    global $orders;
    global $picture;

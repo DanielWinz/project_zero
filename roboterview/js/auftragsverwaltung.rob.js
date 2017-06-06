@@ -9,7 +9,7 @@ var text_in_process = "";
 var text_in_queue = "";
 
 	$.ajax({
-		url: "../php/auftragsuebersicht.php",
+		url: "../../php/auftragsuebersicht.php",
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);

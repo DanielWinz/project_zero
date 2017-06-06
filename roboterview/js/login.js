@@ -15,15 +15,11 @@
 		url: "../php/login/authentification.php",
 		success: function(Obj){
 			if(Obj == 'computer'){	
-				change_login_content();
-				$("#add_produkt").attr('style', '');
+				window.location = "../../html/index.html";
 			}
 			
-			if(Obj == 'roboter'){
+			else{
 				change_login_content();
-				
-				if($(location).attr('pathname') != '/project_zero/roboterview/html/auftragsuebersicht.rob.html')
-					window.location = "../roboterview/html/auftragsuebersicht.rob.html";
 			}
 		}
 	});
@@ -36,7 +32,7 @@
 					html: "Ausloggen",
 					on: { 
 						"click": function(){
-							window.location = "../php/login/logout.php";
+							window.location = "../../php/login/logout.php";
 						}
 					}
 		}).appendTo('#content_login');
