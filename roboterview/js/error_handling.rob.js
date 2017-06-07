@@ -35,14 +35,9 @@ $(document).ready(function(){
      });
 
   listener.subscribe(function(message) {
-  	var queryString = "?name=" + message.produkt + "&regal=" + message.regal + "&ablage=" + message.ablage;
-  	console.log(message.status);
-  	switch(message.status){
-  		case 0: window.location = "../html/obstacle_detected.rob.html"; break;
-  		case 1: window.location = "../php/transfer.php" +  queryString + "&code=1"; break;
-  		case 2: set_content_grasp_error(message); break;
-  		case 3: listener.unsubscribe();
-  				set_content_order_finished(message); break;
-   		}
+  	
+  	localStorage.setItem('message', JSON.stringify(message));
+  	location.href = "../html/error_handling.rob.html";
+  	
     });
 });

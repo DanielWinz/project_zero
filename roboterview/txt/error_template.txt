@@ -1,0 +1,9 @@
+<div class="outer">
+	<div class="middle">
+		<div class="inner">
+     		<img src="{{bild}}" width="200">
+     		<p> <br> <strong>{{{inhalt}}}</strong></p>
+     		<button class="btn btn-success" onclick="location.href = 'auftragsuebersicht.rob.html';">{{button}}</button>
+     	</div>
+     </div>      
+</div>
