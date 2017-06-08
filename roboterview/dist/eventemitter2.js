@@ -268,11 +268,11 @@
 
   EventEmitter.prototype.many = function(event, ttl, fn) {
     return this._many(event, ttl, fn, false);
-  }
+  };
 
   EventEmitter.prototype.prependMany = function(event, ttl, fn) {
     return this._many(event, ttl, fn, true);
-  }
+  };
 
   EventEmitter.prototype._many = function(event, ttl, fn, prepend) {
     var self = this;
@@ -533,7 +533,7 @@
     }
 
     return this;
-  }
+  };
 
   EventEmitter.prototype._on = function(type, listener, prepend) {
     if (typeof type === 'function') {
@@ -553,7 +553,7 @@
     if (this.wildcard) {
       growListenerTree.call(this, type, listener);
       return this;
-    }
+    };
 
     if (!this._events[type]) {
       // Optimize the case of one listener. Don't need the extra array object.
@@ -584,7 +584,7 @@
     }
 
     return this;
-  }
+  };
 
   EventEmitter.prototype.off = function(type, listener) {
     if (typeof listener !== 'function') {
@@ -743,7 +743,7 @@
 
   EventEmitter.prototype.eventNames = function(){
     return Object.keys(this._events);
-  }
+  };
 
   EventEmitter.prototype.listenerCount = function(type) {
     return this.listeners(type).length;
