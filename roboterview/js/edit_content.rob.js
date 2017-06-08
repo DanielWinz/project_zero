@@ -15,7 +15,8 @@
 						{
 							bild: "../img/hindernis.jpg",
 							inhalt: "Ein Hindernis wurde auf dem Weg gefunden. <br> Bitte aus dem Weg räumen.",
-							button: "Hindernis entfernt"
+							button: "Hindernis entfernt",
+							button2: "kein Scan möglich"
 						});
 					break;
 			
@@ -25,7 +26,8 @@
 							bild: "../img/photo-camera.svg",
 							inhalt: "Das Produkt " + msg.produkt + " konnte leider nicht erkannt werden. <br>" +
 									"Bitte aus Regal " + msg.regal + " holen und in das Fach " + msg.ablage + " ablegen.",
-							button: "Produkt kommissioniert"
+							button: "Produkt kommissioniert",
+							button2: "Barcode scannen"
 						});
 					break;
 			
@@ -35,7 +37,8 @@
 							bild: "../img/gripper.svg",
 							inhalt: "Das Produkt " + msg.produkt + " konnte leider nicht gegriffen werden. <br>" +
 									"Bitte aus Regal " + msg.regal + " holen und in das Fach " + msg.ablage + " ablegen.",
-							button: "Produkt kommissioniert"
+							button: "Produkt kommissioniert",
+							button2: "Barcode scannen"
 						});
 					break;
 		}
