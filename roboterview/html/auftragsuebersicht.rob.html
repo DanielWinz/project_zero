@@ -21,6 +21,8 @@
 	<script src="../js/login.js"></script>
 	<script src="../js/auftragsverwaltung.rob.js"></script>
 	<script src="../js/carousel_preview.rob.js"></script>
+	<script src="../js/auftrag_fertig.rob.js"></script>
+	<script src="../../js/modal_auftragdetails.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="../css/auftragsuebersicht.rob.css" rel="stylesheet">
@@ -152,26 +154,6 @@
     		</div>
     		<div class="modal-footer">
     			<button type="button" id="button_error_handling" data-dismiss="modal">[Button]</button>
-    		</div>
-    		</div>
-    		</div>
-    	</div>
-    	
-    <!-- modal for showing order details and the state -->
-    <div id="order_details" class="modal fade">
-      <div class="modal-dialog">		
-        <!-- modal content is set by .js -->
-            <div class="modal-content">
-    		    <div class="modal-header">
-    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Auftragsübersicht </h4>
-    			</div>
-    		<div class="modal-body" id="content_order_details">
-    		    <!-- content is set dynamically when the trigger is fired -->
-    		</div>
-    		<div class="modal-footer">
-    			<button type="button" class="btn btn-danger" id="del_order_button">Auftrag löschen</button>
-    		    <button type="button" class="btn btn-default" data-dismiss="modal" id="close_order_button">Schließen</button>
     		</div>
     		</div>
     		</div>

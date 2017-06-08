@@ -36,8 +36,15 @@ $(document).ready(function(){
 
   listener.subscribe(function(message) {
   	
-  	localStorage.setItem('message', JSON.stringify(message));
-  	location.href = "../html/error_handling.rob.html";
+  	if(message.status == 3){
+  		set_content_order_finished(message);
+  	}
+  	
+  	else{
+  		
+  		localStorage.setItem('message', JSON.stringify(message));
+  		location.href = "../html/error_handling.rob.html";	
+  	}
   	
     });
 });
