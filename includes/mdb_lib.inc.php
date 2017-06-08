@@ -26,19 +26,19 @@
 		return $retval['sequence_value'];
 	}
 	
-    function insert_document($collection,$mitarbeiter,$produktname,$weight,$length,$width,$height,$description){
-
+    function insert_document($collection,$produktname,$weight,$length,$width,$height,$description){
+		
+		$dimensions = array();
+		$dimensions[0] = $length;
+		$dimensions[1] = $width;
+		$dimensions[2] = $height;
+		
 	    $document = array(
 
 	    "_id" => getNextSequence("productid"),
-        "mitarbeiter" => $mitarbeiter, 
-        "produktname" => $produktname,
+        "name" => $produktname,
         "weight" => $weight, 
-        "dimension" => array(
-		"length" => $length,
-		"width" => $width,
-		"height" => $height
-		),
+        "dimensions" => $dimensions,
         "description" => $description
         );
 	 
@@ -112,7 +112,7 @@
       
 	 function delete_product($produktname){
 	 	global $test_collection;
-		 $test_collection->deleteOne(array("produktname"=>$produktname));
+		 $test_collection->deleteOne(array("name"=>$produktname));
 	 }
 	 
 	 function delete_order($orderid){
