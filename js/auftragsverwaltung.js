@@ -46,7 +46,7 @@ var text_in_done = "";
 	
 	function create_in_queue(myObj){
 	
-		$.get("../txt/preview_dashboard.txt", function(template){
+		$.get("../templates/preview_dashboard.txt", function(template){
 		
 		var rendered= "";
 		for (var a = 0; a < 3; a++){

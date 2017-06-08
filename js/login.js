@@ -3,7 +3,7 @@
  * Die Login JS Funktion, in der validiert wird, ob ein Benutzer eingeloggt ist.
  * Davon abhängig werden bestimmte Elemente angezeigt/nicht angezeigt.
  */
-	$.get("../txt/login.txt", function(template){
+	$.get("../templates/login.txt", function(template){
 		
 			var rendered = Mustache.render(template);			 
 			$("#login").html(rendered);

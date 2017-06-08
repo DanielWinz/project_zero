@@ -26,7 +26,7 @@
 		console.log("erstellen");
         $("#del_button").attr('data-id', myObj.produktname);
         
-		$.get("../txt/modal_produkt_info.txt", function(template){
+		$.get("../templates/modal_produkt_info.txt", function(template){
 			
 			if(myObj.bildpfad == null)
 				myObj.bildpfad = "../img/no_img.png";

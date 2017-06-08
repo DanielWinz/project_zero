@@ -4,7 +4,7 @@
 
 	var msg = JSON.parse(localStorage.getItem('message'));
 	
-	$.get("../txt/error_template.txt", function(template){
+	$.get("../templates/error_template.txt", function(template){
 		
 		var inhalt = "";
 		

@@ -64,7 +64,7 @@
   	}
   	
   	function append_images(myObj){
-  		$.get("../txt/image_gallery.txt", function(template){
+  		$.get("../templates/image_gallery.txt", function(template){
 		
 			var rendered= "";
 			for (var key in myObj){
