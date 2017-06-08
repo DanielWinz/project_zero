@@ -41,7 +41,7 @@ $(document).ready(function(){
   	}
   	
   	else{
-  		
+  		console.log("in Else");
   		localStorage.setItem('message', JSON.stringify(message));
   		location.href = "../html/error_handling.rob.html";	
   	}

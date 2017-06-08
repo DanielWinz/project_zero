@@ -9,20 +9,19 @@
     <meta name="description" content="Index Page showing a Dashboard containing the most important information">
     <meta name="author" content="Daniel Wenz">
 
-    <title>Dashboard KomRob Auftragsverwaltng</title>
-
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-    <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 	<script src="../js/login.js"></script>
 	<script src="../js/edit_content.rob.js"></script>
+	<script src="../dist/quagga.min.js"></script>
+	<script src="../js/barcode_scanner.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="../css/auftragsuebersicht.rob.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/barcode.css" rel="stylesheet">
 
   </head>
 	
@@ -60,11 +59,36 @@
 
 	<!-- Here, we start defining the Navigation Sidebar located on the left-hand side of the page -->
     <div class="container-fluid">	
-    <div class="row" id='inhalt_error'>    
-     <!-- Content of the Dashboard is set by the called scripts -->
+    <div class="row" id='inhalt_error'>   
+    <!-- Content of the Dashboard is set by the called scripts -->
      
      </div>
      </div>
+   
+    <!-- Inhalt für den Barcode Scanner bzw. das Modal -->
+   	<div class="modal" id="livestream_scanner">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Barcode Scanner</h4>
+			</div>
+			<div class="modal-body" style="position: static">
+				<div id="interactive" class="viewport"></div>
+				<div class="error"></div>
+			</div>
+			<div class="modal-footer">
+				<label class="btn btn-default pull-left">
+					<i class="fa fa-camera"></i> Use camera app
+					<input type="file" accept="image/*;capture=camera" capture="camera" class="hidden" />
+				</label>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
   </body>
 </html>
