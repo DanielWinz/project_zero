@@ -1,0 +1,38 @@
+.hide{
+	display:none;
+}
+#setting-dp{
+    min-width: 250px;
+    padding: 20px 20px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#setting-dp .help-block{
+    font-size:12px    
+}
+#setting-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#fg{
+	margin-left:15px;
+	margin-top: 15px;
+    margin-bottom: 20px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+
+@media(max-width:768px){
+    #setting-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #setting-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}

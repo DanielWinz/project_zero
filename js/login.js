@@ -17,6 +17,7 @@
 			if(Obj == 'computer'){	
 				change_login_content();
 				$("#add_produkt").attr('style', '');
+				$("#setting").attr('style', '');
 			}
 			
 			if(Obj == 'roboter'){
