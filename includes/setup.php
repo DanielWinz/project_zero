@@ -5,8 +5,7 @@
  
    // connect to mongodb
        $m = new MongoDB\Client();
-	   
-	   
+
    // create daniels database
        $db = $m->db_daniel;
 	   

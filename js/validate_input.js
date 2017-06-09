@@ -81,10 +81,9 @@ $(document).ready(function(){
 	
   			$("#pname").removeClass('hidden');
   			$("#regal").removeClass('hidden');
-  			
-  			$("#confirm").addClass('hidden');
   			    
-  			$("#smbutton").removeClass('hidden');  
+  			$("#smbutton").removeClass('hidden');
+  			$("#sm_button").attr('value','Regalfach zuordnen');  
   			$("#sm_button").removeAttr('disabled');
 
   			$("#send_content").attr('action', '../php/db_transfer.php?s=1');

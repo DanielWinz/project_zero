@@ -109,4 +109,12 @@ body {
 	cursor:pointer;
 }
 
+mark {
+  background: yellow;
+}
+
+mark.current {
+  background: orange;
+}
+
 

@@ -18,9 +18,11 @@
 	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
     <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script>
 	<script src ="../js/produkt_uebersicht.js"></script>
 	<script src="../js/product_detail_info.js"></script>
 	<script src="../js/login.js"></script>
+	<script src="../js/textSearch.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
@@ -46,11 +48,16 @@
     <!-- right hand-side: Navigation elements -->   
       <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-          	
           	<!-- Dashboard, Login, Produkt einbuchen und Profil -->
             <li><a href="index.html">Dashboard</a></li>
             <li class="dropdown" id="login"> </li>
           </ul>
+          <form class="navbar-form navbar-right">
+          	<div class="input-group">
+          		<input type="search" class="form-control" placeholder="Search...">
+    			<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+          	</div>
+          </form>
         </div>
       </div>
     </nav>
@@ -72,7 +79,7 @@
 	
         
      <!-- Content of the Dashboard is set by the called scripts -->
-     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main content">
           <h1 class="page-header">Produktübersicht</h1>
 		   <div class="jumbotron" id="jumbo_content"> 
   		</div>
