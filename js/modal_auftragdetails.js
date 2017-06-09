@@ -51,7 +51,7 @@
 		
 		text_order += "<div class='container-fluid'>" 
 				   +  "<div class='table-responsive'> <table class='table table-striped'> <thead>"
-                   +  "<tr> <th>Produkt</th> <th>Regal</th> </tr> </thead>"
+                   +  "<tr> <th>Produkt</th> <th>Regalfach</th> </tr> </thead>"
                    +  "<tbody>";
         
         for(var a = 0; a < myObj.contents.length; a++){

@@ -23,7 +23,7 @@
  */    
     function create_empty_products(obj){
     	
-    	leer += "<form id='book_in' method='post'><div class ='form-group'> <b> Bitte wählen Sie die Produkte, die Sie in ein Regal einbuchen möchten </b>";
+    	leer += "<form id='book_in' method='post'><div class ='form-group'> <b> Bitte wählen Sie die Produkte, die Sie in ein Regalfach einbuchen möchten </b>";
         for(i = 0; i < obj.length; i++){
 		
 	    leer += 
@@ -44,7 +44,7 @@
         "</select></div>";
         
         if(obj.length == 0)
-		leer = "<b> Aktuell sind alle Produkte einem Regal zugeordnet </b>";
+		leer = "<b> Aktuell sind alle Produkte einem Regalfach zugeordnet </b>";
 		
 	    return leer;		
     }

@@ -71,7 +71,7 @@
         
     	}
     		
-        text1 += "Wobei " + counter + " Produkte noch keinem Regal <a href='#match_bins' data-toggle='modal' data-target='#match_bins'> zugewiesen </a> worden sind.";
+        text1 += "Wobei " + counter + " Produkte noch keinem Regalfach <a href='#match_bins' data-toggle='modal' data-target='#match_bins'> zugewiesen </a> worden sind.";
         $("#jumbo_content").append(text1);
    }
    

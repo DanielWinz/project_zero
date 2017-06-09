@@ -41,7 +41,7 @@
 		}
 		
 		text +=
-        "<label>neues Regal wählen:</label>" + 
+        "<label>neues Regalfach wählen:</label>" + 
         "<select class='form-control' id='neues_regal' name='neues_regal'> " +
         "<option>1</option>"  +
         "<option>A</option>" +

@@ -93,7 +93,7 @@ $(document).ready(function(){
     	 	span.setAttribute('class','glyphicon glyphicon-warning-sign form-control-feedback');
     	 	form.parentElement.parentElement.setAttribute('class','form-group has-warning has-feedback');
 			form.parentElement.append(span);
-			help.innerHTML = 'Produkt in der Datenbank. Bitte buchen Sie das Produkt in ein Regal und wählen Sie die Box aus, in der das Produkt gelagert werden soll';
+			help.innerHTML = 'Produkt in der Datenbank. Bitte buchen Sie das Produkt in ein Regalfach und wählen Sie die Box aus, in der das Produkt gelagert werden soll';
   			
   			$(".form-group").addClass('hidden');
   			$(".form-control").removeAttr('required');
