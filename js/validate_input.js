@@ -19,8 +19,7 @@ $(document).ready(function(){
     	}
     	else{
     		$(this).parent().parent().attr('class','form-group has-success has-feedback');
-        	var text = '<span class="glyphicon glyphicon-ok form-control-feedback"></span>';
-        	$(this).parent().append(text);
+        	$(this).parent().append('<span class="glyphicon glyphicon-ok form-control-feedback"></span>');
     	}  
         
     });
@@ -41,7 +40,7 @@ $(document).ready(function(){
 					case 0:	notInDatabase(0);
 							break;
 							
-					case 1: noMatchingBin(1,1);
+					case 1: noMatchingBin(1);
 					        break;
 					        
 					case 2: orderReady(2);
@@ -49,24 +48,7 @@ $(document).ready(function(){
 				}
 			}
 		});	    
-    });
-    
-    
-    $("#confirm1").click(function(){
-    	$("#myModal").modal();
-    });
-    
-    $("#yes").click(function() {
-        noMatchingBin(0,1);
-        $("#myModal").modal('hide');
-        });
-        
-    $("#no").click(function() {
-        $("#send_content").attr('action', '../php/db_transfer.php?s=0');
-        $("#send_content").submit();
-        });
-    
-    $('[data-toggle="tooltip"]').tooltip();     
+    });  
 
     function notInDatabase(status){
     	
@@ -78,18 +60,17 @@ $(document).ready(function(){
 			$(".hidden").removeClass('hidden');
 			$(".form-control").attr('required',"");
 			$("#sel_r").removeAttr('required');
-			$("#sel_v").removeAttr('required');
 			
-			$("#regal").addClass('hidden');
-			$("#verpackung").addClass('hidden');
-			$("#change_bin").removeClass('hidden');
+						
+			$("#change_bin").addClass('hidden');
+			$("#confirm1").addClass('hidden');
+			$("#sm_button").removeAttr('disabled');
 			
-			$("#smbutton").addClass('hidden');
-			$("#confirm").removeClass('hidden');
+			$("#send_content").attr('action', '../php/db_transfer.php?s=0');
 			
     }
     function noMatchingBin(status,decider){
-
+			
     	 	span.setAttribute('class','glyphicon glyphicon-warning-sign form-control-feedback');
     	 	form.parentElement.parentElement.setAttribute('class','form-group has-warning has-feedback');
 			form.parentElement.append(span);
@@ -106,7 +87,7 @@ $(document).ready(function(){
   			$("#smbutton").removeClass('hidden');  
   			$("#sm_button").removeAttr('disabled');
 
-  			$("#send_content").attr('action', '../php/db_transfer.php?s=' + status + '&d=' + decider);
+  			$("#send_content").attr('action', '../php/db_transfer.php?s=1');
   			
   			}
   			
