@@ -8,12 +8,14 @@
 	include("../includes/mdb_lib.inc.php");
 
 	// fetching data from the formular
-	if(isset($_POST['shelf']))
-	$shelf = $_POST["shelf"];
+	if(isset($_POST['regal']) && isset($_POST['regalfach'])){
+		$regal = $_POST["regal"];
+		$regalfach = $_POST["regalfach"];	
+	}
 	
-	
-   		foreach($_POST['bin'] as $productnames) {
-			update_bin($shelf, $productnames);
+   		foreach($_POST['produktnamen'] as $productnames) {
+   			error_log("in foreach-Schleife",0);
+			update_bin($regal, $regalfach, $productnames);
 		}
 	
 	// using header function in order to navigate to the Dashboard

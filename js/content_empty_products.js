@@ -22,26 +22,47 @@
  * @param {Object} obj: an array containing all products which are not stored in a bin yet.
  */    
     function create_empty_products(obj){
-    	
+    	console.log(obj);
     	leer += "<form id='book_in' method='post'><div class ='form-group'> <b> Bitte wählen Sie die Produkte, die Sie in ein Regalfach einbuchen möchten </b>";
-        for(i = 0; i < obj.length; i++){
+      	var length = 0;
+      	
+      	for(key in obj){
+      		length++;
+      	}
+        
+        console.log(length);
+        for(i = 0; i < (length-1); i++){
 		
 	    leer += 
 			  "<div class='checkbox'> " +
-			  "<label><input type='checkbox' name='bin[]' id='bin' value='" + obj[i] + "'>" + obj[i] + "</label> </div>";
+			  "<label><input type='checkbox' name='produktnamen[]' id='produktnamen' value='" + obj[i] + "'>" + obj[i] + "</label> </div>";
 		
 		}
 		
 		leer += 
+		"<label>Regal wählen:</label>"+
+		"<select class='form-control' id='regal' name='regal'>";
+		
+		var regal = obj['info']['regal'];
+		console.log(regal);
+		
+		for(a=0; a < regal ; a++){
+			leer+= "<option>" + (a+1) + "</option>";
+		}
+		
+		leer += "</select></div>";
+		
+		leer += 
 		"<label>Regalfach wählen:</label>"+
-		"<select class='form-control' id='regalfach' name='shelf'>" +
-        "<option>A</option>"+
-        "<option>B</option>"+
-        "<option>C</option>"+
-        "<option>D</option>"+
-        "<option>E</option>"+
-        "<option>F</option>"+
-        "</select></div>";
+		"<select class='form-control' id='regalfach' name='regalfach'>";
+		
+		var regalfach = obj['info']['regalfach'];
+		
+		for(a=0; a < regalfach ; a++){
+			leer+= "<option>" + String.fromCharCode(65 + a) + "</option>";
+		}
+		
+        leer += "</select></div>";
         
         if(obj.length == 0)
 		leer = "<b> Aktuell sind alle Produkte einem Regalfach zugeordnet </b>";

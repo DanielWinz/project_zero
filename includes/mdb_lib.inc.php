@@ -7,13 +7,64 @@
     
     $m = new MongoDB\Client();
     
-    $db = $m->piro2;
+    $db = $m->piro_test;
     
     $collection = $db->counters;
     $test_collection = $db->amazon_info;
-    $bins = $db->bins;
+    $bins = $db->regal;
     $orders = $db->orders;
 	$picture = $db->picture_info;
+	
+	function change_regal($regal,$regalfach){
+		global $bins,$db;
+		$counter = 0;
+		$bins->drop();
+		$bins = $db -> regal;
+		
+		for($a=0 ; $a < $regalfach ; $a++){
+			$letter = (chr(65 + $a));
+			$rf[$letter] = array();
+		}
+		
+		while($counter < $regal){
+			$document = array(
+			"regal" => ($counter + 1));
+			
+			$document['regalfach'] = $rf;
+			
+			$bins->insertOne($document);
+			$counter++;	
+		}
+		
+	}
+	
+	function getRegalSetup(){
+		global $bins;
+		
+		$info = array();
+		$info['regal'] = $bins->count();
+		$res = $bins->findOne(
+		array('regal' => 1));
+		$counter = 0;
+		foreach($res['regalfach'] as $doc){
+			$counter++;
+		}
+		$info['regalfach'] = $counter;
+		return $info;
+	}
+	
+	function getProdukteInRegalen(){
+		global $bins;
+		$info = getRegalSetup();
+		$result = $bins -> find();
+		
+		foreach($result as $regal){
+			foreach($regal['regalfach'] as $regalfach){
+			$produktliste[] = ($regal[$regalfach]);
+			}	
+		}
+		return $produktliste;
+	}
     
     function getNextSequence($name){
     	global $collection;
@@ -45,13 +96,15 @@
       $collection->insertOne($document);
 	}
     
-    function update_bin($bin_id,$produktname){
+    function update_bin($regal,$regalfach,$produktname){
     	global $bins;
-    
+		error_log($regal,0);
+    	error_log($regalfach,0);
+		error_log(is_string($regalfach),0);
     	$bins->updateOne(
-    	array('bin_id' => $bin_id),
-    	array('$addToSet' => array('contents' => $produktname
-		)));
+    	array('regal' => intval($regal), 'regalfach' => $regalfach),
+    	array('$addToSet' => array($regalfach => $produktname
+		))); 
     }
 	
 	function update_status($order_id){

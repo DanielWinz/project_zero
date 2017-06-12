@@ -17,13 +17,13 @@
 	
 	foreach($cursor as $document){
 		
-		$result = $bins->findOne(
-		array('contents' => $document['name'])
-		);
-		
-		if($result == null)
-		array_unshift($data, $document['name']); 
+		$list = getProdukteInRegalen();
+		if(!(in_array($document['name'], $list)))
+			array_unshift($data, $document['name']); 
 	}
+	
+	$info = getRegalSetup();
+	$data['info'] = $info;
 	
 	$output = json_encode($data);
 	echo $output;
