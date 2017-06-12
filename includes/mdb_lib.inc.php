@@ -21,17 +21,14 @@
 		$bins->drop();
 		$bins = $db -> regal;
 		
-		for($a=0 ; $a < $regalfach ; $a++){
-			$letter = (chr(65 + $a));
-			$rf[$letter] = array();
-		}
-		
 		while($counter < $regal){
 			$document = array(
 			"regal" => ($counter + 1));
 			
-			$document['regalfach'] = $rf;
-			
+			for($a=0; $a < $regalfach; $a++){
+				$document[chr(65+$a)] = array();	
+			}
+		
 			$bins->insertOne($document);
 			$counter++;	
 		}
@@ -102,7 +99,7 @@
     	error_log($regalfach,0);
 		error_log(is_string($regalfach),0);
     	$bins->updateOne(
-    	array('regal' => intval($regal), 'regalfach' => $regalfach),
+    	array('regal' => intval($regal)),
     	array('$addToSet' => array($regalfach => $produktname
 		))); 
     }
