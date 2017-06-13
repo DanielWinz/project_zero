@@ -43,10 +43,10 @@
 		$res = $bins->findOne(
 		array('regal' => 1));
 		$counter = 0;
-		foreach($res['regalfach'] as $doc){
+		foreach($res as $doc){
 			$counter++;
 		}
-		$info['regalfach'] = $counter;
+		$info['regalfach'] = $counter-2;
 		return $info;
 	}
 	

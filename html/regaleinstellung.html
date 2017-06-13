@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Maske für Auftragsverwaltung">
+    <meta name="author" content="Daniel Wenz">
+
+    <title>Regalbelegung</title>
+    
+     <!-- Laden der notwendigen Libraries -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
+	<script src="../js/login.js"></script>
+	<script src="../js/regalsetup.js"></script>
+    <script src="../js/product_detail_info.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="../css/regalsetup.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
+    
+  </head>
+  
+  <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+      	 <div class="navbar-header">
+          <a class="navbar-brand" href="produktoverview.html">Produktübersicht</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="dropdown" id="login"> </li>
+            <li><a data-toggle="modal" data-target="#match_bins" href="#"><b>Produkt einlagern</b></a></li>
+            <li class="dropdown" id="setting"></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hier beginnt der Container für den eigentlichen Inhalt unterhalb der Navigationsleite-->
+    <!-- Definition der Navigationsleiste links -->
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="../html/index.html"> <span class="glyphicon glyphicon-home"></span> Dashboard <span class="sr-only">(current)</span></a></li>
+            <li id="add_produkt" style="display:none"><a href="../html/formular_auftrag.html"><span class="glyphicon glyphicon-plus"></span> Produkte</a></li>
+            <li><a href="../html/produktoverview.html"> <span class="glyphicon glyphicon-list"></span> Produktübersicht</a></li>
+            <li><a href="../html/regalbelegung.html"> <span class="glyphicon glyphicon-stats"></span> Regalbelegung</a></li>
+            <li class="active"><a href="#"> <span class="glyphicon glyphicon-cog"></span> Regalsetup</a></li>
+          </ul>
+        </div>
+      
+      <!-- Dashboard -->
+      	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Regaleinstellung</h1>
+      <!-- definition of all single components belonging to the formular -->
+		<div class="row">
+			<div class="col-sm-3 col-md-3">
+				<strong> Anzahl der Regale wählen:</strong>
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<input id="anzahl_regal" name="anzahl_regal" type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="1"/>
+				<span> Anzahl Regale: <span id="anzahl_regal_current">1<br></span></span>
+			</div>
+		</div>
+		<div id="showRegal">      				 
+      	</div>
+      </div>
+     </div>
+     
+
+  </body>
+  </html>  
+  
