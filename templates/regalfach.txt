@@ -3,11 +3,11 @@
 		<label class="control-label">Regalfach {{regalfach}}:</label>
 	</div>
 	<div class="col-sm-3 col-md-3">
-    		<label class="control-label">(u,l)</label>
-    		<input class="form-control" data-id="ul{{regalfach}}" type="number" step="0.01">
+    		<label class="control-label">(x,y)</label>
+    		<input class="form-control abstand" data-id="ul{{regalfach}}" type="number" step="0.01">
   	</div>
  	<div class="col-sm-3 col-md-3">
-    		<label class="control-label">(o,r)</label>
-    		<input class="form-control" data-id="or{{regalfach}}" type="number" step="0.01">
+    		<label class="control-label">(w,h)</label>
+    		<input class="form-control maße" data-id="or{{regalfach}}" type="number" step="0.01">
   	</div>
 </div>

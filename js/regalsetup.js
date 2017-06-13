@@ -1,7 +1,7 @@
 /**
  * @author Daniel
  */
-	
+	var rect = {};
 	$(document).ready(function(){
 		
 		$("#anzahl_regal").slider();
@@ -37,12 +37,26 @@
 		
 	});
 	
-	$(document).on('change','.form-control', function(obj){
-		var id = $(this).data('id');
-		console.log(id);
-		console.log(obj);
-		console.log(obj.target.parentElement.parentElement.parentElement.id);
-		console.log(obj.target.value);
+	$(document).on('change','.abstand', function(obj){
+		$(this).attr('disabled',true);
+		var id = obj.target.parentElement.parentElement.parentElement.id;
+		var distance = obj.target.value;
+		console.log(typeof(distance));
+		console.log(distance);
+		console.log(distance.split("."));
+		var coord = distance.split(".");
+		rect['x'] = coord[0];
+		rect['y'] = coord[1];
+		
+	});
+	
+	$(document).on('change','.maße', function(obj){
+		var id = obj.target.parentElement.parentElement.parentElement.id;
+		var maße = obj.target.value.split(".");
+		rect['width'] = maße[0];
+		rect['height'] = maße[1];
+		
+		$("#svg" + id).append(makeSVG('rect', rect));
 	});
 	
 	function showRegal(slideEvt){
@@ -70,4 +84,12 @@
 		});
 		
 	}
+	
+    function makeSVG(tag, attrs) {
+            var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
+            for (var k in attrs)
+                el.setAttribute(k, attrs[k]);
+            return el;
+	}
+
 
