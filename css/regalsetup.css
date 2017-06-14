@@ -103,21 +103,7 @@ body {
 .anzahl_regalfach{
 	color: #00BFFF
 }
-.outer {
-    display: table;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-.middle {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.inner {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    width: 80%;
+.vertical-align {
+    display: flex;
+    align-items: center;
 }

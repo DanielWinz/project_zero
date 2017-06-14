@@ -1,7 +1,17 @@
 /**
  * @author Daniel
  */
-	var rect = {};
+	var rect = {
+		'stroke-width': 3,
+		'stroke': 'black',
+		'fill' : 'white'
+	};
+	
+	var coord = {
+		'fill' : 'black',
+		'text-anchor': 'middle'
+	};
+	
 	$(document).ready(function(){
 		
 		$("#anzahl_regal").slider();
@@ -38,25 +48,31 @@
 	});
 	
 	$(document).on('change','.abstand', function(obj){
+		
 		$(this).attr('disabled',true);
 		var id = obj.target.parentElement.parentElement.parentElement.id;
-		var distance = obj.target.value;
-		console.log(typeof(distance));
-		console.log(distance);
-		console.log(distance.split("."));
-		var coord = distance.split(".");
-		rect['x'] = coord[0];
-		rect['y'] = coord[1];
+		var dist = obj.target.value.split(".");
+		
+		coord['x1'] = dist[0];
+		coord['y1'] = dist[1];
+		rect['x'] = dist[0];
+		rect['y'] = dist[1];
 		
 	});
 	
 	$(document).on('change','.maße', function(obj){
+		var buchstabe = $(this).data('id').substring(2,4);
 		var id = obj.target.parentElement.parentElement.parentElement.id;
 		var maße = obj.target.value.split(".");
+		
 		rect['width'] = maße[0];
 		rect['height'] = maße[1];
+		coord['x'] = (maße[0]/2);
+		coord['y'] = (maße[1]/2);
+		
 		
 		$("#svg" + id).append(makeSVG('rect', rect));
+		$("#svg" + id).append(makeText(buchstabe, coord));
 	});
 	
 	function showRegal(slideEvt){
@@ -91,5 +107,44 @@
                 el.setAttribute(k, attrs[k]);
             return el;
 	}
+	
+	function makeText(txt,coord){
+		var el= document.createElementNS('http://www.w3.org/2000/svg', 'text');
+		
+                el.setAttribute('x', parseInt(coord['x']) + parseInt((coord['x1'])));
+                el.setAttribute('y', parseInt(coord['y']) + parseInt((coord['y1'])));
+                el.setAttribute('text-anchor', 'middle');
+                
+                console.log(el.getAttribute('x'));
+                console.log(el.getAttribute('y'));
+             el.textContent = txt;
+		return el;
+	}
+	
+	$(document).on('click','.btn-default',function(){
+	  
+	  var id = $(this).data('id');
+	  var svg = document.getElementById('svg' + id);
+      var svgString;
+      if (window.ActiveXObject) {
+        svgString = svg.xml;
+      } else {
+        var oSerializer = new XMLSerializer();
+        svgString = oSerializer.serializeToString(svg);
+      }
+      console.log('Regal' + id + '.svg', 'data:image/svg+xml;utf8,' + svgString);
+      var name = 'Regal' + id + '.svg';
+      var data = 'data:image/svg+xml;utf8,' + svgString;
+      
+      	$.ajax({
+		url: "../php/regaleinstellung.php?name=" + name + "&data=" + data,
+		type: 'GET',
+		success: function(Obj){
+			
+			console.log("works");
+			
+			}
+		});
+	});
 
 
