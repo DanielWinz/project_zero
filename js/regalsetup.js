@@ -125,6 +125,15 @@
 	  
 	  var id = $(this).data('id');
 	  var svg = document.getElementById('svg' + id);
+	  var regalfach = 0;
+	  
+	  $('#svg' + id).children('rect').each(function () {
+	 	console.log($(this));
+	 	regalfach++; 	
+	  });
+	  
+	  console.log(regalfach);
+	  
       var svgString;
       if (window.ActiveXObject) {
         svgString = svg.xml;
@@ -133,11 +142,10 @@
         svgString = oSerializer.serializeToString(svg);
       }
       console.log('Regal' + id + '.svg', 'data:image/svg+xml;utf8,' + svgString);
-      var name = 'Regal' + id + '.svg';
       var data = 'data:image/svg+xml;utf8,' + svgString;
       
       	$.ajax({
-		url: "../php/regaleinstellung.php?name=" + name + "&data=" + data,
+		url: "../php/regaleinstellung.php?name=" + id + "&data=" + data + "&rf=" + regalfach,
 		type: 'GET',
 		success: function(Obj){
 			

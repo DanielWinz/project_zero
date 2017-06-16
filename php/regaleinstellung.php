@@ -2,9 +2,10 @@
     
     include ("../includes/mdb_lib.inc.php");
 	
-	$name = $_GET['name'];
+	$name = intval($_GET['name']);
 	$data = $_GET['data'];
+	$regalfach = intval($_GET['rf']);
 	
-	echo $name . $data;
+	change_regal($name,$regalfach,$data);
     
 ?>

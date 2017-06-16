@@ -5,6 +5,7 @@
  * Die dafür zuständigen .php-Dateien sind mdb_fetch_empty_products.php und commit_to_bin.php
  */
 	var leer = "";
+	var myObj;
 	
 	$.ajax({
 		url: "../php/mdb_fetch_empty_products.php",
@@ -23,14 +24,14 @@
  */    
     function create_empty_products(obj){
     	console.log(obj);
+    	myObj = obj;
     	leer += "<form id='book_in' method='post'><div class ='form-group'> <b> Bitte wählen Sie die Produkte, die Sie in ein Regalfach einbuchen möchten </b>";
       	var length = 0;
       	
       	for(key in obj){
       		length++;
       	}
-        
-        console.log(length);
+       
         for(i = 0; i < (length-1); i++){
 		
 	    leer += 
@@ -41,28 +42,26 @@
 		
 		leer += 
 		"<label>Regal wählen:</label>"+
-		"<select class='form-control' id='regal' name='regal'>";
+		"<select class='form-control' id='regalnummer' name='regalnummer'>";
 		
-		var regal = obj['info']['regal'];
-		console.log(regal);
+		var regalfach = obj['info'];
 		
-		for(a=0; a < regal ; a++){
+		for(a=0; a < regalfach.length ; a++){
 			leer+= "<option>" + (a+1) + "</option>";
 		}
 		
-		leer += "</select></div>";
+		leer += "</select>";
 		
 		leer += 
-		"<label>Regalfach wählen:</label>"+
-		"<select class='form-control' id='regalfach' name='regalfach'>";
+		"<label>Regalfach wählen:</label>";
 		
-		var regalfach = obj['info']['regalfach'];
+		leer += "<select class='form-control' id='regalfach' name='regalfach'>";
+			
+			for(i = 0; i < regalfach[0] ; i++)
+				leer+= "<option>" + String.fromCharCode(65 + i) + "</option>";
 		
-		for(a=0; a < regalfach ; a++){
-			leer+= "<option>" + String.fromCharCode(65 + a) + "</option>";
-		}
+		leer += "</select></div></div>";	
 		
-        leer += "</select></div>";
         
         if(obj.length == 0)
 		leer = "<b> Aktuell sind alle Produkte einem Regalfach zugeordnet </b>";
@@ -71,6 +70,19 @@
     }
     
     $(document).ready(function(){
+    	
+    	$("#regalnummer").on('change', function(){
+    		var inhalt = "";
+    		var pos = $(this)[0].value;
+    		
+    		for(var a = 0; a < myObj['info'][pos-1]; a++){
+    			inhalt += "<option>" + String.fromCharCode(65 + a) + "</option>";
+    		}
+    		
+    		$("#regalfach")[0].innerHTML = inhalt;
+    	
+    	});
+    		
     	$("#submit_product").click(function(){
     		$("#book_in").attr('action',"../php/commit_to_bin.php");
     		$("#book_in").submit();

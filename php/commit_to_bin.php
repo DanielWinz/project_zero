@@ -8,8 +8,8 @@
 	include("../includes/mdb_lib.inc.php");
 
 	// fetching data from the formular
-	if(isset($_POST['regal']) && isset($_POST['regalfach'])){
-		$regal = $_POST["regal"];
+	if(isset($_POST['regalnummer']) && isset($_POST['regalfach'])){
+		$regal = $_POST["regalnummer"]-1;
 		$regalfach = $_POST["regalfach"];	
 	}
 	

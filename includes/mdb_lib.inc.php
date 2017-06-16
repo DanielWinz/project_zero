@@ -15,38 +15,39 @@
     $orders = $db->orders;
 	$picture = $db->picture_info;
 	
-	function change_regal($regal,$regalfach){
+	function change_regal($regal,$regalfach,$pfad){
 		global $bins,$db;
-		$counter = 0;
-		$bins->drop();
-		$bins = $db -> regal;
 		
-		while($counter < $regal){
-			$document = array(
-			"regal" => ($counter + 1));
+		if($regal == 0){
+			$bins->drop();
+			$bins = $db -> regal;	
+		}
+		
+		$document = array(
+			"regal" => ($regal),
+			"bildpfad" => $pfad,
+			"anzahl" => $regalfach);
 			
 			for($a=0; $a < $regalfach; $a++){
 				$document[chr(65+$a)] = array();	
 			}
 		
-			$bins->insertOne($document);
-			$counter++;	
-		}
-		
+			$bins->insertOne($document);	
+	
 	}
 	
 	function getRegalSetup(){
 		global $bins;
 		
 		$info = array();
-		$info['regal'] = $bins->count();
-		$res = $bins->findOne(
-		array('regal' => 1));
+
+		$res = $bins->find();
 		$counter = 0;
+		
 		foreach($res as $doc){
-			$counter++;
+			$info[] = $doc['anzahl'];
 		}
-		$info['regalfach'] = $counter-2;
+
 		return $info;
 	}
 	
