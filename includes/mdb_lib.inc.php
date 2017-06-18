@@ -51,6 +51,15 @@
 		return $info;
 	}
 	
+	function getEinRegal($regalnummer){
+		global $bins;
+		
+		$res = $bins->findOne(
+		array('regal' => $regalnummer));
+		
+		return $res;
+	}
+	
 	function getProdukteInRegalen(){
 		global $bins;
 		$info = getRegalSetup();

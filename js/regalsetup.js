@@ -142,7 +142,7 @@
         svgString = oSerializer.serializeToString(svg);
       }
       console.log('Regal' + id + '.svg', 'data:image/svg+xml;utf8,' + svgString);
-      var data = 'data:image/svg+xml;utf8,' + svgString;
+      var data = svgString;
       
       	$.ajax({
 		url: "../php/regaleinstellung.php?name=" + id + "&data=" + data + "&rf=" + regalfach,

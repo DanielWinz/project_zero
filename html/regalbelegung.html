@@ -16,14 +16,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://raw.githubusercontent.com/davidjbradshaw/imagemap-resizer/master/js/imageMapResizer.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
 	<script src="../js/regal_content.js"></script>
 	<script src="../js/produkt_umbuchen.js"></script>
 	<script src="../js/login.js"></script>
 	<script src="../js/settings.js"></script>
-	<script src="../js/mapResize.js"></script>
     <script src="../js/product_detail_info.js"></script>
     
     <!-- Custom styles for this template -->
@@ -66,20 +64,22 @@
       <!-- Dashboard -->
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Regalübersicht</h1>
-
+		  <ul class="nav nav-tabs" id="anzahl_regal">
+		</ul>
 
       <!-- definition of all single components belonging to the formular -->
       <div class="col-xs-12 col-sm-9 placeholder">
-      	<div class="row placeholders">		  
-      	<img src="../img/regal_named.png" class="img-thumbnail" width="250" usemap="#regal">
-      	<map id="regal" name="regal">
-      		<area shape="rect" alt="" title="" coords="10,17,176,71" href="#A" target="" />
-      		<area shape="rect" alt="" title="" coords="9,88,61,137" href="#B" target="" />
-      		<area shape="rect" alt="" title="" coords="71,86,178,138" href="#C" target="" />
-      		<area shape="rect" alt="" title="" coords="130,151,247,204" href="#D" target="" />
-      		<area shape="rect" alt="" title="" coords="9,221,123,284" href="#E" target="" />
-      		<area shape="rect" alt="" title="" coords="190,218,244,344" href="#F" target="" />
-      	</map>
+      	<div class="row">
+      		
+      		<!-- Darstellen des Regals als SVG und Wählen des Regals via Dropdown -->		  
+      		<div class="col-sm-6 col-md-6" id="regalbild">
+				
+      		</div>
+      		
+      		<!-- Darstellen der Infos bzgl. des Regals -->
+      		<div class="col-sm-6 col-md-6" id="regalinfo">
+      			
+      		</div>
       	</div>
       	<div id="script_content">
       	</div>

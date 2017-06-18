@@ -1,7 +1,11 @@
 <?php
     include("../includes/mdb_lib.inc.php");
-		
-	if(isset($_POST['anzahl_regal']) && isset($_POST['anzahl_regalfach'])){
-		change_regal($_POST['anzahl_regal'], $_POST['anzahl_regalfach']);
-	}
+	
+	global $bins;
+	
+	$id = intval($_GET['id']);
+	$info['info'] = getRegalSetup();
+	$info['regal'] = getEinRegal($id); 
+	error_log($info,0);
+	echo json_encode($info);
 ?>
