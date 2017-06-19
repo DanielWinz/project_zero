@@ -120,11 +120,13 @@
   		counter = 0;
   		
    		$("h3").each(function(index) {
-   			console.log(index);
-			console.log(keys[counter]);
+   			console.log($(this));
+   			console.log("Das ist der Counterwert" + counter);
+   			console.log("das ist der Indexwert" + index);
+			console.log("das ist der buchstabe" + keys[counter]);
 			jQuery('<span/>',{
 				class: 'glyphicon glyphicon-edit',
-				'data-id': keys[index-1],
+				'data-id': aktuelles_regal + "," + keys[counter],
 				style: "color:green; float:right",
 				'data-target': '#produkt_umbuchen',
 				'data-toggle': 'modal'
@@ -132,6 +134,8 @@
 			
 			counter++;
 		 });
+		 
+		 counter = 0;
 
   	}
   	

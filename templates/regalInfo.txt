@@ -1,5 +1,5 @@
 <div class="alert alert-info">
-	<h3>Übersicht über Regal: {{regalnummer}}</h3>
+	<h4>Übersicht über Regal: {{regalnummer}}</h4>
 	<ul>
 	<li> Anzahl Regalfächer: {{regalfächer}} </li>
 	<li id="add"> Anzahl Produkte: {{anzahlProdukte}} </li>

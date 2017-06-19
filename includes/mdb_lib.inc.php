@@ -110,6 +110,7 @@
 	}
     
     function update_bin($regal,$regalfach,$produktname){
+    	
     	global $bins;
 		error_log($regal,0);
     	error_log($regalfach,0);
@@ -146,18 +147,16 @@
 		
 	}
 
-	function delete_from_one_bin($name,$bin_id){
+	function delete_from_one_bin($regal,$regalfach,$name){
 		
 		global $bins;
-		
-		$del = $bins->findOne(
-		array('contents' => $name,
-			 'bin_id' => $bin_id)
-		);
+
+		error_log("Aus Regal: " . $regal,0);
+		error_log("Aus Regalfach: " . $regalfach,0);
 		
 		$bins->updateOne(
-			array('bin_id' => $bin_id),
-			array('$pull' => array('contents' => $name)),
+			array('regal' => intval($regal)),
+			array('$pull' => array($regalfach => $name)),
 			array('multiple' => true));	
 		
 		
