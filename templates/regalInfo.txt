@@ -2,5 +2,5 @@
 	<h3>Übersicht über Regal: {{regalnummer}}</h3>
 	<ul>
 	<li> Anzahl Regalfächer: {{regalfächer}} </li>
-	<li> Anzahl Produkte: {{anzahlProdukte}} </li>
+	<li id="add"> Anzahl Produkte: {{anzahlProdukte}} </li>
 </div>

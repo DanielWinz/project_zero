@@ -36,6 +36,7 @@
 	
 	}
 	
+	
 	function getRegalSetup(){
 		global $bins;
 		
@@ -62,15 +63,20 @@
 	
 	function getProdukteInRegalen(){
 		global $bins;
-		$info = getRegalSetup();
-		$result = $bins -> find();
 		
+		$result = $bins -> find();
+		$li = array();
+	 	$zaehler = 0;
 		foreach($result as $regal){
-			foreach($regal['regalfach'] as $regalfach){
-			$produktliste[] = ($regal[$regalfach]);
-			}	
+			for ($a  = 0; $a < $regal['anzahl'] ; $a++){
+					$zaehler += count($regal[chr(65 + $a)]);
+				$li[$regal['regal']][chr(65 + $a)] = count($regal[chr(65 + $a)]); 
+				
+			}
+		$li['summe'][] = $zaehler;
+		$zaehler = 0;
 		}
-		return $produktliste;
+		return $li;
 	}
     
     function getNextSequence($name){

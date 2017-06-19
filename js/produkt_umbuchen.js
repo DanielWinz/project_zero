@@ -15,6 +15,7 @@
 		regalfach = $(this).data('id');
 		queryString = "?regal=" + regalfach;
 		$("#button_umbuchen").attr('data-id',regalfach);
+		console.log(queryString);
 		
 		$.ajax({
 		url: "../php/fetch_ein_regal_content.php" + queryString,
