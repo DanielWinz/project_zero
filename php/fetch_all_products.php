@@ -29,19 +29,28 @@
 	//storing cursor values in the just created array, matching keywords to column values		
 	foreach ($cursor as $document){ 			
 		
-		$data['auftragsnummer'][] = $document["_id"];
 		$data['produktname'][] = $document["name"];
 		$data['weight'][] = $document["weight"];
 		$data['height'][] = $document["dimensions"][0];
 		$data['width'][] = $document["dimensions"][1];
 		$data['length'][] = $document["dimensions"][2];
 		
-		$result = $bins->findOne(
-		array('contents' => $document["name"]),
-		array()
-		);
+		$info = getRegalSetup();
+		for($a = 0; $a < count($info); $a++){
+			for($b = 0; $b < $info[$a]; $b++){
+			$letter = chr(65 + $b);
+
+			$res = $bins->findOne( 
+				array( "regal" => $a,
+				$letter => $document['name'])
+				);
+				
+			if($res['regal'] !== null)
+				$data['regal'][$document['name']][] = $res['regal'] . $letter;
+			
+		}
 		
-		$data['regal'][] = $result["bin_id"];
+		}
 		
 	}
 

@@ -25,12 +25,12 @@
 	function create_modal_content(myObj){
 		console.log("erstellen");
         $("#del_button").attr('data-id', myObj.produktname);
-        
+        console.log(myObj);
 		$.get("../templates/modal_produkt_info.txt", function(template){
 			
 			if(myObj.bildpfad == null)
 				myObj.bildpfad = "../img/no_img.png";
-				
+		
 			var rendered = Mustache.render(template,
 				{
 					
@@ -41,7 +41,7 @@
 				 height: myObj.height,
 				 weight: myObj.weight,
 				 regal: myObj.regal,
-				 description: myObj.description
+				 description: myObj.description,
 			 
 				 });
 				 

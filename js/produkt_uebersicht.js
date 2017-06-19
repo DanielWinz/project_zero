@@ -13,6 +13,7 @@
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
+			console.log(myObj);
             create_table(myObj);
 		
 		}
@@ -25,8 +26,8 @@
     	
         for(i = 0; i < obj.produktname.length; i++){
         
-	        if(obj.regal[i] == null){
-	        	obj.regal[i] = "nicht zugeordnet";
+	        if(obj.regal[obj.produktname[i]] == null){
+	        	obj.regal[obj.produktname[i]] = "nicht zugeordnet";
 	        	counter++;
 	        }
         
@@ -58,7 +59,7 @@
         var td_regal = document.createElement('td');
         var anchor2 = document.createElement('a');
         anchor2.setAttribute('href', "regalbelegung.html");
-        anchor2.innerHTML = obj.regal[i];
+        anchor2.innerHTML = obj.regal[obj.produktname[i]];
         td_regal.appendChild(anchor2);
         
         tr.appendChild(td_product);

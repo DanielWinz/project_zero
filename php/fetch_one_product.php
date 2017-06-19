@@ -25,12 +25,22 @@
 		"length" => $cursor["dimensions"][2],
 		"description" => $cursor['description']);
 		
-		$result = $bins->findOne(
-		array('contents' => $produktname),
-		array()
-		);
-	
-	$data['regal'] = $result["bin_id"];
+		$info = getRegalSetup();
+		for($a = 0; $a < count($info); $a++){
+			for($b = 0; $b < $info[$a]; $b++){
+			$letter = chr(65 + $b);
+
+			$res = $bins->findOne( 
+				array( "regal" => $a,
+				$letter => $cursor['name'])
+				);
+				
+			if($res['regal'] !== null)
+				$data['regal'][] = $res['regal'] . $letter;
+			
+		}
+		
+		}
 	
 		$result2 = $picture->findOne(
 		array('name' =>  new \MongoDB\BSON\Regex($produktname,'i')));
