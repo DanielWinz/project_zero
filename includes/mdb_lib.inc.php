@@ -61,22 +61,26 @@
 		return $res;
 	}
 	
+	function multipleRegale(){
+		
+	}
+	
 	function getProdukteInRegalen(){
 		global $bins;
 		
 		$result = $bins -> find();
 		$li = array();
-	 	$zaehler = 0;
+		
 		foreach($result as $regal){
-			for ($a  = 0; $a < $regal['anzahl'] ; $a++){
-					$zaehler += count($regal[chr(65 + $a)]);
-				$li[$regal['regal']][chr(65 + $a)] = count($regal[chr(65 + $a)]); 
-				
+			for($a=0; $a < $regal['anzahl']; $a++){
+				foreach($regal[chr(65 + $a)] as $name){
+						$li[$regal['regal'] . chr(65 + $a)][] = $name;
+
+				}
 			}
-		$li['summe'][] = $zaehler;
-		$zaehler = 0;
 		}
-		return $li;
+		
+	return $li;
 	}
     
     function getNextSequence($name){
@@ -162,7 +166,7 @@
 		
 	}
    
-    function create_order($size_id,$status,$contents){
+    function create_order($size_id,$status,$contents,$regalfach){
       	
 		global $orders;
 			
@@ -170,7 +174,8 @@
       	"auftragsnummer" => getNextSequence("auftragsid"),
 		"size_id" => $size_id,
 		"status" => $status,
-		"contents" => $contents
+		"contents" => $contents,
+		"regalfach" => $regalfach
 		);
       	$orders -> insertOne($document);
       }

@@ -13,6 +13,7 @@ var text_in_queue = "";
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
+			console.log(myObj);
 			create_in_process(myObj);
 			create_in_queue(myObj);
 		
@@ -27,7 +28,7 @@ var text_in_queue = "";
 		text_in_process +=  "<tr>" +
                     		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[1].contents[a] + "'" + 
                     		"data-target='#product_info' class='product_info_content'>" + myObj[1].contents[a] + "</td>" + 
-                    		"<td>" + myObj[1].regal[a] + "</td>" +  
+                    		"<td>" + myObj[1].regalfach[a] + "</td>" +  
                 			"</tr>";
 		}
 		
@@ -50,7 +51,7 @@ var text_in_queue = "";
 		text_in_queue +=  "<tr>" +
                     		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[0].contents[0][a] + "'" + 
                     		"data-target='#product_info' class='product_info_content'>" + myObj[0].contents[0][a] + "</td>" + 
-                    		"<td>" + myObj[0].regal[0][a] + "</td>" +  
+                    		"<td>" + myObj[0].regalfach[0][a] + "</td>" +  
                 			"</tr>";
 		}
 		

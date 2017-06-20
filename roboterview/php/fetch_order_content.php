@@ -3,7 +3,7 @@
 	 * This File is for fetching data from the database and filling a pre-defined template
 	 */
 	 
-	include ("../../includes/mdb_lib.inc.php");
+	include ("../includes/mdb_lib.inc.php");
 	
 	// Define Query, Save results in an associative array
 	global $orders;
@@ -23,6 +23,7 @@
 			"status" => $auftrag['status'],
 			"ablage" => $auftrag["size_id"],
 			"contents" => $auftrag["contents"],
+			"regalfach" => $auftrag['regalfach']
 			);
 			
 	$length = sizeof($auftrag["contents"]);

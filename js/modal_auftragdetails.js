@@ -17,6 +17,7 @@
 		success: function(Obj){
 			
 			 var myObj = JSON.parse(Obj);
+			 console.log(myObj);
 			 document.getElementById("content_order_details").innerHTML =
 	         create_order_content(myObj);
 			
@@ -59,7 +60,7 @@
        	text_order += 
         			"<tr>" +
                     "<td>" + myObj.contents[a] + "</td>" + 
-                    "<td><a href='../html/regalbelegung.html'>" + myObj.regal[a] + "</a></td>" +  
+                    "<td><a href='../html/regalbelegung.html'>" + myObj.regalfach[a] + "</a></td>" +  
                 	"</tr>";
         }
          	

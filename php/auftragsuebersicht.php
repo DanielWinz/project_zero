@@ -15,11 +15,7 @@
    	   $data[0]['auftragsnummer'][] = $doc['auftragsnummer'];
 	   $data[0]['size_id'][] = $doc['size_id'];
 	   $data[0]['contents'][] = $doc['contents'];
-	   
-	   		foreach($doc['contents'] as $name){
-	   			$res = $bins->findOne(array('contents' => $name));
-				$data[0]['regal'][] = $res['bin_id'];
-	   		}
+	   $data[0]['regalfach'][] = $doc['regalfach'];
 	    
    }
 
@@ -27,11 +23,7 @@
    	   $data[1]['auftragsnummer'] = $doc['auftragsnummer'];
 	   $data[1]['size_id'] = $doc['size_id'];
 	   $data[1]['contents'] = $doc['contents'];
-	   
-	  		foreach($doc['contents'] as $name){
-	   			$res = $bins->findOne(array('contents' => $name));
-				$data[1]['regal'][] = $res['bin_id'];
-	   		}
+	   $data[1]['regalfach'] = $doc['regalfach'];
 	    
    }
    

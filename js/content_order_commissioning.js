@@ -8,10 +8,11 @@
 	var speicher = "";
 	
 	$.ajax({
-		url: "../php/mdb_fetch_stored_products.php",
+		url: "../php/test.php",
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
+			console.log(myObj);
             document.getElementById("content_order_commissioning").innerHTML =
             create_stored_products(myObj);
 		}
@@ -24,15 +25,18 @@
     function create_stored_products(obj){
     	
     	speicher += "<form id='create_corder' method='post'> <div class='form-group'><b> Bitte wählen Sie die zu kommissionierenden Produkte </b>";
-        for(i = 0; i < obj.length; i++){
-        	for(a = 0; a < obj[i].length; a++){
+        for(var keys in obj){
+        	
+        	speicher += "<h5 class='sub-header'> Produkte aus Regalfach: <strong>" + keys + "</strong></h5>";
+        	for(a = 0; a < obj[keys].length; a++){
 
 	    		speicher += 
 			  			"<div class='checkbox'> " +
-			  			"<label> <input type='checkbox' name='product[]' id='product' value='" + obj[i][a] + "'>" + 
-			  			obj[i][a] + "</label> </div>";
+			  			"<label> <input type='checkbox' name='product[]' id='product' value='" + obj[keys][a] + "," + keys + "'>" + 
+			  			obj[keys][a] + "</label> </div>";
 					
 			}
+			speicher += "<br>";
 		}
 		
 		speicher +=

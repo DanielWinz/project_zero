@@ -23,6 +23,7 @@
 			"status" => $auftrag['status'],
 			"ablage" => $auftrag["size_id"],
 			"contents" => $auftrag["contents"],
+			"regalfach" => $auftrag['regalfach']
 			);
 			
 	$length = sizeof($auftrag["contents"]);
