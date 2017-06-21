@@ -20,7 +20,7 @@
    			 aktuelles_regal = $(this).attr('id');
    			 
    			$.ajax({
-					url: "../php/regalSetup.php?id=" + aktuelles_regal,
+					url: "../php/regalsetup.php?id=" + aktuelles_regal,
 					success: function(Obj){
 						
 						var myObj = JSON.parse(Obj);
@@ -37,7 +37,7 @@
 	});
 	
 	$.ajax({
-		url: "../php/regalSetup.php?id=" + aktuelles_regal,
+		url: "../php/regalsetup.php?id=" + aktuelles_regal,
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
@@ -67,7 +67,7 @@
 				 {
 				 regalnummer: myObj['regal']['regal'] + 1,
 				 regalfächer: myObj['regal']['anzahl'],
-				 anzahlProdukte: myObj['produkte']['summe'][aktuelles_regal],
+				 
 				 });
 				 
 			$("#regalinfo").html(rendered);

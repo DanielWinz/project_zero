@@ -21,10 +21,6 @@
 	if(isset($modus) && $modus === 'piro'){
 		$_SESSION['modus'] = 'piro';
 	}
-	
-	if(isset($modus) && $modus === 'computer'){
-		$_SESSION['modus'] = 'computer';
-	}
 		
 	header("Location: http://192.168.1.117/project_zero/html/index.html");
 		

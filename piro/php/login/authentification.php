@@ -9,8 +9,13 @@
 		echo "piro";
 	}
 	
-	if( ($_SESSION['username'] === 'admin') && ($_SESSION['modus'] === 'computer') ){
+	else if( ($_SESSION['username'] === 'admin')){
+		error_log("in erster",0);
 		echo "computer";
+	}
+	
+	else {
+		echo FALSE;
 	}
 	
 
