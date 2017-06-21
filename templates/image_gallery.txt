@@ -7,5 +7,5 @@
           <p>{{name}}</p>
         </div>
     </a>    
-    </div>
   </div>
+</div>

@@ -8,7 +8,7 @@
 	var speicher = "";
 	
 	$.ajax({
-		url: "../php/test.php",
+		url: "../php/produkteKomAuftrag.php",
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);

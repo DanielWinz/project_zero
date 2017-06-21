@@ -1,5 +1,0 @@
-<div class='col-xs-6 col-sm-4 placeholder'>
-<img src='../img/ur5.jpg' "width='150' height='150' class='img-responsive' alt='Generic placeholder thumbnail'>
-<h4> Auftrag Nr. {{auftragsnummer_header}} </h4>
-<a data-toggle='modal' class='order_details' data-target='#order_details' href='#order_details'
-data-id='{{auftragsnummer_id}}'><span class='text-muted'>Details</span></a></div>

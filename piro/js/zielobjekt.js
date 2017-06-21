@@ -12,7 +12,7 @@ function createZielobjekt(name){
 			$.get("../templates/produkt_info.txt", function(template){
 			console.log(myObj);
 			if(myObj.bildpfad == null)
-				myObj.bildpfad = "../img/no_img.png";
+				myObj.bildpfad = "../../img/no_img.png";
 		
 			var rendered = Mustache.render(template,
 				{
