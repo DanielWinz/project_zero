@@ -22,7 +22,7 @@ function animate_progress_bar(status){
 				break;
 		
 		case 3: width = 70;
-				txt = width + " % - Verbindung hergestellt";
+				txt = width + " % - Objekt wird gegriffen";
 				break;
 		
 		case 4: width = 85;
