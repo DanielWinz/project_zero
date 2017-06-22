@@ -1,3 +1,4 @@
+ var counter = 0;
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
@@ -28,27 +29,40 @@ $(document).ready(function(){
     name : '/depthsense/image_raw/compressed',
     messageType : 'sensor_msgs/CompressedImage'
      });
-  var counter = 0;
-  listener.subscribe(function(message) {
-  	counter++;
-  	create_image(message);
-  	setTimeout(create_image,5000);
-  	console.log(message.format);
-  	console.log(message.data);
-  	
-  	if(counter == 10){
-  		listener.unsubscribe();
-  	}
+  
+  listener.subscribe(
 
-    });
-});
+
+  			function(message)
+  			 {
+  			 	
+  			 	  	if(counter == 10)
+  						listener.unsubscribe();
+  				create_image(message);
+
+			  });
+			  
+	});
 
 
 function create_image(msg){
 	var image = new Image();
-	image.height = 500;
-	image.width = 500;
 	image.src = 'data:image/jpg;base64,' + msg.data;
-	$("#container").append(image);
+	image.width = 200;
+	image.height = 200;
+	$("#container").html(image);
+	
+	console.log(getBarcodeFromImage(image));
+	
+	if(getBarcodeFromImage(image))
+		counter = 10;
+	
+	
+	
 	
 }
+
+
+
+
+
