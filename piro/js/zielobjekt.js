@@ -5,7 +5,7 @@ function createZielobjekt(name){
 	console.log("produktname" + name);
 	var queryString = "?name=" + name;
 	$.ajax({
-		url: "../../php/fetch_one_product.php" + queryString,
+		url: "../php/fetch_one_product.php" + queryString,
 		type: "GET",
 		success: function(Obj){
 			var myObj = JSON.parse(Obj);
