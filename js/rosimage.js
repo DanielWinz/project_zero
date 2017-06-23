@@ -1,4 +1,6 @@
  var counter = 0;
+ var msg;
+ 
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
@@ -7,6 +9,8 @@ $(document).ready(function(){
     // adding a listener for the connection event
   ros.on('connection', function() {
   	console.log("in connection");
+  //	for(var i=0; i < 10 ; i++)
+  //	validateImage();
 
   });
   
@@ -34,33 +38,70 @@ $(document).ready(function(){
 
 
   			function(message)
-  			 {
-  			 	
-  			 	  	if(counter == 10)
-  						listener.unsubscribe();
+  			 {			
+  			 	msg = message;
   				create_image(message);
-
 			  });
 			  
 	});
 
-
-function create_image(msg){
+function validateBarcode(){
+	
+	for(var i = 0; i < 10; i++){
+	
 	var image = new Image();
 	image.src = 'data:image/jpg;base64,' + msg.data;
-	image.width = 200;
-	image.height = 200;
+	image.width = 1280;
+	image.height = 720;
+
+	$("#evaluate").append(image);
+		
+	Quagga.decodeSingle({
+    decoder: {
+        readers: ["code_128_reader","ean_reader"] // List of active readers
+    },
+    locate: true, // try to locate the barcode in the image
+    src: 'data:image/jpg;base64,' + msg.data
+	}, function(result){
+    if(result.codeResult) {
+        console.log("result", result.codeResult.code);
+    } else {
+        console.log("not detected");
+    }
+		});
+	}
+}
+function create_image(msg){
+	
+	var image = new Image();
+	image.src = 'data:image/jpg;base64,' + msg.data;
+	image.width = 1000;
+	image.height = 500;
 	$("#container").html(image);
 	
-	console.log(getBarcodeFromImage(image));
-	
-	if(getBarcodeFromImage(image))
-		counter = 10;
-	
-	
-	
+	//validateImage();
 	
 }
+
+function validateImage(){
+	
+	Quagga.decodeSingle({
+    decoder: {
+        readers: ["code_128_reader","ean_reader"] // List of active readers
+    },
+    locate: false, // try to locate the barcode in the image
+    src: '../img/ean13.jpg'
+	}, function(result){
+    if(result.codeResult) {
+        console.log("result", result.codeResult.code);
+    } else {
+        console.log("not detected");
+    }
+	});
+	
+}
+
+  				
 
 
 
