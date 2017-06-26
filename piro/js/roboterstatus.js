@@ -43,7 +43,7 @@ function animate_progress_bar(status){
 		break;
 		
 		case 7: width = 25;
-				txt = width + " % - Verbindung hergestellt;
+				txt = width + " % - Verbindung hergestellt";
 				$(".progress-bar-warning").removeClass("hidden");
 				break;
 

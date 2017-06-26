@@ -1,9 +1,9 @@
 <div class='container-fluid'>
 	<div class='row' >
-		<div class='col-sm-3'>
+		<div class='col-sm-6 col-md-6'>
 		<img src='{{bildpfad}}' width = '300' class='img-responsive img-thumbnail'>
 		</div> 
-        <div class='col-sm-3' style='text-align:left'>
+        <div class='col-sm-6 col-md-6' style='text-align:left'>
         <strong> Produkt: </strong> {{produktname}} <br><br>
         <strong> Maße (in m): </strong> {{length}}  x  {{width}}  x  {{height}} <br><br>
         <strong> Gewicht (in kg): </strong> {{weight}} <br>

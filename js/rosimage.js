@@ -6,11 +6,11 @@ $(document).ready(function(){
   var ros = new ROSLIB.Ros({
     url : 'ws:192.168.1.117:9090/'
   });
+  
     // adding a listener for the connection event
   ros.on('connection', function() {
   	console.log("in connection");
-  //	for(var i=0; i < 10 ; i++)
-  //	validateImage();
+
 
   });
   
@@ -79,7 +79,6 @@ function create_image(msg){
 	image.height = 500;
 	$("#container").html(image);
 	
-	//validateImage();
 	
 }
 

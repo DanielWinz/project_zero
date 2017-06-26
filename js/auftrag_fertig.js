@@ -1,5 +1,8 @@
 /**
  * @author Daniel
+ * In dieser .js wird der Inhalt des Modals eines fertigen Auftrags geladen.
+ * Nachdem dieser bearbeitet wurde, erscheint ein Modal über den abgelieferten Auftrag.
+ * Die dafür zuständige .php-Datei ist fetch_order_content.php
  */
 
 function set_content_order_finished(msg){

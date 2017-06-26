@@ -12,8 +12,9 @@ var text_in_done = "";
 	$.ajax({
 		url: "../php/auftragsuebersicht.php",
 		success: function(Obj){
-			
+	
 			var myObj = JSON.parse(Obj);
+			console.log(myObj);
 			create_in_process(myObj);
 			create_in_queue(myObj);
 			create_in_done(myObj);
@@ -23,13 +24,13 @@ var text_in_done = "";
 	
 	function create_in_process(myObj){
 
-	  if(typeof(myObj[1]) !== 'undefined' && typeof(myObj[1].regal != 'undefined')){	
-		for(var a = 0; a < myObj[1].regal.length; a++){
+	  if(typeof(myObj[1]) !== 'undefined' && typeof(myObj[1].regalfach != 'undefined')){	
+		for(var a = 0; a < myObj[1].regalfach.length; a++){
 			
 		text_in_process +=  "<tr>" +
                     		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[1].contents[a] + "'" + 
                     		"data-target='#product_info' class='product_info_content'>" + myObj[1].contents[a] + "</td>" + 
-                    		"<td><a href='../html/regalbelegung.html'>" + myObj[1].regal[a] + "</td>" +  
+                    		"<td><a href='../html/regalbelegung.html'>" + myObj[1].regalfach[a] + "</td>" +  
                 			"</tr>";
 		}
 		
@@ -88,7 +89,7 @@ var text_in_done = "";
 		text_in_done +=  "<div class='table-responsive'> <table class='table table-striped' id='beendet'> <thead>"
                    		+  "<tr> <th>Auftragsnummer</th> <th>Produkte</th> <th>Ablagefach</th> </tr> </thead>"
                    		+  "<tbody>";
-        
+        if(typeof(myObj[2]) !== 'undefined' && typeof(myObj[2].regalfach != 'undefined')){
         for(var a = 0; a < 5; a++){
         
         text_in_done +=
@@ -114,5 +115,6 @@ var text_in_done = "";
         }
         
         text_in_done += "</tr></thead></tbody>";
-        $("#in_done").append(text_in_done);		
+        $("#in_done").append(text_in_done);
+        }		
 	}
