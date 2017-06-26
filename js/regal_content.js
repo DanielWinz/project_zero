@@ -57,7 +57,7 @@
 			};
 			
 			$("#regalbild").html( myObj['regal']['bildpfad']);
-			$("#anzahl_regal").append(inhalt);
+			$("#anzahl_regal").html(inhalt);
 			$("#anzahl_regal").children().first().attr("class","active");
 			
 			

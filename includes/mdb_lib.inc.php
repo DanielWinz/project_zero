@@ -61,9 +61,6 @@
 		return $res;
 	}
 	
-	function multipleRegale(){
-		
-	}
 	
 	function getProdukteInRegalen(){
 		global $bins;

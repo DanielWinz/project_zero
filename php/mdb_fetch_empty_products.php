@@ -13,7 +13,11 @@
 
 	$data = array();
 	
-	$cursor = $test_collection->find();
+	$cursor = $test_collection->find(
+	array(),
+	array(
+	'sort' => array('name' => -1))
+	);
 	
 	foreach($cursor as $document){
 		

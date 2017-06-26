@@ -24,6 +24,14 @@ $(document).ready(function(){
         
     });
     
+    $.ajax({
+    	url: "../php/getRegalSetup.php",
+    	success: function(Obj){
+    		var obj = JSON.parse(Obj);
+    		setRegalEinstellungen(obj);
+    	}
+    });
+    
     // If the input of the productname changes, we wanna check if the product is already in the database
     $("#pn").change(function() {
     
@@ -81,6 +89,7 @@ $(document).ready(function(){
 	
   			$("#pname").removeClass('hidden');
   			$("#regal").removeClass('hidden');
+  			$("#regalfach").removeClass('hidden');
   			    
   			$("#smbutton").removeClass('hidden');
   			$("#sm_button").attr('value','Regalfach zuordnen');  
@@ -88,8 +97,7 @@ $(document).ready(function(){
 
   			$("#send_content").attr('action', '../php/db_transfer.php?s=1');
   			
-  			}
-  			
+  			}  			
   	function orderReady(status){
   		
   			var decider;
@@ -104,7 +112,7 @@ $(document).ready(function(){
   			$("#change_bin").removeClass('hidden');
   			$("#change_bin").click(function(){
   				$("#change_bin").addClass('hidden');
-  				$("#regal").removeClass('hidden');
+  				$("#regalfach").removeClass('hidden');
   				
   				$("#smbutton").removeClass('hidden');  
   			    $("#sm_button").removeAttr('disabled');
@@ -112,5 +120,36 @@ $(document).ready(function(){
   			    $("#send_content").attr('action', '../php/db_transfer.php?s=1&d=2');
   			});
   			
+  	}
+  	
+  	function setRegalEinstellungen(myObj){
+  			
+  			var regalTxt = "<option> Keines </option>";
+    		var regalFachTxt = "<option> Keines </option>";
+
+    		for(var a = 0; a < myObj.length; a++){
+    			regalTxt += "<option>" + (a+1) + "</option>";
+    		}
+    		
+    		for(var b = 0; b < myObj[0] ; b++){
+    			regalFachTxt += "<option>" + String.fromCharCode(65 + b) + "</option>";
+    		}
+    		
+    		$("#wahlRegal")[0].innerHTML = regalTxt;
+    		$("#sel_r")[0].innerHTML = regalFachTxt;
+  			
+  			
+  			$("#wahlRegal").on('change', function(){
+			console.log("in FKT");
+    		var inhalt = "";
+    		var pos = $(this)[0].value;
+    		
+    		for(var a = 0; a < myObj[pos-1]; a++){
+    			inhalt += "<option>" + String.fromCharCode(65 + a) + "</option>";
+    		}
+    		
+    		$("#sel_r")[0].innerHTML = inhalt;
+    	
+    	});
   	}
 });
