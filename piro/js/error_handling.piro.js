@@ -41,8 +41,28 @@ $(document).ready(function(){
   	
   	if(message.selected_object !== ''){
   		createZielobjekt(message.selected_object);
-  	}
-  	
-  	
+  	} 	
     });
+    
+    var list = new ROSLIB.Topic({
+    ros : ros,
+    name : '/depthsense/image_raw/compressed',
+    messageType : 'sensor_msgs/CompressedImage'
+     });
+     
+    list.subscribe(function(message){			
+  				create_image(message);
+			  });
+    
 });
+
+	function create_image(msg){
+	
+	var image = new Image();
+	image.src = 'data:image/jpg;base64,' + msg.data;
+	image.width = 650;
+	image.height = 350;
+	$("#live_bild").html(image);
+	
+	
+}

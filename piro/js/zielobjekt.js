@@ -23,7 +23,6 @@ function createZielobjekt(name){
 				 width: myObj.width,
 				 height: myObj.height,
 				 weight: myObj.weight,
-				 description: myObj.description,
 			 
 				 });
 				 
