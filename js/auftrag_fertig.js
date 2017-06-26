@@ -6,8 +6,7 @@ function set_content_order_finished(msg){
 	
 	var queryString = "?nr=" + msg.nummer + "&del=1";
 	
-	//Anpassen des Titels im Header
-	
+	//Anpassen des Titels im Header	
 	$("#title_error_handling").html("Auftrag erfolgreich durchgeführt");
 	
 	//Anpassen des Contents im Body
