@@ -8,7 +8,7 @@
     $m = new MongoDB\Client();
     
     $db = $m->piro;
-    
+    $regal = $db -> bins;
     $collection = $db->counters;
     $test_collection = $db->amazon_info;
     $orders = $db->orders;
@@ -43,7 +43,9 @@
 	function getProdukteInRegalen(){
 		global $test_collection;
 		
-		$result = $test_collection -> find();
+		$result = $test_collection -> find(
+		array(),
+		array('sort' => array('name' => 1)));
 		
 		foreach($result as $produkt){
 		$li[] = $produkt['name'];	
@@ -144,6 +146,14 @@
 			array('multiple' => true));	
 		
 		
+	}
+	
+	function add_to_bin($bin_id,$name){
+		global $regal;
+		
+		$regal->updateOne(
+			array('bin_id' => $bin_id),
+			array('$set' => array('contents' => $name)));	
 	}
    
     function create_order($size_id,$contents){

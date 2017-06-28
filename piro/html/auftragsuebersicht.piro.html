@@ -42,6 +42,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           </button>
           <a class="navbar-brand" href="#" data-toggle="modal" data-target="#sp_decision">Auftrag anlegen</a>
+          
         </div>
         
         
@@ -51,6 +52,7 @@
           <ul class="nav navbar-nav navbar-right">
           	
           	<!-- Dashboard, Login, Produkt einbuchen und Profil -->
+          	<li><a href="#" data-toggle="modal" data-target="#produkte_einbuchen">Produkte einbuchen</a></li>
             <li><a href="../../php/login/logout.php">Dashboard</a></li>
             <li class="dropdown" id="login"></li>
           </ul>
@@ -180,7 +182,27 @@
     		</div>
     		</div>
       </div>
-    </div>  
+    </div>
+    
+    <!-- Modal for creating commissioning order -->
+    <div id="produkte_einbuchen" class="modal fade">
+      <div class="modal-dialog">			
+  		<!-- modal content is set by .js -->
+  	        <div class="modal-content">	
+  			    <div class="modal-header">
+    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    			  <h4 class="modal-title">Produkte einbuchen</h4>
+    			</div>
+    		<div class="modal-body" id="content_produkte_einbuchen">
+    			<script src="../js/produkt_einbuchen.js"></script>
+    		</div>
+    		<div class="modal-footer">
+    			 <button type="button" class="btn btn-success" id="submit_produkte">Produkte einbuchen</button>
+    			 <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    		</div>
+    		</div>
+      </div>
+    </div>    
 
   </body>
 </html>
