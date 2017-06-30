@@ -64,7 +64,32 @@
 		
 		return $liste;
 	}
+	
+	function getProdukteInAuftragOhneFach(){
+		global $orders;
+		
+		$result = $orders -> find();
+		
+		foreach($result as $auftrag){
+			$liste[] = $auftrag['contents'];
+		}
+		
+		return $liste;
+	}
     
+	function getProdukteAusBins(){
+		global $regal;
+		
+		$result = $regal -> find(
+		array(),
+		array('sort' => array('name' => 1)));
+		
+		foreach($result as $produkt){
+			$liste[] = $produkt['contents']; 
+		}
+		return $liste;
+		
+	}
     function getNextSequence($name){
     	global $collection;
 		
@@ -74,6 +99,20 @@
 		);
 		
 		return $retval['sequence_value'];
+	}
+	
+	function isInAuftrag($size_id,$name){
+		global $orders;
+		
+		$res = $orders ->findOne(
+		array('size_id' => $size_id));
+		
+		foreach($res['contents'] as $produktname){
+			
+			if($produktname == $name)
+			return true;
+		}
+		return false;
 	}
 	
     function insert_document($collection,$produktname,$weight,$length,$width,$height,$description){
@@ -174,6 +213,23 @@
 	 function delete_order($orderid){
 	 	global $orders;
 		$orders ->deleteOne(array('auftragsnummer' => $orderid));
+	 }
+	 
+	 function resetBins(){
+	 	global $regal;
+		
+		$result = $regal -> updateMany(
+		array(),
+		array('$set' => array('contents' => array())));
+
+	 }
+	 
+	 function resetOrders(){
+	 	global $orders;
+		
+		$orders = $orders -> updateMany(
+		array(),
+		array('$set' => array('contents' => array())));
 	 }
 
 ?>

@@ -6,17 +6,47 @@
  */
 
 	var speicher = "";
+	var sort_obj = [];
+	var sort_obj_orders = [];
 	
 	$.ajax({
-		url: "../php/produkteKomAuftrag.php",
+		url: "../php/produkteAusAuftrag.php",
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
 			console.log(myObj);
+			var obj = sortAndCreateArray(myObj);
+			
+			console.log(obj);
             document.getElementById("content_order_commissioning").innerHTML =
-            create_stored_products(myObj);
+            create_stored_products(obj);
 		}
-	});	
+	});
+	
+	function sortAndCreateArray(myObj){
+		
+		for(var key in myObj[0]){
+			for(var a = 0; a < myObj[0][key].length; a++){
+					sort_obj.push(myObj[0][key][a]);
+			}
+		}
+		
+		for(var key in myObj[1]){
+			for(var a = 0; a < myObj[1][key].length; a++){
+					sort_obj_orders.push(myObj[1][key][a]);
+			}
+		}
+		
+		for(var a = 0; a < sort_obj_orders.length ; a++){
+			var index = sort_obj.indexOf(sort_obj_orders[a]);
+			if(index != -1)
+			sort_obj.splice(index,1);
+		}
+		
+		console.log(sort_obj_orders);
+		return sort_obj.sort();
+	
+	}	
 
 /**
  * This function creates the HTML Output by combining HTML with the results from the AJAX-Request
@@ -25,15 +55,15 @@
     function create_stored_products(obj){
     	
     	speicher += "<form id='create_corder' method='post'> <div class='form-group'><b> Bitte wählen Sie die zu kommissionierenden Produkte </b>";
+			
 
-        	for(a = 0; a < obj.length; a++){
-
+				for(var a = 0; a < obj.length; a++){
 	    		speicher += 
 			  			"<div class='checkbox'> " +
 			  			"<label> <input type='checkbox' name='product[]' id='product' value='" + obj[a] + "'>" + 
 			  			obj[a] + "</label> </div>";
+			}
 
-		}
 		
 		speicher +=
         "<label>Ablagefach wählen:</label>" + 
