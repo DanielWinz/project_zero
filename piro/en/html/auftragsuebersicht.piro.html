@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <meta name="description" content="Index Page showing a Dashboard containing the most important information">
     <meta name="author" content="Daniel Wenz">
 
-    <title>Dashboard KomRob Auftragsverwaltng</title>
+    <title>PiRo - order management</title>
 
-	<link rel="stylesheet" href="../../css/bootstrap.css">
+	<link rel="stylesheet" href="../../../css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
@@ -21,13 +21,15 @@
 	<script src="../js/zielobjekt.js"></script>
 	<script src="../js/error_handling.piro.js"></script>
 	<script src="../js/login.js"></script>
+	<script src="../js/product_detail_info.js"></script>
 	<script src="../js/auftragsverwaltung.piro.js"></script>
 	<script src="../js/carousel_preview.piro.js"></script>
-	<script src="../../js/modal_auftragdetails.js"></script>
+	<script src="../../../js/modal_auftragdetails.js"></script>
 	
     <!-- Custom styles for this template -->
-    <link href="../../css/auftragsuebersicht.piro.css" rel="stylesheet">
-    <link href="../../css/login.css" rel="stylesheet">
+    <link href="../../../css/auftragsuebersicht.piro.css" rel="stylesheet">
+    <link href="../../../css/login.css" rel="stylesheet">
+     <link href="../../../css/language.css" rel="stylesheet">
 
   </head>
 	
@@ -41,7 +43,7 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           </button>
-          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#sp_decision">Auftrag anlegen</a>
+          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#sp_decision">Create order</a>
           
         </div>
         
@@ -52,11 +54,11 @@
           <ul class="nav navbar-nav navbar-right">
           	
           	<!-- Dashboard, Login, Produkt einbuchen und Profil -->
-          	<li><a href="#" data-toggle="modal" data-target="#produkte_einbuchen">Produkte einbuchen</a></li>
-            <li><a href="../../php/login/logout.php">Dashboard</a></li>
+          	<li><a href="#" data-toggle="modal" data-target="#produkte_einbuchen">products <span class="glyphicon glyphicon-chevron-right"></span> bin</a></li>
+            <li><a href="../php/reset.php?id=0">reset orders</a></li>
+            <li><a href="../php/reset.php?id=1">reset bins</a></li>
             <li class="dropdown" id="login"></li>
-            <li><a href="../php/reset.php?id=0">Reset Orders</a></li>
-            <li><a href="../php/reset.php?id=1">Reset Bins</a></li>
+            <li><a href="../../de/html/auftragsuebersicht.piro.html">DE</a></li>
           </ul>
         </div>
       </div>
@@ -68,7 +70,7 @@
      <!-- Content of the Dashboard is set by the called scripts -->
      <div class="main-content">      
           
-          <h3 class="sub-header">Roboterstatus</h3>
+          <h3 class="sub-header">Robot status</h3>
           <div class="progress">
           	<div class="progress progress-striped active">
 		  		<div id="robotStatus" class='progress-bar progress-bar-success' role="progressbar" aria-valuenow="0"
@@ -81,16 +83,16 @@
 		  </div>
           
           <div class='row col-sm-6 col-md-6'>
-          	<h3 class="sub-header">Zielobjekt</h3>
+          	<h3 class="sub-header">Target object</h3>
           	<div class="row placeholders" id="row_in_progress">
           </div>
            </div>
           <div class='row col-sm-6 col-md-6'>
-          	<h3 class="sub-header">Live Stream</h3>
+          	<h3 class="sub-header">Livestream</h3>
           	<div id="live_bild"></div>
           </div>
           
-          <h3 class="sub-header" id='warteschlange'>Auftragsuebersicht</h3>
+          <h3 class="sub-header" id='warteschlange'>Overview: orders</h3>
           <div class="row placeholders" id="row_in_queue">
           
           <div class='col-sm-4 align-self-center'>
@@ -112,7 +114,7 @@
           	<div class='row'>
           		<div class='table-responsive'> <table class='table table-striped'> 
 	          		<thead>
-	                   	<tr> <th>Produkte</th> <th>Ablagefachfach</th> </tr>
+	                   	<tr> <th>products</th> <th>storage compartment</th> </tr>
 	                </thead>
 	                <tbody id="in_queue">
 	                </tbody>
@@ -153,14 +155,14 @@
             <div class="modal-content">
     		    <div class="modal-header">
     			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Produktinformation</h4>
+    			  <h4 class="modal-title">Product information</h4>
     			</div>
     		<div class="modal-body" id="content_product_info">
     		    <!-- content is set dynamically when the trigger is fired -->
     		</div>
     		<div class="modal-footer">
-    			<button type="button" class="btn btn-danger" id="del_button">Produkt löschen</button>
-    		    <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button">Schließen</button>
+    			<button type="button" class="btn btn-danger" id="del_button">Delete product</button>
+    		    <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button">Close</button>
     		</div>
     		</div>
     		</div>
@@ -173,14 +175,14 @@
   	        <div class="modal-content">	
   			    <div class="modal-header">
     			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Order anlegen</h4>
+    			  <h4 class="modal-title">Create order</h4>
     			</div>
     		<div class="modal-body" id="content_order_commissioning">
     			<script src="../js/content_order_commissioning.js"></script>
     		</div>
     		<div class="modal-footer">
-    			 <button type="button" class="btn btn-success" id="submit_corder">Auftrag anlegen</button>
-    			 <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    			 <button type="button" class="btn btn-success" id="submit_corder">Create order</button>
+    			 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     		</div>
     		</div>
       </div>
@@ -193,14 +195,14 @@
   	        <div class="modal-content">	
   			    <div class="modal-header">
     			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-    			  <h4 class="modal-title">Produkte einbuchen</h4>
+    			  <h4 class="modal-title">Product assignment</h4>
     			</div>
     		<div class="modal-body" id="content_produkte_einbuchen">
     			<script src="../js/produkt_einbuchen.js"></script>
     		</div>
     		<div class="modal-footer">
-    			 <button type="button" class="btn btn-success" id="submit_produkte">Produkte einbuchen</button>
-    			 <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+    			 <button type="button" class="btn btn-success" id="submit_produkte">Commit</button>
+    			 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     		</div>
     		</div>
       </div>

@@ -124,6 +124,10 @@ body {
 	overflow: auto;
 }
 
+table > thead > tr > th{
+	text-align:center;
+}
+
 .vertical-center {
   height:100%;
   width:100%;

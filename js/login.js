@@ -31,8 +31,8 @@
 			if(Obj == 'piro'){
 				change_login_content();
 				console.log($(location).attr('pathname'));
-				if($(location).attr('pathname') !== 'project_zero/piro/html/auftragsuebersicht.piro.html')
-					window.location = "../piro/html/auftragsuebersicht.piro.html";
+				if($(location).attr('pathname') !== 'project_zero/piro/de/html/auftragsuebersicht.piro.html')
+					window.location = "../piro/de/html/auftragsuebersicht.piro.html";
 			}
 		}
 	});

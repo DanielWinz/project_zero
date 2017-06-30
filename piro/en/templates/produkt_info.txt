@@ -1,0 +1,13 @@
+<div class='container-fluid'>
+	<div class='row' >
+		<div class='col-sm-6 col-md-6'>
+		<img src='{{bildpfad}}' width = '300' class='img-responsive img-thumbnail'>
+		</div> 
+        <div class='col-sm-6 col-md-6' style='text-align:left'>
+        <strong> product: </strong> {{produktname}} <br><br>
+        <strong> measures (in m): </strong> {{length}}  x  {{width}}  x  {{height}} <br><br>
+        <strong> weight (in kg): </strong> {{weight}} <br>
+        </div>
+    </div> 
+
+</div>

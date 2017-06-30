@@ -6,7 +6,6 @@
  */
 	
 	$(document).on('click', ".product_info_content", function() {
-		console.log("in FKT");
 		var produktname = $(this).data('id');
 		var queryString = "?name=" + produktname;
 		
@@ -16,7 +15,6 @@
 		success: function(Obj){
 		
 			var myObj = JSON.parse(Obj);
-			console.log(myObj);
 	        create_modal_content(myObj);
 		
 			}
@@ -24,9 +22,7 @@
 	});	
 
 	function create_modal_content(myObj){
-		console.log("erstellen");
         $("#del_button").attr('data-id', myObj.produktname);
-        console.log(myObj);
 		$.get("../templates/modal_produkt_info.txt", function(template){
 			
 			if(myObj.bildpfad == null)
