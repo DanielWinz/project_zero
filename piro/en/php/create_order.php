@@ -20,6 +20,6 @@
 	create_order($ablagefach, $contents);
 	
 	// using header function in order to navigate to the Dashboard
- 	header("Location: http://192.168.1.117/project_zero/piro/html/auftragsuebersicht.piro.html");
+ 	header("Location: http://192.168.1.117/project_zero/piro/en/html/auftragsuebersicht.piro.html");
 
 ?>

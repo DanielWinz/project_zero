@@ -7,9 +7,10 @@
  */
 
 $(document).ready(function(){
-	
+
+  var item = "";	
   var ros = new ROSLIB.Ros({
-    url : 'ws:192.168.1.117:9090/'
+    url : 'ws:192.168.1.118:9090/'
   });
     // adding a listener for the connection event
   ros.on('connection', function() {
@@ -38,8 +39,14 @@ $(document).ready(function(){
   listener.subscribe(function(message) {
   	console.log(message);
   	animate_progress_bar(message.execution_state + 1);
+  	console.log("item" + item);
+  	
+  	if(message.execution_state == 0 && item !== ""){
+  		pointScore();
+  	}
   	
   	if(message.selected_object !== ''){
+  		item = message.selected_object;
   		createZielobjekt(message.selected_object);
   	} 	
     });

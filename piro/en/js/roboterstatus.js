@@ -39,13 +39,13 @@ function animate_progress_bar(status){
 				$(".progress-bar-warning").addClass("hidden");
 				break;
 		
-		case 6: width = 25;
-				txt = width + " % - Verbindung hergestellt";
-				$(".progress-bar-warning").removeClass("hidden");
+		case 6: txt = width + " % - grasping tool is being changed";
+				$(".progress-bar-warning").addClass("hidden");
 				break;
-		break;
-		
-		case 7: 
+	
+		case 7: width = 25;
+				txt = width + " % - an error has been detected";
+				break;  
 
 		}
 	console.log(width);

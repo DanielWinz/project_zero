@@ -12,6 +12,6 @@
 		resetBins();
 	}
 	
-	header("Location: http://192.168.1.117/project_zero/piro/html/auftragsuebersicht.piro.html");
+	header("Location: http://192.168.1.117/project_zero/piro/en/html/auftragsuebersicht.piro.html");
 	
 ?>

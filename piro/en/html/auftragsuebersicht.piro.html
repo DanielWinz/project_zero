@@ -70,7 +70,9 @@
      <!-- Content of the Dashboard is set by the called scripts -->
      <div class="main-content">      
           
-          <h3 class="sub-header">Robot status</h3>
+     	<div class='row'>
+          <div class="col-sm-6 col-md-6">
+          <h3 class="sub-header">robot status</h3>
           <div class="progress">
           	<div class="progress progress-striped active">
 		  		<div id="robotStatus" class='progress-bar progress-bar-success' role="progressbar" aria-valuenow="0"
@@ -78,19 +80,32 @@
 		  		</div>
 		  	</div>
 		  	<div class="progress-bar progress-striped progress-bar-warning hidden" role="progressbar" style="width:75%">
-    		Fehler erkannt
+    		error detected
   			</div>
 		  </div>
-          
-          <div class='row col-sm-6 col-md-6'>
-          	<h3 class="sub-header">Target object</h3>
-          	<div class="row placeholders" id="row_in_progress">
-          </div>
-           </div>
-          <div class='row col-sm-6 col-md-6'>
-          	<h3 class="sub-header">Livestream</h3>
-          	<div id="live_bild"></div>
-          </div>
+         </div>
+         
+         <div class='col-sm-6 col-md-6'>
+         	<h3 class="sub-header">point score (prognosis)</h3>
+         	<div class="progress">
+         		 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+    			70% Complete
+  				</div>
+         	</div>
+         </div>
+        </div>
+         
+        <div class='row'>
+          	<div class="col-sm-6 col-md-6">
+          	<h3 class="sub-header">target item</h3>
+          		<div class="row placeholders" id="row_in_progress">
+          		</div>
+           	</div>
+          	<div class='col-sm-6 col-md-6'>
+          	<h3 class="sub-header">livestream</h3>
+          		<div id="live_bild"></div>
+          	</div>
+        </div>
           
           <h3 class="sub-header" id='warteschlange'>Overview: orders</h3>
           <div class="row placeholders" id="row_in_queue">
