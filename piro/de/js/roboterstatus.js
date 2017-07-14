@@ -4,7 +4,7 @@
 
 function animate_progress_bar(status){
 	console.log(status);
-	var width = 1;
+	var width;
 	var txt = "";
 	
 		switch(status){

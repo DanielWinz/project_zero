@@ -7,8 +7,8 @@
  */
 
 $(document).ready(function(){
-
-  var item = "";	
+  var counter = 0;
+  var item;	
   var ros = new ROSLIB.Ros({
     url : 'ws:192.168.1.118:9090/'
   });
@@ -37,13 +37,24 @@ $(document).ready(function(){
      });
 
   listener.subscribe(function(message) {
+  	
+  	if(counter == 0){
+  		checkItemsInStorage();
+  		counter++;
+  	}
+  	
   	console.log(message);
   	animate_progress_bar(message.execution_state + 1);
+  	if(message.execution_state == 6)
+  	console.log(message.error_message);
   	console.log("item" + item);
   	
   	if(message.execution_state == 0 && item !== ""){
-  		pointScore();
+  		// inCorrectBox(item);
+  		isNew(item);
+  		animate_point_score(10);
   	}
+  	
   	
   	if(message.selected_object !== ''){
   		item = message.selected_object;

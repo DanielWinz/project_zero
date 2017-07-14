@@ -18,6 +18,7 @@
     <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 	<script src="../js/roboterstatus.js"></script>
+	<script src="../js/pointScore.js"></script>
 	<script src="../js/zielobjekt.js"></script>
 	<script src="../js/error_handling.piro.js"></script>
 	<script src="../js/login.js"></script>
@@ -87,7 +88,7 @@
          <div class='col-sm-6 col-md-6'>
          	<h3 class="sub-header">Punktestand (Prognose)</h3>
          	<div class="progress">
-         		 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="-100" aria-valuemax="300" style="width:70%">
+         		 <div id="punkteStand" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="-200" aria-valuemax="150" style="width:0%">
     			0% Complete
   				</div>
          	</div>

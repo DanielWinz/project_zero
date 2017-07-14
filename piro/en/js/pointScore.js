@@ -8,7 +8,6 @@ function inCorrectBox(item){
 		url: "../php/pointScore.php" + queryString,
 		type: 'GET',
 		success: function(Obj){
-			console.log("Produkt erfolgreich abgelegt");
 			if(Obj = 0)
 				animatePointScore(-15);
 			else
@@ -52,7 +51,7 @@ function animatePointScore(number){
 		num = num*(-1);
 	}
 	
-	var txt = "Aktueller Punktestand: " + num;
+	var txt = "current points: " + num;
 	
 	$("#punkteStand").animate(
 		{

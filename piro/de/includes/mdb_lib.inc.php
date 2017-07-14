@@ -13,6 +13,8 @@
     $test_collection = $db->amazon_info;
     $orders = $db->orders;
 	$picture = $db->picture_info;
+	$bins_backup = $db->bins_backup;
+	$add_item_info = $db->item_additional_info;
 	
 	
 	function getRegalSetup(){
@@ -28,6 +30,17 @@
 		}
 
 		return $info;
+	}
+	
+	function getItemAmount(){
+		global $bins_backup;
+		
+		$result = $bins_backup->find();
+		
+		foreach($result as $bin_collection){
+			$zahl += count($bin_collection['contents']);
+		}
+		return $zahl;
 	}
 	
 	function getEinRegal($regalnummer){
@@ -113,6 +126,19 @@
 			return true;
 		}
 		return false;
+	}
+	
+	function isNew($item){
+		global $add_item_info;
+		
+		$produkt = $add_item_info ->findOne(
+		array("name" => $item));
+		
+		if($produkt['old'] == 1)
+			return 1;
+		
+		else
+			return 0;
 	}
 	
     function insert_document($collection,$produktname,$weight,$length,$width,$height,$description){
