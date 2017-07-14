@@ -46,7 +46,7 @@
 				);
 				
 			if($res['regal'] !== null)
-				$data['regal'][$document['name']][] = $res['regal'] . $letter;
+				$data['regal'][$document['name']][] = ($res['regal']+1) . $letter;
 			
 		}
 		

@@ -27,9 +27,11 @@
     	speicher += "<form id='create_corder' method='post'> <div class='form-group'><b> Bitte wählen Sie die zu kommissionierenden Produkte </b>";
         for(var keys in obj){
         	
-        	speicher += "<h5 class='sub-header'> Produkte aus Regalfach: <strong>" + keys + "</strong></h5>";
+        	var num = keys.split("");
+        	var zahl = parseInt(num[0])+1;
+        	speicher += "<h5 class='sub-header'> Produkte aus Regalfach: <strong>" + zahl + num[1] + "</strong></h5>";
         	for(a = 0; a < obj[keys].length; a++){
-
+			
 	    		speicher += 
 			  			"<div class='checkbox'> " +
 			  			"<label> <input type='checkbox' name='product[]' id='product' value='" + obj[keys][a] + "," + keys + "'>" + 

@@ -11,7 +11,7 @@
 	</div>
 	<div class="row placeholder" id="{{regalnummer}}">
 	</div>
-	<button class='btn btn-default' data-id="{{regalnummer}}">Speichern</button>
+	<button class='btn btn-default' id="button{{regalnummer}}" data-id="{{regalnummer}}">Speichern</button>
 	</div>
 	<div class="col-sm-6 col-md-6">
 		<div>

@@ -148,7 +148,9 @@
 		url: "../php/regaleinstellung.php?name=" + id + "&data=" + data + "&rf=" + regalfach,
 		type: 'GET',
 		success: function(Obj){
-			
+			console.log(id);
+			$("#button"+id).addClass("btn btn-success");
+			$("#button"+id).html("Gespeichert");
 			console.log("works");
 			
 			}
