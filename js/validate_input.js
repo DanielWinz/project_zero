@@ -63,7 +63,7 @@ $(document).ready(function(){
       	 	span.setAttribute('class','glyphicon glyphicon-warning-sign form-control-feedback');    	 	 	
     	 	form.parentElement.parentElement.setAttribute('class','form-group has-warning has-feedback');
 			form.parentElement.append(span);
-			help.innerHTML = 'Produkt nicht in der Datenbank. Bitte geben Sie alle folgenden Informationen ein. Anschließend bestätigen über "Auftrag anlegen". ';
+			help.innerHTML = 'Produkt nicht in der Datenbank. Bitte geben Sie alle folgenden Informationen ein. Anschließend bestätigen über "Produkt anlegen". ';
 				
 			$(".hidden").removeClass('hidden');
 			$(".form-control").attr('required',"");

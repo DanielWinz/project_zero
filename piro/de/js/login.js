@@ -29,7 +29,7 @@
 					html: "Ausloggen",
 					on: { 
 						"click": function(){
-							window.location = "../../php/login/logout.php";
+							window.location = "../../de/php/login/logout.php";
 						}
 					}
 		}).appendTo('#content_login');

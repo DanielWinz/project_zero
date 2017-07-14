@@ -9,7 +9,7 @@
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
-    url : 'ws:192.168.1.129:9090/'
+    url : 'ws:192.168.1.118:9090/'
   });
     // adding a listener for the connection event
   ros.on('connection', function() {

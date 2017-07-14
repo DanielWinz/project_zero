@@ -18,6 +18,7 @@
 			if(Obj == 'computer'){	
 				change_login_content();
 				$("#add_produkt").attr('style', '');
+				$("#regalsetup").attr('style','');
 				$("#setting").attr('style', '');
 			}
 			

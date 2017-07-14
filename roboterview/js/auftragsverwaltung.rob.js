@@ -23,7 +23,7 @@ var text_in_queue = "";
 	function create_in_process(myObj){
 
 	  if(typeof(myObj[1]) !== 'undefined' && typeof(myObj[1].regal != 'undefined')){	
-		for(var a = 0; a < myObj[1].regal.length; a++){
+		for(var a = 0; a < myObj[1].regalfach.length; a++){
 			
 		text_in_process +=  "<tr>" +
                     		"<td><a href='#product_info' data-toggle='modal' data-id='" + myObj[1].contents[a] + "'" + 
