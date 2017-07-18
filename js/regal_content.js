@@ -15,6 +15,7 @@
 		success: function(Obj){
 			
 			var myObj = JSON.parse(Obj);
+			console.log(myObj);
 			createStandardView(myObj);
 			create_preview(myObj);
 			append_images(myObj);
@@ -50,6 +51,7 @@
 	function createStandardView(myObj){
 			
 			var inhalt = "";
+			var gesamtzahl = 0;
 			
 			for (var a = 0; a < myObj['info'].length ; a++){
 				inhalt += "<li id='" + a + "' value='" + a + "'><a href='#'>Regal " + (a+1) + "</a></li>";
@@ -59,24 +61,26 @@
 			$("#anzahl_regal").html(inhalt);
 			$("#anzahl_regal").children().first().attr("class","active");
 			
-			
+			for(var i = 0; i < myObj['regal']['anzahl']; i++){
+				gesamtzahl += myObj['regal'][String.fromCharCode(65 + i)].length;
+			}
 			$.get("../templates/regalInfo.txt", function(template) {
-				
+			
 			var rendered = Mustache.render(template,
 				 {
 				 regalnummer: myObj['regal']['regal'] + 1,
 				 regalfächer: myObj['regal']['anzahl'],
-				 
+				 anzahlProdukte: gesamtzahl
 				 });
 				 
 			$("#regalinfo").html(rendered);
 				
 			console.log("in der TEMPLATES");
-				 
+			console.log("das ist mein Objekt: " + myObj);
 	    	console.log("in der DAZU");
 			var dazu = ""; 
 				for(var a  = 0; a < myObj['regal']['anzahl'] ; a++){
-					dazu += "<li> Regalfach " + String.fromCharCode(65 + a) + ": " + myObj['produkte'][aktuelles_regal][String.fromCharCode(65 + a)] +"</li>";
+					dazu += "<li> Regalfach " + String.fromCharCode(65 + a) + ": " + myObj['produkte'][aktuelles_regal + String.fromCharCode(65 + a)].length +" Produkt(e) </li>";
 				}	
 			
 			$("#add").append(dazu);
@@ -87,7 +91,12 @@
 	}
 	
 	function createView(myObj){
-
+			var gesamtzahl = 0;
+			
+			for(var i = 0; i < myObj['regal']['anzahl']; i++){
+				gesamtzahl += myObj['regal'][String.fromCharCode(65 + i)].length;
+			}
+			
 			$("#regalbild").html( myObj['regal']['bildpfad']);
 		
 			$.get("../templates/regalInfo.txt", function(template) {
@@ -96,17 +105,18 @@
 				 {
 				 regalnummer: myObj['regal']['regal'] + 1,
 				 regalfächer: myObj['regal']['anzahl'],
-				 
+				 anzahlProdukte: gesamtzahl
 				 });
 				 
 			$("#regalinfo").html(rendered);
 				
 			console.log("in der TEMPLATES");
-				 
 	    	console.log("in der DAZU");
+	    	console.log(aktuelles_regal);
 			var dazu = ""; 
 				for(var a  = 0; a < myObj['regal']['anzahl'] ; a++){
-					dazu += "<li> Regalfach " + String.fromCharCode(65 + a) + ": " + myObj['produkte'][aktuelles_regal][String.fromCharCode(65 + a)] +"</li>";
+					if(myObj['produkte'][aktuelles_regal + String.fromCharCode(65 + a)] != null)
+					dazu += "<li> Regalfach " + String.fromCharCode(65 + a) + ": " + myObj['produkte'][aktuelles_regal + String.fromCharCode(65 + a)].length +" Produkt(e) </li>";
 				}	
 			
 			$("#add").append(dazu);
