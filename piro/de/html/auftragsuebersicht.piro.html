@@ -54,6 +54,8 @@
           <ul class="nav navbar-nav navbar-right">
           	
           	<!-- Dashboard, Login, Produkt einbuchen und Profil -->
+          	<li><a href="#" id="pick">Pick</a></li>
+          	<li><a href="#" id="stow">Stow</a></li>
           	<li><a href="#" data-toggle="modal" data-target="#produkte_einbuchen">Produkte einbuchen</a></li>
             <li><a href="../php/reset.php?id=0">Reset Orders</a></li>
             <li><a href="../php/reset.php?id=1">Reset Bins</a></li>
@@ -110,7 +112,7 @@
           <h3 class="sub-header" id='warteschlange'>Auftragsuebersicht</h3>
           <div class="row placeholders" id="row_in_queue">
           
-          <div class='col-sm-4 align-self-center'>
+          <div class='col-sm-4 align-self-center' id="carousel_content">
           	<div id="carousel_in_queue" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators" id="indicator_in_queue"></ol>
@@ -125,7 +127,7 @@
 			  </a>
 			</div>
           </div>
-          <div class='col-sm-8'>
+          <div class='col-sm-8' id="table_content">
           	<div class='row'>
           		<div class='table-responsive'> <table class='table table-striped'> 
 	          		<thead>

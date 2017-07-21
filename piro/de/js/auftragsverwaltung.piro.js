@@ -7,7 +7,21 @@
 
 var text_in_process = "";
 var text_in_queue = "";
-
+	
+$(document).ready(function(){
+	$("#stow").click(function(){
+		$("#warteschlange").addClass('hidden');
+		$("#row_in_queue").addClass("hidden");
+		$("#carousel_content").addClass("hidden");
+		$("#table_content").addClass("hidden");
+	});
+	$("#pick").click(function(){
+		$("#warteschlange").removeClass('hidden');
+		$("#row_in_queue").removeClass("hidden");
+		$("#carousel_content").removeClass("hidden");
+		$("#table_content").removeClass("hidden");
+	});
+});
 	$.ajax({
 		url: "../php/produkteInAuftrag.php",
 		success: function(Obj){

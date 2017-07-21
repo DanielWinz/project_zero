@@ -134,7 +134,7 @@
 		$produkt = $add_item_info ->findOne(
 		array("name" => $item));
 		
-		if($produkt['old'] == 1)
+		if($produkt['new'] == 1)
 			return 1;
 		
 		else

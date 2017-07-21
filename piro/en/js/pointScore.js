@@ -2,19 +2,6 @@
  * @author Daniel
  */
 var num = 0;
-function inCorrectBox(item){
-	var queryString = "?item=" + item + "&id=0";
-	$.ajax({
-		url: "../php/pointScore.php" + queryString,
-		type: 'GET',
-		success: function(Obj){
-			if(Obj = 0)
-				animatePointScore(-15);
-			else
-				animatePointScore(10);
-			}
-	});
-}
 
 function checkItemsInStorage(){
 	var queryString = "?&id=1";
