@@ -9,7 +9,7 @@
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
-    url : 'ws:192.168.1.118:9090/'
+    url : 'ws:192.168.1.129:9090/'
   });
     // adding a listener for the connection event
   ros.on('connection', function() {
@@ -34,7 +34,7 @@ $(document).ready(function(){
   var listener = new ROSLIB.Topic({
     ros : ros,
     name : '/error_handling',
-    messageType : 'mission_planner/Error'
+    messageType : 'mission_planner/HMI'
      });
 
   listener.subscribe(function(message) {

@@ -4,7 +4,8 @@
      		<img src="{{bild}}" width="200">
      		<p> <br> <strong>{{{inhalt}}}</strong></p>
      		<button class="btn btn-success" onclick="location.href = 'auftragsuebersicht.rob.html';">{{button}}</button>
-     		<button class="btn btn-default" type="button" data-toggle="modal" data-target="#livestream_scanner">{{button2}}</button> 
+     		<button class="btn btn-default" type="button" data-toggle="modal" data-target="#livestream_scanner">{{button2}}</button>
+     		<button class="btn btn-default" type="button" data-toggle="modal" data-target="#image_scanner">{{button3}}</button> 
      	<div class="input-group>
 			<input id="scanner_input" class="form-control col-md-6" placeholder="Um den Barcode zu scannen, Button bestätigen" type="text" />
      	</div>

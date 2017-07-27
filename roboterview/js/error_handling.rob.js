@@ -9,7 +9,7 @@
 $(document).ready(function(){
 	
   var ros = new ROSLIB.Ros({
-    url : 'ws:192.168.1.118:9090/'
+    url : 'ws:192.168.1.129:9090/'
   });
     // adding a listener for the connection event
   ros.on('connection', function() {
@@ -31,11 +31,11 @@ $(document).ready(function(){
   var listener = new ROSLIB.Topic({
     ros : ros,
     name : '/error_handling',
-    messageType : 'mission_planner/Error'
+    messageType : 'mission_planner/HMI'
      });
 
   listener.subscribe(function(message) {
-  	
+  	console.log("erhalten");
   	if(message.status == 3){
   		set_content_order_finished(message);
   	}
@@ -43,7 +43,7 @@ $(document).ready(function(){
   	else{
   		console.log("in Else");
   		localStorage.setItem('message', JSON.stringify(message));
-  		location.href = "../html/error_handling.rob.html";	
+  		location.href = "error_handling.rob.html";	
   	}
   	
     });

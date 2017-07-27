@@ -3,6 +3,7 @@
  */
 
 	var msg = JSON.parse(localStorage.getItem('message'));
+	console.log(msg);
 	
 	$.get("../templates/error_template.txt", function(template){
 		
@@ -27,7 +28,8 @@
 							inhalt: "Das Produkt " + msg.produkt + " konnte leider nicht erkannt werden. <br>" +
 									"Bitte aus Regalfach " + msg.regal + " holen und in das Fach " + msg.ablage + " ablegen.",
 							button: "Produkt kommissioniert",
-							button2: "Barcode scannen"
+							button2: "Barcode scannen (Tablet)",
+							button3: "Barcode scannen (Roboter)"
 						});
 					break;
 			
@@ -38,7 +40,8 @@
 							inhalt: "Das Produkt " + msg.produkt + " konnte leider nicht gegriffen werden. <br>" +
 									"Bitte aus Regalfach " + msg.regal + " holen und in das Fach " + msg.ablage + " ablegen.",
 							button: "Produkt kommissioniert",
-							button2: "Barcode scannen"
+							button2: "Barcode scannen (Tablet)",
+							button3: "Barcode scannen (Roboter)"
 						});
 					break;
 		}

@@ -21,12 +21,21 @@
 		
 			}
 		});
-	});	
+	});
+	
 
 	function create_modal_content(myObj){
-		console.log("erstellen");
+		
         $("#del_button").attr('data-id', myObj.produktname);
-        console.log(myObj);
+        var regalfach_neu = [];
+        
+        //erhöhe Regalfachdarstellung um 1
+        for(var key in myObj.regal){
+        	var num = myObj.regal[key].split("");
+        	zahl = parseInt(num[0])+1;
+        	regalfach_neu[key] = parseInt(num[0])+ 1 + num[1];
+        }
+
 		$.get("../templates/modal_produkt_info.txt", function(template){
 			
 			if(myObj.bildpfad == null)
@@ -41,7 +50,7 @@
 				 width: myObj.width,
 				 height: myObj.height,
 				 weight: myObj.weight,
-				 regal: myObj.regal,
+				 regal: regalfach_neu,
 				 description: myObj.description,
 			 
 				 });

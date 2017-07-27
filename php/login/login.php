@@ -26,7 +26,7 @@
 		$_SESSION['modus'] = 'computer';
 	}
 		
-	header("Location: http://192.168.1.117/project_zero/html/index.html");
+	header("Location: http://192.168.1.129/project_zero/html/index.html");
 		
 
 ?>

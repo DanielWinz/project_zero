@@ -23,6 +23,6 @@
 	create_order($ablagefach,0, $contents, $regalfach);
 	
 	// using header function in order to navigate to the Dashboard
- 	header("Location: http://192.168.1.117/project_zero/html/index.html");
+ 	header("Location: http://192.168.1.129/project_zero/html/index.html");
 
 ?>
