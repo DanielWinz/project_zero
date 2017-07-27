@@ -18,12 +18,13 @@
 	function change_regal($regal,$regalfach,$pfad){
 		global $bins,$db;
 		
-		if($regal == 0){
-			$bins->drop();
-			$bins = $db -> regal;	
-		}
+		$bins->findOne(array(
+		"regal" => $regal));
 		
-		$document = array(
+		if($bins != null){
+			$bins->deleteOne(array("regal" => $regal));
+			
+			$document = array(
 			"regal" => ($regal),
 			"bildpfad" => $pfad,
 			"anzahl" => $regalfach);
@@ -32,8 +33,30 @@
 				$document[chr(65+$a)] = array();	
 			}
 		
-			$bins->insertOne($document);	
+			$bins->insertOne($document);
+		}
+		
+		else{
+			
+			$document = array(
+			"regal" => ($regal),
+			"bildpfad" => $pfad,
+			"anzahl" => $regalfach);
+			
+			for($a=0; $a < $regalfach; $a++){
+				$document[chr(65+$a)] = array();	
+			}
+		
+			$bins->insertOne($document);
+		}	
 	
+	}
+	
+	function deleteRegalSettings(){
+		global $bins,$db;
+		
+			$bins->drop();
+
 	}
 	
 	

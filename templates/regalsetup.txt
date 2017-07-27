@@ -2,10 +2,10 @@
 	<div class="col-sm-6 col-md-6">
 	<div class="row placeholder">
 		<div class="col-sm-3 col-md-3">
-   			<strong>Regal {{regalnummer}} </strong>
+   			<strong>Regal {{regalnummer_anzeige}} </strong>
     	</div>
     	<div class="col-sm-9 col-md-9">
-    		<input id="anzahl_regalfach{{regalnummer}}" class="regalfach" data-id="{{regalnummer}}" name="anzahl_regalfach" type="text" data-slider-min="1" data-slider-max="26" data-slider-step="1" data-slider-value="1"/>
+    		<input id="anzahl_regalfach{{regalnummer}}" class="regalfach" data-id="{{regalnummer}}" name="anzahl_regalfach" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>
 			<span> Regalfächer von: <span class="anzahl_regalfach" id="anzahl_regalfach_current{{regalnummer}}">A</span></span><br>
     	</div>
 	</div>

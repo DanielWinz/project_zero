@@ -74,7 +74,11 @@ $(document).ready(function(){
 		type: 'GET',
 		success: function(Obj){
 			console.log("success");
-			$("#row_placeholder").append("<div class='alert alert-success'> <strong>Produkt erfolgreich gelöscht  </strong><span class='glyphicon glyphicon-ok'></span> </div>");
+			swal("Produkt gelöscht!", "Das Produkt wurde erfolgreich gelöscht. Die Seite wird automatisch neu geladen.", "success");
+			//$("#row_placeholder").append("<div class='alert alert-success'> <strong>Produkt erfolgreich gelöscht  </strong><span class='glyphicon glyphicon-ok'></span> </div>");
+	        setTimeout(function(){ 
+	        	location.reload(); }, 4000);
+	        	
 	        $("#close_button").on('click',function(){
 	        		location.reload();
 	        		});

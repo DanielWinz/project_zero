@@ -20,8 +20,11 @@
 	<script src="../js/login.js"></script>
 	<script src="../js/regalsetup.js"></script>
     <script src="../js/product_detail_info.js"></script>
+    <script src="../dist/sweetalert.min.js"></script>
+
     
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../dist/sweetalert.css">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
     <link href="../css/regalsetup.css" rel="stylesheet">
@@ -33,6 +36,7 @@
   	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
       	 <div class="navbar-header">
+      	 	<a class="navbar-brand" href="#">Einstellungen zurücksetzen</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -65,7 +69,7 @@
 				<strong> Anzahl der Regale wählen:</strong>
 			</div>
 			<div class="col-sm-9 col-md-9">
-				<input id="anzahl_regal" name="anzahl_regal" type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="1"/>
+				<input id="anzahl_regal" name="anzahl_regal" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>
 				<span> Anzahl Regale: <span id="anzahl_regal_current">1<br></span></span>
 			</div>
 		</div>

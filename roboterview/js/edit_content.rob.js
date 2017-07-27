@@ -2,6 +2,7 @@
  * @author Daniel
  */
 
+$(document).ready(function(){
 	var msg = JSON.parse(localStorage.getItem('message'));
 	console.log(msg);
 	
@@ -49,3 +50,4 @@
 		$("#inhalt_error").append(inhalt);
 
 	});
+});

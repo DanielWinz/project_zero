@@ -20,9 +20,13 @@ $(function() {
 			},
 			numOfWorkers: (navigator.hardwareConcurrency ? navigator.hardwareConcurrency : 4),
 			decoder: {
-				"readers":[
-					{"format":"ean_reader","config":{}}
-				]
+				readers:[
+					
+						"code_128_reader",
+                        "ean_reader",
+                        "ean_8_reader",
+                        ]
+
 			},
 			locate: true
 		};
@@ -52,8 +56,8 @@ $(function() {
 		);
     });
 	
-	// Make sure, QuaggaJS draws frames an lines around possible 
-	// barcodes on the live stream
+	 //Make sure, QuaggaJS draws frames an lines around possible 
+	 //barcodes on the live stream
 	Quagga.onProcessed(function(result) {
 		var drawingCtx = Quagga.canvas.ctx.overlay,
 			drawingCanvas = Quagga.canvas.dom.overlay;
@@ -76,16 +80,44 @@ $(function() {
 				Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
 			}
 		}
-	});
+	}); 
 	
 	// Once a barcode had been read successfully, stop quagga and 
 	// close the modal after a second to let the user notice where 
 	// the barcode had actually been found.
 	Quagga.onDetected(function(result) {    		
 		if (result.codeResult.code){
-			$('#scanner_input').val(result.codeResult.code);
-			Quagga.stop();	
-			setTimeout(function(){ $('#livestream_scanner').modal('hide'); }, 1000);			
+			Quagga.stop();
+			//implementieren der Verifikationsfunktion
+			swal({
+			  	title: "Barcode gefunden",
+			  	text: "Folgender Barcode wurde gefunden: " + result.codeResult.code,
+			  	type: "info",
+				showCancelButton: true,
+				confirmButtonColor: "#5cb85c",
+				confirmButtonText: "Verifikation!",
+				cancelButtonText: "Neu Scannen!",
+				closeOnConfirm: false,
+				closeOnCancel: true
+				},
+				function(isConfirm){
+					if (isConfirm) {
+				  			
+			  		} else {
+			   			Quagga.init(
+							liveStreamConfig, 
+							function(err) {
+								if (err) {
+									$('#livestream_scanner .modal-body .error').html('<div class="alert alert-danger"><strong><i class="fa fa-exclamation-triangle"></i> '+err.name+'</strong>: '+err.message+'</div>');
+									Quagga.stop();
+									return;
+								}
+								Quagga.start();
+							}
+						);
+
+			  		}
+				});		
 		}
 	});
     
@@ -100,7 +132,7 @@ $(function() {
 	// file input
 	$("#livestream_scanner input:file").on("change", function(e) {
 		if (e.target.files && e.target.files.length) {
-			Quagga.decodeSingle($.extend({}, fileConfig, {src: URL.createObjectURL(e.target.files[0])}), function(result) {alert(result.codeResult.code);});
+			Quagga.decodeSingle($.extend({}, fileConfig, {src: URL.createObjectURL(e.target.files[0])}), function(result) {console.log(result.codeResult.code);});
 		}
 	});
 });

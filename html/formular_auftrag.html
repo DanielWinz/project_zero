@@ -19,8 +19,10 @@
     <!-- Laden der eigenen .js Dateien -->
 	<script src="../js/validate_input.js"></script>
 	<script src="../js/login.js"></script>
+	<script src="../dist/sweetalert.min.js"></script>
 
     <!-- Laden der Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../dist/sweetalert.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
@@ -65,7 +67,7 @@
 
       <!-- definition of all single components belonging to the formular -->
       <div class="col-xs-12 col-sm-9 placeholder">
-      <form class="form-horizontal" method="post" onsubmit="" id="send_content">
+      <form class="form-horizontal" method="post"  id="send_content">
      	 		
   	 	<!-- productname -->
   	 	<div class="form-group" id="pname">
@@ -124,8 +126,16 @@
       		<input type="number" class="form-control" step="0.01" id="length" name="length" placeholder="0.1" >
     		</div>
   		</div>
-
-  		<!-- length -->
+		
+		<!-- Bild hochladen -->
+	  	<div class="form-group hidden">
+    	<label class="control-label col-sm-3" for="length">Bild hochladen:</label>
+    		<div class="col-sm-9">
+      		<input type="file" accept="image/*;capture=camera" capture="camera" class="hidden"/>
+    		</div>
+  		</div>
+		
+  		<!-- Beschreibung -->
 	  	<div class="form-group hidden">
     	<label class="control-label col-sm-3" for="length">Beschreibung:</label>
     		<div class="col-sm-9"> 

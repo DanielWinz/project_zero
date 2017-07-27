@@ -7,7 +7,7 @@
 
     
 $(document).ready(function(){
-	
+	var url = "";
 	var span  = document.createElement('span');
     var help = document.getElementById("helper");
     var form = document.getElementById("pn");
@@ -73,8 +73,8 @@ $(document).ready(function(){
 			$("#change_bin").addClass('hidden');
 			$("#confirm1").addClass('hidden');
 			$("#sm_button").removeAttr('disabled');
-			
-			$("#send_content").attr('action', '../php/db_transfer.php?s=0');
+			url="../php/db_transfer.php?s=0";
+			//$("#send_content").attr('action', '../php/db_transfer.php?s=0');
 			
     }
     function noMatchingBin(status,decider){
@@ -94,10 +94,11 @@ $(document).ready(function(){
   			$("#smbutton").removeClass('hidden');
   			$("#sm_button").attr('value','Regalfach zuordnen');  
   			$("#sm_button").removeAttr('disabled');
-
-  			$("#send_content").attr('action', '../php/db_transfer.php?s=1');
+			
+			url="../php/db_transfer.php?s=1";
+  			//$("#send_content").attr('action', '../php/db_transfer.php?s=1');
   			
-  			}  			
+  	}  			
   	function orderReady(status){
   		
   			var decider;
@@ -117,7 +118,8 @@ $(document).ready(function(){
   				$("#smbutton").removeClass('hidden');  
   			    $("#sm_button").removeAttr('disabled');
   			    
-  			    $("#send_content").attr('action', '../php/db_transfer.php?s=1&d=2');
+  			    url="../php/db_transfer.php?s=1&d=2";
+  			  //  $("#send_content").attr('action', '../php/db_transfer.php?s=1&d=2');
   			});
   			
   	}
@@ -152,4 +154,39 @@ $(document).ready(function(){
     	
     	});
   	}
+ 
+
+	$("#send_content").submit(function(e) {
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#send_content").serialize(), // serializes the form's elements.
+           success: function(data)
+           {	 	    
+			  	swal({
+				  title: "Produkt angelegt",
+				  text: "Das Produkt wurde erfolgreich angelegt!",
+				  type: "success",
+				  showCancelButton: true,
+				  confirmButtonClass: "btn-default",
+				  confirmButtonText: "neues Produkt",
+				  cancelButtonText: "zur Produktübersicht",
+				  closeOnConfirm: true,
+				  closeOnCancel: false
+				},
+				function(isConfirm) {
+				  if (isConfirm) {
+				  	location.href = "formular_auftrag.html";
+				  } else {
+				    location.href = "produktoverview.html";
+			  		}	
+				}
+				);
+           }
+         });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+	});
 });
+	

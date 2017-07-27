@@ -85,6 +85,7 @@
 
 			rendered += Mustache.render(template,
 				 {
+				 regalnummer_anzeige: a+1,
 				 regalnummer: a,
 				 });
 		
@@ -145,16 +146,40 @@
       var data = svgString;
       
       	$.ajax({
-		url: "../php/regaleinstellung.php?name=" + id + "&data=" + data + "&rf=" + regalfach,
+		url: "../php/regaleinstellung.php?id=1&name=" + id + "&data=" + data + "&rf=" + regalfach,
 		type: 'GET',
 		success: function(Obj){
-			console.log(id);
-			$("#button"+id).addClass("btn btn-success");
-			$("#button"+id).html("Gespeichert");
-			console.log("works");
-			
+			swal("Regal gespeichert!", "Das Regal wurde erfolgreich gespeichert!", "success");
 			}
 		});
+	});
+	
+	$(document).on('click','.navbar-brand',function(){
+		
+	swal({
+  	title: "Einstellungen zurücksetzen?",
+  	text: "Alle bisherigen Regaleinstellungen inklusive den darin enthaltenen Produkte werden gelöscht!",
+  	type: "warning",
+	showCancelButton: true,
+	confirmButtonColor: "#DD6B55",
+	confirmButtonText: "Einstellungen zurücksetzen!",
+	cancelButtonText: "Abbrechen!",
+	closeOnConfirm: false,
+	closeOnCancel: false
+	},
+	function(isConfirm){
+		if (isConfirm) {
+	  		$.ajax({
+			url: "../php/regaleinstellung.php?id=0",
+			type: 'GET',
+			success: function(Obj){
+				swal("Gelöscht!", "Die bisherigen Regaleinstellungen wurden zurückgesetzt.", "success");
+				}
+			});
+  		} else {
+   			swal("Abbruch", "Deine Einstellungen sind sicher - nichts wurde gelöscht", "error");
+  		}
+	});
 	});
 
 
