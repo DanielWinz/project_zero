@@ -16,9 +16,9 @@
 	$description = $_POST["description"];
 	$regal = $_POST["wahlRegal"]-1;
 	$bin_id = $_POST["sel_r"];
+	$barcode = isset(intval($_POST['barcode']));
 	$status = $_GET["s"];
 	$decider = isset($_GET["d"]);
-	
 	
 	error_log("aus transfer: regal" . $regal,0);
 	error_log("aus transfer: regalfach" . $bin_id,0);
@@ -27,7 +27,7 @@
 	
 	// using the insert_document function for inserting a document into a collection
 	if($status == 0){
-		insert_document($test_collection,$produktname,$weight,$length,$width,$height,$description);	
+		insert_document($test_collection,$produktname,$weight,$length,$width,$height,$barcode,$description);	
 		if($bin_id !== 'keines' && $regal !== 'keines')
 			update_bin($regal,$bin_id,$produktname);
 	}

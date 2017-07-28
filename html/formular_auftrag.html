@@ -20,12 +20,15 @@
 	<script src="../js/validate_input.js"></script>
 	<script src="../js/login.js"></script>
 	<script src="../dist/sweetalert.min.js"></script>
+	<script src="../dist/quagga.js"></script>
+	<script src="../js/barcode_scanner.js"></script>
 
     <!-- Laden der Stylesheets -->
     <link rel="stylesheet" type="text/css" href="../dist/sweetalert.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/dashboard.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/barcode.css" rel="stylesheet">
     
   </head>
   
@@ -127,14 +130,30 @@
     		</div>
   		</div>
 		
-		<!-- Bild hochladen -->
+		<!-- Barcode scannen -->
+		<div class="form-group hidden">
+                <label class="col-sm-3 control-label">Barcode:</label>
+					<div class="col-sm-9 controls">
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="barcode" name="barcode" placeholder="Manuell eingeben oder Scannen">
+                        <div class="input-group-btn">
+					      <button class="btn btn-default" id="startScan">
+					        <i class="glyphicon glyphicon-barcode"></i>
+					      </button>
+					    </div>
+                    </div>
+				</div>
+            </div>
+
+		
+		<!-- Bild hochladen
 	  	<div class="form-group hidden">
     	<label class="control-label col-sm-3" for="length">Bild hochladen:</label>
     		<div class="col-sm-9">
-      		<input type="file" accept="image/*;capture=camera" capture="camera" class="hidden"/>
+      		<input type="file" id="files" name="files"/>
     		</div>
   		</div>
-		
+		-->
   		<!-- Beschreibung -->
 	  	<div class="form-group hidden">
     	<label class="control-label col-sm-3" for="length">Beschreibung:</label>
@@ -142,12 +161,12 @@
       		<textarea class="form-control" id="description" name="description" placeholder="Produktbeschreibung hier eingeben" > </textarea>
     		</div>
   		</div>
-  	 
+  		
   	  <!-- Submitting the formular values fires db_transfer.php to store data in the MongoDB -->
   	  
   	  <div class="form-group" id="smbutton"> 
       <div class="col-sm-offset-6 col-sm-10">
-      			<input type="submit" class="btn btn-default" value="Produkt anlegen" disabled="" id="sm_button">
+      			<input type="submit" class="btn btn-default" disabled="" value="Produkt anlegen" id="sm_button">
       </div>
   	  </div>
 
@@ -157,10 +176,9 @@
       			<span class="glyphicon glyphicon-edit"></span>
       			</button>
       </div>
-  	  </div>
-  	  
-  	  
+  	  </div>  	  
   	  </form>
+
   	  </div>
             </div>
           </div>
@@ -185,6 +203,31 @@
     		</div>
     		</div>
     	</div>
+    	
+    <!-- Inhalt für den Barcode Scanner bzw. das Modal -->
+   	<div class="modal" id="livestream_scanner">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Barcode Scanner</h4>
+			</div>
+			<div class="modal-body" style="position: static">
+				<div id="interactive" class="viewport"></div>
+				<div class="error"></div>
+			</div>
+			<div class="modal-footer">
+				<label class="btn btn-default pull-left">
+					Datei hochladen
+					<input type="file" accept="image/*;capture=camera" capture="camera" class="hidden" />
+				</label>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
          
   </body>
   </html>  

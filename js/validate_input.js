@@ -11,11 +11,15 @@ $(document).ready(function(){
 	var span  = document.createElement('span');
     var help = document.getElementById("helper");
     var form = document.getElementById("pn");
+    var files;
     
     $(".form-control").change(function(){
     	
     	if($(this).attr('id') == 'pn'){
     		//dont do anything
+    	}
+    	else if($(this).attr('id') == 'barcode'){
+    		//nada
     	}
     	else{
     		$(this).parent().parent().attr('class','form-group has-success has-feedback');
@@ -56,7 +60,11 @@ $(document).ready(function(){
 				}
 			}
 		});	    
-    });  
+    });
+    
+    $("#startScan").click(function(){
+    	$("#livestream_scanner").modal();
+    });
 
     function notInDatabase(status){
     	
@@ -69,7 +77,7 @@ $(document).ready(function(){
 			$(".form-control").attr('required',"");
 			$("#sel_r").removeAttr('required');
 			
-						
+			$("#livestream_scanner input:file").addClass('hidden');		
 			$("#change_bin").addClass('hidden');
 			$("#confirm1").addClass('hidden');
 			$("#sm_button").removeAttr('disabled');
@@ -90,7 +98,7 @@ $(document).ready(function(){
   			$("#pname").removeClass('hidden');
   			$("#regal").removeClass('hidden');
   			$("#regalfach").removeClass('hidden');
-  			    
+  			$("#livestream_scanner input:file").addClass('hidden');	
   			$("#smbutton").removeClass('hidden');
   			$("#sm_button").attr('value','Regalfach zuordnen');  
   			$("#sm_button").removeAttr('disabled');
@@ -161,9 +169,10 @@ $(document).ready(function(){
     $.ajax({
            type: "POST",
            url: url,
+           cache: false,
            data: $("#send_content").serialize(), // serializes the form's elements.
            success: function(data)
-           {	 	    
+           {	 	   
 			  	swal({
 				  title: "Produkt angelegt",
 				  text: "Das Produkt wurde erfolgreich angelegt!",
@@ -186,7 +195,7 @@ $(document).ready(function(){
            }
          });
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
 	});
+	
 });
 	

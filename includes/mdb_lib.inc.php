@@ -15,6 +15,25 @@
     $orders = $db->orders;
 	$picture = $db->picture_info;
 	
+	function addImage($name,$link){
+		global $picture;
+		$bilder = array();
+		$bilder[0] = $link;
+		
+		$picture -> findOneAndUpdate(
+		array("name" => $name),
+		array('$set' => array("pictures" => $link))
+		);
+		
+		if($picture == null){
+			$document = array(
+			"name" => $name,
+			"pictures" => $link);
+			
+		$picture ->insertOne($document);
+		}
+	}
+	
 	function change_regal($regal,$regalfach,$pfad){
 		global $bins,$db;
 		
@@ -114,7 +133,7 @@
 		return $retval['sequence_value'];
 	}
 	
-    function insert_document($collection,$produktname,$weight,$length,$width,$height,$description){
+    function insert_document($collection,$produktname,$weight,$length,$width,$height,$barcode,$description){
 		
 		$dimensions = array();
 		$dimensions[0] = $length;
@@ -127,6 +146,7 @@
         "name" => $produktname,
         "weight" => $weight, 
         "dimensions" => $dimensions,
+        "barcode" => $barcode,
         "description" => $description
         );
 	 
