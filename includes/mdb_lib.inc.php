@@ -165,6 +165,14 @@
 		))); 
     }
 	
+	function update_barcode($produktname,$barcode){
+		global $test_collection;
+		
+		$result = $test_collection->findOneAndUpdate(
+		array("name" => $produktname),
+		array('$set' => array("barcode" => $barcode)));
+	}
+	
 	function update_status($order_id){
 		global $orders;
 		

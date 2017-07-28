@@ -40,7 +40,7 @@ $(document).ready(function(){
     $("#pn").change(function() {
     
 	    var queryString = "?name=" + $(this).val();
-	    
+	    $("#startScan").removeAttr('disabled');
 		$.ajax({
 			url: "../php/validating.php" + queryString,
 			type: 'GET',
@@ -98,6 +98,7 @@ $(document).ready(function(){
   			$("#pname").removeClass('hidden');
   			$("#regal").removeClass('hidden');
   			$("#regalfach").removeClass('hidden');
+  			$("#barcodeScanner").removeClass('hidden');
   			$("#livestream_scanner input:file").addClass('hidden');	
   			$("#smbutton").removeClass('hidden');
   			$("#sm_button").attr('value','Regalfach zuordnen');  

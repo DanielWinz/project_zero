@@ -131,13 +131,13 @@
   		</div>
 		
 		<!-- Barcode scannen -->
-		<div class="form-group hidden">
+		<div class="form-group hidden" id="barcodeScanner">
                 <label class="col-sm-3 control-label">Barcode:</label>
 					<div class="col-sm-9 controls">
                     <div class="input-group">
-                        <input type="number" class="form-control" id="barcode" name="barcode" placeholder="Manuell eingeben oder Scannen">
+                        <input type="number" class="form-control" id="barcode" name="" placeholder="Manuell eingeben oder Scannen">
                         <div class="input-group-btn">
-					      <button class="btn btn-default" id="startScan">
+					      <button class="btn btn-default" type="button" id="startScan" disabled="">
 					        <i class="glyphicon glyphicon-barcode"></i>
 					      </button>
 					    </div>

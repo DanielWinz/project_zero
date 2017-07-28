@@ -32,9 +32,11 @@
 			update_bin($regal,$bin_id,$produktname);
 	}
 	
-	if($status == 1)
+	if($status == 1){
 		update_bin($regal,$bin_id, $produktname);
-	
+		if($barcode != null)
+		update_barcode($produktname,$barcode);
+	}
 	if($status == 1 && $decider == 2){
 		delete_from_bin($produktname);
 		update_bin($regal,$bin_id, $produktname);
